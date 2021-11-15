@@ -1,0 +1,24 @@
+{
+  "name": "undefined",
+  "version": "1.0.0",
+  "description": "Project to display the LGBTQIA+ community rights in the world",
+  "main": "index.js",
+  "dependencies": {
+    "dotenv": "^10.0.0",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxLepan/undefined.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxLepan/undefined/issues"
+  },
+  "homepage": "https://github.com/MaxLepan/undefined#readme"
+}
