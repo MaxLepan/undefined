@@ -40,7 +40,9 @@
 }
     
 .splide__progress__bar{
-    width:0
+    
+	height: 3px;
+  	background: #ccc;
 }
 
 .splide {

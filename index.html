@@ -60,11 +60,13 @@
 </body>
 
 </html>
+<script src=".\node_modules\@splidejs\splide\dist\js\splide.min.js"></script>
 <script>
-    var splide = new Splide('.splide');
-
-    splide.on('autoplay:playing', function (rate) {
-        console.log(rate); // 0-1
+    let splide = new Splide('.splide', {
+        type: "loop",
+        perMove: 1,
+        autoplay: true,
+        interval: 5000
     });
 
     splide.mount();
