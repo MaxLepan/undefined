@@ -4,7 +4,10 @@
   "description": "Project to display the LGBTQIA+ community rights in the world",
   "main": "get_tweets/get_tweets.js",
   "dependencies": {
+<<<<<<< HEAD
     "@splidejs/splide": "^3.5.0",
+=======
+>>>>>>> aaaa046dd501f6a830254c1dcf92335c2332e527
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "http": "0.0.1-security",
