@@ -101,7 +101,7 @@ map.on('load', () => {
 
     //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
     map.scrollZoom.enable({around: 'center'});
-
+    
     
 });
 
