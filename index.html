@@ -56,16 +56,25 @@
         </div>
         <div class="title chiffreTitle">CHIFFRES</div>
     </div>
+    <div class="mapContainer">
+        <div id="map"></div>
+        <div class="zoomButton">
+            <button onclick="zoom()">+</button>
+            <button onclick="dezoom()">-</button>
+        </div>
+
+    </div>
+
+    <script src="map.js"></script>
+    <script>
+        var splide = new Splide('.splide');
     
+        splide.on('autoplay:playing', function (rate) {
+            console.log(rate); // 0-1
+        });
+    
+        splide.mount();
+    </script>
 </body>
 
 </html>
-<script>
-    var splide = new Splide('.splide');
-
-    splide.on('autoplay:playing', function (rate) {
-        console.log(rate); // 0-1
-    });
-
-    splide.mount();
-</script>
