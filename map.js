@@ -59,7 +59,7 @@ map.on('load', () => {
                 { source: 'states', id: hoveredStateId },
                 { hover: true }
             );
-            console.log(e.features[0].properties.ADMIN);
+            //console.log(e.features[0].properties.ADMIN);
 
 
 
@@ -100,14 +100,8 @@ map.on('load', () => {
     });
 
     //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
-    map.scrollZoom.disable();
+    map.scrollZoom.enable({around: 'center'});
 
     
 });
 
-function zoom(){
-    map.flyTo({zoom:3});
-}
-function dezoom(){
-    map.flyTo({zoom:1.5});
-}
