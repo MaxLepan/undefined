@@ -1,0 +1,30 @@
+{
+  "name": "undefined",
+  "version": "1.0.0",
+  "description": "Project to display the LGBTQIA+ community rights in the world",
+  "main": "get_tweets/get_tweets.js",
+  "dependencies": {
+    "@splidejs/splide": "^3.5.0",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "http": "0.0.1-security",
+    "mongodb": "^4.1.4",
+    "openai": "^1.0.0-next.1",
+    "twitter": "^1.7.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "start": "node get_tweets.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MaxLepan/undefined.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MaxLepan/undefined/issues"
+  },
+  "homepage": "https://github.com/MaxLepan/undefined#readme",
+  "type": "module"
+}
