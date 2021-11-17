@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title></title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" type="text/css" href="assets/style.css">
+        
+        <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+        <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+
+    </head>
+    <body>
+        <button onclick="proteger()">Protéger</button>
+        <button onclick="neutre()">Neutre</button>
+        <button onclick="crim()">Criminaliser</button>
+        <div class="mapContainer">
+            <div id="map"></div>    
+        </div>
+
+        <script>
+            // var pays2020 = JSON.parse('<%- JSON.stringify(pays2020) %>');
+            // console.log(pays2020)
+
+            // var pays2017 = JSON.parse('<%- JSON.stringify(pays2017) %>');
+            // console.log(pays2020)
+
+            var paysCrime = JSON.parse('<%- JSON.stringify(paysCrime) %>');
+            console.log(paysCrime)
+
+            for(paysCrime of Object.keys(paysCrime[0]) ){
+                console.log(paysCrime)
+                
+            }
+
+            
+            
+        </script>
+    
+    
+        <script src="../js/map.js"></script>
+    </body>
+</html>
