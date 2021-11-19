@@ -65,12 +65,24 @@ body{
     align-items: center;
 }
 
-.splide__slide{
+.numbers_slide{
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     width: 80%;
+}
+
+.storyActiveSlide {
+    background-color: cornflowerblue;
+}
+
+.nextActiveSlide {
+    background-color: crimson;
+}
+
+.previousActiveSlide {
+    background-color: darkcyan;
 }
 
 .number {
