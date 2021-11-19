@@ -1,14 +1,17 @@
 window.addEventListener("DOMContentLoaded", () => {
 
-  //  console.log(pays2020)
-
+   console.log(tabCrime2020)
+    
     // define access token
     mapboxgl.accessToken = 'pk.eyJ1IjoibHNtbnQiLCJhIjoiY2t1eHNxN2E0MHgzeDJxcmZjMnlyaDU5ciJ9.IIvVsucH11Eo5bY1wkACtA';
     var collection;
     var querys;
     var datas;
+    
 
-
+    // tabCrime2020.forEach(paysCrime => {
+    
+    // });
     // create map
     const map = new mapboxgl.Map({
         container: 'map', // container id
@@ -16,7 +19,6 @@ window.addEventListener("DOMContentLoaded", () => {
         center: [10, 40],
         zoom: 1.5
     });
-
     let hoveredStateId = null;
     //var dataCrim = db.pays2020.find({type : 9});
     map.on('load', () => {
@@ -25,6 +27,7 @@ window.addEventListener("DOMContentLoaded", () => {
             'data': '../ressources/country.geojson',
             'generateId': true
         });
+        
 
         // The feature-state dependent fill-opacity expression will render the hover effect
         // when a feature's hover state is set to true.

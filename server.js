@@ -12,82 +12,80 @@ const uri = "mongodb://" + process.env.USER + ":" + process.env.PASS + "@" + pro
 var __dirname = path.resolve();
 app.use(express.static(__dirname + "/src"));
 
-console.log(uri);
 
-let pays2020;
-let pays2017;
+let db_pays2020;
+let db_pays2017;
 
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
-}
-
-
-
-FindAll(uri, "pays2020", (resPays2020) => {
-    pays2020 = resPays2020;
+let paysProteger2020;
+let paysNeutre2020;
+let paysCrime2020;
 
 
 
-})
-
-FindAll(uri, "pays2017", (resPays2017) => {
-    pays2017 = resPays2017;
+//Vient chercher les pays dans la db au lancement du serveur
+FindAll(uri, "db_pays2020", (resPays2020) => {
+    db_pays2020 = resPays2020;
+    FindAll(uri, "db_pays2017", (resPays2017) => {
+        db_pays2017 = resPays2017;
+        bindPaysIndice();
+    })
 })
 
 
-function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
 
-    let dataPays;
-    let dataReturned = [];
-    dataReturned[0] = {};
 
-    if (annee.includes("2020")) {
-        dataPays = pays2020;
-    } else if (annee.includes("2017")) {
-        dataPays = pays2017;
-    } else {
-         callback(dataReturned);
-    }
 
-    for (pays of dataPays) {
-        for (let [paysName, paysValue] of Object.entries(pays)) {
 
-            if(paysValue[attribute] == match){
-            
-                dataReturned[0][paysName] = paysValue;
-           
-            }
-
-        }
+//On assemble les pays protegés, Neutre et Non protegés ensemble.
+function bindPaysIndice(){
+    GetPaysWhere("2020","categorie","1",(res1)=>{
+        paysProteger2020 = res1
+        console.log(paysProteger2020);
         
-    }
-    callback(dataReturned)
+    })
+    
+
+    GetPaysWhere("2020","categorie","2",(res2)=>{
+        paysNeutre2020 = res2
+        
+    })
+    
+
+    GetPaysWhere("2020","categorie","3",(res3)=>{
+        paysCrime2020 = res3;
+        
+    })
+    
+    console.log("Tous les pays on été binds")
 }
 
 
+
+
+//Vient chercher le module getTweet;
 require(__dirname + "/modules/get_tweets.js")(uri, app);
 
+
+//Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index
 app.get("/", (req, res) => {
 
     res.render(__dirname + "/src/html/index.ejs", { test: "hello" });
 
 })
+
+// Attention, l'url /map est alors utilisé. Il est impossible de créer les 2 meme routes pour envoyer des informations differentes
+//Quand le client (navigateur) est l'adresse localhost:8002/map , On lui renvoie la map avec la liste des pays initialisés au dessus.
 app.get("/map", (req, res) => {
 
+    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020});
+})
+app.get("/map", (req, res) => {
 
-    let paysCrime
-
-    GetPaysWhere("2020","type","9",(res)=>{
-        paysCrime = res
-    })
-
-    res.render(__dirname + "/src/html/map.ejs", { pays2020, pays2017,paysCrime });
-
-
+    res.render(__dirname + "/src/html/map.js", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020});
 })
 
-//Find all collection
 
+//Find all collection
 function FindAll(uri, collection, callback) {
 
 
@@ -110,8 +108,40 @@ function FindAll(uri, collection, callback) {
     });
 
 
+}
+
+function getKeyByValue(object, value) {
+    return Object.keys(object).find(key => object[key] === value);
+}
 
 
+function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
+
+    let dataPays;
+    let dataReturned = [];
+    dataReturned[0] = {};
+
+    if (annee.includes("2020")) {
+        dataPays = db_pays2020;
+    } else if (annee.includes("2017")) {
+        dataPays = db_pays2017;
+    } else {
+        callback(dataReturned);
+    }
+
+    for (pays of dataPays) {
+        for (let [paysName, paysValue] of Object.entries(pays)) {
+
+            if(paysValue[attribute] == match){
+
+                dataReturned[0][paysName] = paysValue;
+
+            }
+
+        }
+
+    }
+    callback(dataReturned)
 }
 
 //----Port d'ecoute
