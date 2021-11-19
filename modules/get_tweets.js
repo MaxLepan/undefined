@@ -1,4 +1,3 @@
-require('../server.js')
 const { MongoClient } = require("mongodb");
 const Twitter=require('twitter');
 const  OpenAI  = require('openai-api');
@@ -24,12 +23,11 @@ module.exports = function (uri, app) {
 
       dbo.collection("tweets").find({}).toArray(function (err, result) {
          if (err) throw err;
-         console.log(result);
 
          positiveTweets = result[0]['positive_tweets'];
          negativeTweets = result[1]['negative_tweets'];
 
-         console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+         //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
          db.close();
       });

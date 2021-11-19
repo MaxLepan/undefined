@@ -87,7 +87,6 @@ app.get("/map", (req, res) => {
 })
 
 //Find all collection
-
 function FindAll(uri, collection, callback) {
 
 
@@ -113,6 +112,7 @@ function FindAll(uri, collection, callback) {
 
 
 }
+
 
 //----Port d'ecoute
 server.listen(8002, function () {
