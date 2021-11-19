@@ -4,17 +4,17 @@
 <head>
     <title></title>
     <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="assets/style.css">
+    <link rel="stylesheet" type="text/css" href="../assets/style.css">
 </head>
 
 <body>
     <!--LOGO-->
     <div class=logoIntro style="display:none;">
-        <img src="assets/images/logo.svg">
+        <img src="../assets/images/logo.svg">
     </div>
     <!--ELEMENTS FIXES-->
     <div class="header">
-        <img src="assets/images/logo.svg">
+        <img src="../assets/images/logo.svg">
         <div class="menu">
             <p>Contexte</p>
             <p>Solutions</p>
@@ -23,9 +23,9 @@
         </div>
     </div>
     <div class="partage">
-        <img src="assets/images/partager.svg">
+        <img src="../assets/images/partager.svg">
     </div>
-    <!--CHIFFRE-->
+    <!--CHIFFRES-->
     <%= JSON.stringify(test) %>
     <div class="ctChiffre">
         <div class="splide">
@@ -44,7 +44,7 @@
                         </div>
                         <div class="legendeChiffre"> des LGBTQIA+ témoignait avoir déjà été <strong> agressé.e </strong>
                             sexuellement
-                            En 2019.
+                            en 2019.
                         </div>
                     </li>
                 </ul>
@@ -57,7 +57,87 @@
         </div>
         <div class="title chiffreTitle">CHIFFRES</div>
     </div>
-    <script src="../js/anim.js"></script>
+    <!--HISTOIRE-->
+    <div class="ctHistoire">
+        <div class="splide">
+            <div class="splide__track">
+                <ul class="splide__list">
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/theWhiteSwan.svg"></img>
+                        <h2 class="date">1810</h2>
+                        <h3 class="story-title">THE WHITE SWAN</h3>
+                        <div class="explanation_text">Dès 1800, les premiers bars LGBT ont été enregistrés et ouverts, et ce principalement en Angleterre au départ. Pour l’un d’eux, et un des plus emblématiques, nous pouvons citer “The White Swan” qui a subi une descente de la police londonniene en 1810. 24 hommes ont été arrêtés mais relâcher quelques temps après, mais 8 ont été condamnés et 2 pendus, dont un adole...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/dragQueens.svg"></img>
+                        <h2 class="date">1880</h2>
+                        <h3 class="story-title">DRAG QUEENS</h3>
+                        <div class="explanation_text">La première Drag Queen de l’histoire de la communauté LGBTQIA+ est William Dorsey Swann né esclave Cette personnalité a marqué le commencement de la lutte pour le mouvement. La culture drag prend son essor dans les années 1990, aux Etats-Unis, en Angleterre mais aussi en France, à Paris, particulièrement dans le quartier de Pigalle, dans le ...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/theGayBrothers.svg"></img>
+                        <h2 class="date">1894</h2>
+                        <h3 class="story-title">THE GAY BROTHERS</h3>
+                        <div class="explanation_text">“The gay brothers” est le premier film homosexuel paru en 1894. Il a fait parlé de lui assez rapidement car nous pouvons y retrouver une scène dans laquelle deux hommes dansent ensemble et celle-ci a heurté la vision du monde à cette époque. Tyler Parker, un critique cinématographe reconnu, a noté que la danse a “choqué l’audiance avec cette subversi...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/liliElbe.svg"></img>
+                        <h2 class="date">1930</h2>
+                        <h3 class="story-title">LILI ELBE</h3>
+                        <div class="explanation_text">Lili Ilse Elvenes, plus connue sous le nom Lili Elbe, est la première femme transgenre a avoir subit une chirurgie de réattribution sexuelle, c’est-à-dire de modifier les caractéristiques sexuelles initiales afin d'obtenir l’apparence du sexe opposé. Mais elle a aussi connue ce qu’on appel de nos jours la dysphorie de genre, ce qui correspond au fait qu’une ... </div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/triangleRose.svg"></img>
+                        <h2 class="date">1937</h2>
+                        <h3 class="story-title">TRIANGLES ROSES</h3>
+                        <div class="explanation_text">Durant la Seconde Guerre Mondiale, de nombreuses personnes ont été déportées dans plusieurs camps de concentration, et parmis elles se trouvaient des personnes faisant partie de la communauté LGBTQIA+. Pour reconnaître les raisons de leur déportation, les nazis avaient instauré des triangles d’identification, et ceux pour les personnes homosexuels ...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/gayPride.svg"></img>
+                        <h2 class="date">1969</h2>
+                        <h3 class="story-title">GAY PRIDE</h3>
+                        <div class="explanation_text">La lutte pour les droits pour la communauté LGBTQIA+ a commencé, pour la toute première fois, vers Juin 1969 à Stonewall riots à New-York City aux États-Unis. Ce fut la première marches des fiertés qui s’est déroulé et qui a été déclencheur de la suite. Cette “gay pride” a été un signe de lutte suite à une descente de police dans un bar clandestin ...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/homosexualMarriage.svg"></img>
+                        <h2 class="date">1971</h2>
+                        <h3 class="story-title">MARIAGE HOMOSEXUEL</h3>
+                        <div class="explanation_text">En 1971,  Jack Baker et Michael McConnell ont célébré le premier mariage homosexuel officiel et légal et son aussi le plus ancien mariage homosexuel jamais enregistré dans les archives publiques de tout gouvernement civil. Cependant, avant que cela ne soit officiel, ils ont vécus beaucoup d’embûches pour cela. En 1970, ils ont essayé de faire les demandes pour se ma...  </div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/lgbtFlag.svg"></img>
+                        <h2 class="date">1978</h2>
+                        <h3 class="story-title">DRAPEAU LGBT</h3>
+                        <div class="explanation_text">Gilbert Baker en 1978 car il était un homme homosexuel complètement ouvert sur sa sexualité et a crée le premier drapeau arc-en-ciel pour soutenir la cause à sa manière.  Il l’a modifié un an plus tard car le graphisme de l’ancien était complexe pour l’impression. Depuis, ce drapeau est l’emblême de plusieurs générations dans la communauté LGBTQIA+, ma...</div>
+                    </li>
+                    <li class="splide__slide story_slide">
+                        <img class="history_img" src="../assets/images/unitedNations.svg"></img>
+                        <h2 class="date">2011</h2>
+                        <h3 class="story-title">NATIONS UNIES</h3>
+                        <div class="explanation_text">En 2011, le Conseil des droits de l'homme des Nations unies a, pour la première fois, adopté une résolution sur les droits des personnes LGBTQIA+. Ainsi, une déclaration demandant la fin des violences relatives à l'orientation sexuelle ou l'identité de genre est signée par 85 États. Ils ont mis en avant le fait que certains droits institutionnels ne sont pas respecté envers le...</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.5.8/dist/js/splide.min.js"></script>
+    <script>
+        var splide = new Splide('.splide', {
+            type: 'loop',
+            perMove: 1,
+            autoplay: true,
+            interval: 5000,
+            resetProgress: false
+        });
+    
+        splide.on('autoplay:playing', function (rate) {
+            console.log(rate); // 0-1
+        });
+    
+        splide.mount();
+    </script>
+>>>>>>> e4a6b2e3ef3085bc72c0c2c0f70bebef3d75c020
 </body>
 
 </html>
