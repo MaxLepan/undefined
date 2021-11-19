@@ -19,25 +19,33 @@
         </div>
 
         <script>
-            // var pays2020 = JSON.parse('<%- JSON.stringify(pays2020) %>');
-            // console.log(pays2020)
+            var paysCrime2020 = JSON.parse('<%- JSON.stringify(paysCrime2020) %>');
+            //console.log(paysCrime2020)
 
-            // var pays2017 = JSON.parse('<%- JSON.stringify(pays2017) %>');
-            // console.log(pays2020)
+             var tabCrime2020=[];
+            for(paysCrime2020 of Object.keys(paysCrime2020[0]) ){
+                //console.log(paysCrime2020)
+                tabCrime2020.push(paysCrime2020);
+            }
 
-            var paysCrime = JSON.parse('<%- JSON.stringify(paysCrime) %>');
-            console.log(paysCrime)
+            var paysProteger2020 = JSON.parse('<%- JSON.stringify(paysProteger2020) %>');
+            //console.log(paysProteger2020)
 
-            for(paysCrime of Object.keys(paysCrime[0]) ){
-                console.log(paysCrime)
-                
+            for(paysProteger2020 of Object.keys(paysProteger2020[0]) ){
+                //console.log(paysProteger2020)
+            }
+            var paysNeutre2020 = JSON.parse('<%- JSON.stringify(paysNeutre2020) %>');
+            //console.log(paysNeutre2020)
+
+            for(paysNeutre2020 of Object.keys(paysNeutre2020[0]) ){
+                //console.log(paysNeutre2020)
             }
 
             
             
         </script>
     
-    
+        <script src="../ressources/country.geojson"></script>
         <script src="../js/map.js"></script>
     </body>
 </html>
