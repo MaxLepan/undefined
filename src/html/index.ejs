@@ -27,17 +27,17 @@
     </div>
     <!--CHIFFRES-->
     <div class="ctChiffre">
-        <div class="splide">
+        <div class="splide" id="splide1">
             <div class="splide__track">
                 <ul class="splide__list">
-                    <li class="splide__slide">
+                    <li class="splide__slide numbers_slide">
                         <div class="number">
                             <h2>53%</h2>
                         </div>
                         <div class="legendeChiffre">de la communauté <strong> LGBTQIA+</strong> témoignaient avoir déjà
                             été confronté·e à au moins un <strong> acte homophobe </strong>en France en 2018 .</div>
                     </li>
-                    <li class="splide__slide">
+                    <li class="splide__slide numbers_slide">
                         <div class="number">
                             <h2>1/4</h2>
                         </div>
@@ -58,7 +58,7 @@
     </div>
     <!--HISTOIRE-->
     <div class="ctHistoire">
-        <div class="splide">
+        <div class="splide" id="splide2">
             <div class="splide__track">
                 <ul class="splide__list">
                     <li class="splide__slide story_slide">
@@ -122,7 +122,7 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.5.8/dist/js/splide.min.js"></script>
     <script>
-        var splide = new Splide('.splide', {
+        var splide = new Splide('#splide1', {
             type: 'loop',
             perMove: 1,
             autoplay: true,
@@ -131,12 +131,22 @@
         });
     
         splide.on('autoplay:playing', function (rate) {
-            console.log(rate); // 0-1
+            //console.log(rate); // 0-1
         });
     
         splide.mount();
+
+        splide = new Splide('#splide2', {
+            type: 'loop',
+            perMove: 1,
+            autoplay: true,
+            interval: 10000,
+            resetProgress: false
+        });
+
+        splide.mount();
     </script>
->>>>>>> e4a6b2e3ef3085bc72c0c2c0f70bebef3d75c020
+    <script src="../js/index.js"></script>
 </body>
 
 </html>
