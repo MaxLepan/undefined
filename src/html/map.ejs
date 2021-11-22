@@ -41,11 +41,20 @@
                 //console.log(paysNeutre2020)
             }
 
+            var country = JSON.parse('<%- JSON.stringify(country) %>');
+            console.log(country)
+
+        
+
             
             
         </script>
-    
+
         <script src="../ressources/country.geojson"></script>
-        <script src="../js/map.js"></script>
+        <link rel="stylesheet" href="../ressources/country.geojson">
+        <script src="../js/map.js" type="module">
+            
+            
+        </script>
     </body>
 </html>

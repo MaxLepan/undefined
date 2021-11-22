@@ -11,7 +11,7 @@ app.set('view engine', 'ejs');
 const uri = "mongodb://" + process.env.USER + ":" + process.env.PASS + "@" + process.env.BDD_HOST + ":" + process.env.BDD_PORTS + "/?maxPoolSize=20&w=majority";
 var __dirname = path.resolve();
 app.use(express.static(__dirname + "/src"));
-
+const fs = require('fs');
 
 let db_pays2020;
 let db_pays2017;
@@ -20,6 +20,19 @@ let paysProteger2020;
 let paysNeutre2020;
 let paysCrime2020;
 
+let country;
+
+fs.readFile('./src/ressources/country.json', 'utf8', (err, data) => {
+
+    if (err) {
+        console.log(`Error reading file from disk: ${err}`);
+    } else {
+
+        // parse JSON string to JSON object
+        country = JSON.parse(data);
+    }
+
+});
 
 
 //Vient chercher les pays dans la db au lancement du serveur
@@ -40,7 +53,7 @@ FindAll(uri, "db_pays2020", (resPays2020) => {
 function bindPaysIndice(){
     GetPaysWhere("2020","categorie","1",(res1)=>{
         paysProteger2020 = res1
-        console.log(paysProteger2020);
+       // console.log(paysProteger2020);
         
     })
     
@@ -77,11 +90,7 @@ app.get("/", (req, res) => {
 //Quand le client (navigateur) est l'adresse localhost:8002/map , On lui renvoie la map avec la liste des pays initialisés au dessus.
 app.get("/map", (req, res) => {
 
-    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020});
-})
-app.get("/map", (req, res) => {
-
-    res.render(__dirname + "/src/html/map.js", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020});
+    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020, country});
 })
 
 

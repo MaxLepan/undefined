@@ -1,5 +1,5 @@
 window.addEventListener("DOMContentLoaded", () => {
-
+    
    console.log(tabCrime2020)
     
     // define access token
@@ -7,7 +7,6 @@ window.addEventListener("DOMContentLoaded", () => {
     var collection;
     var querys;
     var datas;
-    
 
     // tabCrime2020.forEach(paysCrime => {
     
@@ -24,11 +23,11 @@ window.addEventListener("DOMContentLoaded", () => {
     map.on('load', () => {
         map.addSource('states', {
             'type': 'geojson',
-            'data': '../ressources/country.geojson',
+            'data': countries,
             'generateId': true
         });
-        
-
+        const countries = map.getSource('states');
+        console.log(countries);
         // The feature-state dependent fill-opacity expression will render the hover effect
         // when a feature's hover state is set to true.
         map.addLayer({
