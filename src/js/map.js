@@ -1,16 +1,16 @@
 window.addEventListener("DOMContentLoaded", () => {
     
-   console.log(tabCrime2020)
-    
+  
+    console.log(country); 
+    console.log(capitals);
+
     // define access token
     mapboxgl.accessToken = 'pk.eyJ1IjoibHNtbnQiLCJhIjoiY2t1eHNxN2E0MHgzeDJxcmZjMnlyaDU5ciJ9.IIvVsucH11Eo5bY1wkACtA';
     var collection;
     var querys;
     var datas;
 
-    // tabCrime2020.forEach(paysCrime => {
-    
-    // });
+
     // create map
     const map = new mapboxgl.Map({
         container: 'map', // container id
@@ -18,18 +18,18 @@ window.addEventListener("DOMContentLoaded", () => {
         center: [10, 40],
         zoom: 1.5
     });
+
     let hoveredStateId = null;
-    //var dataCrim = db.pays2020.find({type : 9});
-    map.on('load', () => {
-        map.addSource('states', {
-            'type': 'geojson',
-            'data': countries,
-            'generateId': true
-        });
-        const countries = map.getSource('states');
-        console.log(countries);
-        // The feature-state dependent fill-opacity expression will render the hover effect
-        // when a feature's hover state is set to true.
+
+    mapLoad().then(()=>{
+
+        
+        const states = map.getSource('states');
+        const capitals = map.getSource('capitals');
+  
+
+        //----------------------Layers---------------------
+
         map.addLayer({
             'id': 'state-fills',
             'type': 'fill',
@@ -45,6 +45,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 ]
             }
         });
+
         map.addLayer({
             'id': 'state-borders',
             'type': 'line',
@@ -55,41 +56,9 @@ window.addEventListener("DOMContentLoaded", () => {
                 'line-width': 2
             }
         });
-        map.on('mousemove', 'state-fills', (e) => {
-            if (e.features.length > 0) {
-                if (hoveredStateId !== null) {
-                    map.setFeatureState(
-                        { source: 'states', id: hoveredStateId },
-                        { hover: false }
-                    );
-
-                }
-                hoveredStateId = e.features[0].id;
-                map.setFeatureState(
-                    { source: 'states', id: hoveredStateId },
-                    { hover: true }
-                );
-                //console.log(e.features[0].properties.ADMIN);
 
 
-
-            }
-        });
-        map.on('mouseleave', 'state-fills', () => {
-            if (hoveredStateId !== null) {
-                map.setFeatureState(
-                    { source: 'states', id: hoveredStateId },
-                    { hover: false }
-                );
-            }
-            hoveredStateId = null;
-        });
-
-        map.addSource('capitals', {
-            'type': 'geojson',
-            'data': '../ressources/capitals.geojson',
-            'generateId': true
-        });
+      
         map.addLayer({
             'id': 'marker',
             'type': 'circle',
@@ -109,11 +78,67 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         });
 
+        //----------------------Mouse---------------------
+
+        map.on('mousemove', 'state-fills', (e) => {
+            if (e.features.length > 0) {
+                if (hoveredStateId !== null) {
+                    map.setFeatureState(
+                        { source: 'states', id: hoveredStateId },
+                        { hover: false }
+                    );
+
+                }
+                hoveredStateId = e.features[0].id;
+                map.setFeatureState(
+                    { source: 'states', id: hoveredStateId },
+                    { hover: true }
+                );
+                //console.log(e.features[0].properties.ADMIN)
+            }
+        });
+        map.on('mouseleave', 'state-fills', () => {
+            if (hoveredStateId !== null) {
+                map.setFeatureState(
+                    { source: 'states', id: hoveredStateId },
+                    { hover: false }
+                );
+            }
+            hoveredStateId = null;
+        });
+
+
         //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
         map.scrollZoom.enable({ around: 'center' });
 
 
+
     });
+
+    function mapLoad() {
+        return new Promise((resolve, reject) => {
+            
+            map.on('load', () => {
+
+                map.addSource('states', {
+                    'type': 'geojson',
+                    'data': country,
+                    'generateId': true
+                });
+            
+                map.addSource('capitals', {
+                    'type': 'geojson',
+                    'data': capitals,
+                    'generateId': true
+                });
+                    resolve();  
+                });
+
+        })
+    }
+
+
+
 
     function proteger() {
 

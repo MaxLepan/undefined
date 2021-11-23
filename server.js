@@ -34,6 +34,21 @@ fs.readFile('./src/ressources/country.json', 'utf8', (err, data) => {
 
 });
 
+let capitals;
+
+fs.readFile('./src/ressources/capitals.json', 'utf8', (err, data) => {
+
+    if (err) {
+        console.log(`Error reading file from disk: ${err}`);
+    } else {
+
+        // parse JSON string to JSON object
+        capitals = JSON.parse(data);
+    }
+
+});
+
+
 
 //Vient chercher les pays dans la db au lancement du serveur
 FindAll(uri, "db_pays2020", (resPays2020) => {
@@ -90,7 +105,7 @@ app.get("/", (req, res) => {
 //Quand le client (navigateur) est l'adresse localhost:8002/map , On lui renvoie la map avec la liste des pays initialisés au dessus.
 app.get("/map", (req, res) => {
 
-    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020, country});
+    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020, country,capitals});
 })
 
 
