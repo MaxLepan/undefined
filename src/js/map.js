@@ -37,13 +37,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
     mapLoad().then(()=>{
 
-        const yearSwitch = document.querySelector('#toggle')
-
-        yearSwitch.onclick = () => {
-            console.log(yearSwitch.checked)
-        }
-
-
         const protectedFilter = document.querySelector('#protected_filter')
         const neutralFilter = document.querySelector('#neutral_filter')
         const criminalizedFilter = document.querySelector('#criminalized_filter')
@@ -52,23 +45,60 @@ window.addEventListener("DOMContentLoaded", () => {
         let neutralFilterVerification = false
         let criminalizedFilterVerification = false
 
+        const yearSwitch = document.querySelector('#toggle')
+        let yearBool = yearSwitch.checked;
+        let protectedCountriesToIterate = protectedCountries2020[0];
+        let neutralCountriesToIterate = neutralCountries2020[0];
+        let criminalizedCountriesToIterate = criminalizedCountries2020[0];
+
+        yearSwitch.onclick = () => {
+            protectedFilter.classList.remove('active')
+            neutralFilter.classList.remove('active')
+            criminalizedFilter.classList.remove('active')
+
+            protectedCountries(protectedCountriesToIterate).then()
+            neutralCountries(neutralCountriesToIterate).then()
+            criminalizedlCountries(criminalizedCountriesToIterate).then()
+
+            yearBool = yearSwitch.checked
+
+            if (yearBool){
+                protectedCountriesToIterate = protectedCountries2020[0]
+                neutralCountriesToIterate = neutralCountries2020[0];
+                criminalizedCountriesToIterate = criminalizedCountries2020[0];
+            } else {
+                protectedCountriesToIterate = protectedCountries2017[0]
+                neutralCountriesToIterate = neutralCountries2017[0];
+                criminalizedCountriesToIterate = criminalizedCountries2017[0];
+            }
+
+            protectedFilterVerification = true
+            neutralFilterVerification = true
+            criminalizedFilterVerification = true
+
+            protectedCountries(protectedCountriesToIterate).then()
+            neutralCountries(neutralCountriesToIterate).then()
+            criminalizedlCountries(criminalizedCountriesToIterate).then()
+
+        }
+
         const states = map.getSource('states')._data.features;
         const capitals = map.getSource('capitals');
 
         protectedFilter.onclick = () => {
-            protectedCountries().then()
+            protectedCountries(protectedCountriesToIterate).then()
             protectedFilter.classList.toggle('active')
             protectedFilterVerification = protectedFilter.classList.contains('active')
         }
 
         neutralFilter.onclick = () => {
-            neutralCountries().then()
+            neutralCountries(neutralCountriesToIterate).then()
             neutralFilter.classList.toggle('active')
             neutralFilterVerification = neutralFilter.classList.contains('active')
         }
 
         criminalizedFilter.onclick = () => {
-            criminalizedlCountries().then()
+            criminalizedlCountries(criminalizedCountriesToIterate).then()
             criminalizedFilter.classList.toggle('active')
             criminalizedFilterVerification = criminalizedFilter.classList.contains('active')
         }
@@ -172,11 +202,13 @@ window.addEventListener("DOMContentLoaded", () => {
         //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
         map.scrollZoom.enable({ around: 'center' });
 
-        async function protectedCountries() {
+        //---------------------Filters---------------------------
+
+        async function protectedCountries(arrayToIterate) {
 
             let color;
 
-            for (let protectedCountry in protectedCountries2020[0]) {
+            for (let protectedCountry in arrayToIterate) {
                 //console.log("Protected Country : ", protectedCountry)
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
@@ -200,13 +232,14 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 //console.log('================================================================')
             }
+
         }
 
-        async function neutralCountries() {
+        async function neutralCountries(arrayToIterate) {
 
             let color;
 
-            for (let neutralCountry in neutralCountries2020[0]) {
+            for (let neutralCountry in arrayToIterate) {
                 //console.log("Neutral Country : ", neutralCountry)
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
@@ -232,11 +265,11 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        async function criminalizedlCountries() {
+        async function criminalizedlCountries(arrayToIterate) {
 
             let color;
 
-            for (let criminalizedCountry in criminalizedCountries2020[0]) {
+            for (let criminalizedCountry in arrayToIterate) {
                 //console.log("Protected Country : ", criminalizedCountry)
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
