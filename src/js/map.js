@@ -4,11 +4,19 @@ window.addEventListener("DOMContentLoaded", () => {
     const protectedCountries2020 = paysProteger2020
     const neutralCountries2020 = paysNeutre2020
     const criminalizedCountries2020 = paysCrime2020
-    // console.log(country);
-    // console.log(capitals);
+
+    const protectedCountries2017 = paysProteger2017
+    const neutralCountries2017 = paysNeutre2017
+    const criminalizedCountries2017 = paysCrime2017
+
     console.log(protectedCountries2020)
     console.log(neutralCountries2020)
     console.log(criminalizedCountries2020)
+
+    console.log(protectedCountries2017)
+    console.log(neutralCountries2017)
+    console.log(criminalizedCountries2017)
+
 
     // define access token
     mapboxgl.accessToken = 'pk.eyJ1IjoibHNtbnQiLCJhIjoiY2t1eHNxN2E0MHgzeDJxcmZjMnlyaDU5ciJ9.IIvVsucH11Eo5bY1wkACtA';

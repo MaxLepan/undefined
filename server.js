@@ -16,12 +16,14 @@ const fs = require('fs');
 let db_pays2020;
 let db_pays2017;
 
+
 let paysProteger2020;
 let paysNeutre2020;
 let paysCrime2020;
-let protectedCountries2017;
-let neutralCountries2017;
-let criminalizedCountries2017;
+
+let paysProteger2017;
+let paysNeutre2017;
+let paysCrime2017;
 
 
 let country;
@@ -70,36 +72,31 @@ FindAll(uri, "db_pays2020", (resPays2020) => {
 
 //On assemble les pays protegés, Neutre et Non protegés ensemble.
 function bindPaysIndice(){
-    GetPaysWhere("2020","categorie","1",(res1)=>{
-        paysProteger2020 = res1
-       // console.log(paysProteger2020);
-        
+    PaysProtege("2020",(res)=>{
+        paysProteger2020 = res        
     })
     
+    PaysNeutre("2020",(res)=>{
+        paysNeutre2020 = res        
+    })
 
-    GetPaysWhere("2020","categorie","2",(res2)=>{
-        paysNeutre2020 = res2
-        
+    PaysCrime("2020",(res)=>{
+        paysCrime2020 = res        
+    })
+
+
+    PaysProtege("2017",(res)=>{
+        paysProteger2017 = res        
     })
     
-
-    GetPaysWhere("2020","categorie","3",(res3)=>{
-        paysCrime2020 = res3;
-        
+    PaysNeutre("2017",(res)=>{
+        paysNeutre2017 = res        
     })
 
-    GetPaysWhere("2017", "categorie", "1", (res4) => {
-        protectedCountries2017 = res4
-        console.log(protectedCountry2017)
+    PaysCrime("2017",(res)=>{
+        paysCrime2017 = res        
     })
 
-    GetPaysWhere("2017", "categorie", "2", (res5) => {
-        neutralCountries2017 = res5
-    })
-
-    GetPaysWhere("2017", "categorie", "3", (res6) => {
-        criminalizedCountries2017 = res6
-    })
     
     console.log("Tous les pays on été binds")
 }
@@ -122,7 +119,7 @@ app.get("/", (req, res) => {
 //Quand le client (navigateur) est l'adresse localhost:8002/map , On lui renvoie la map avec la liste des pays initialisés au dessus.
 app.get("/map", (req, res) => {
 
-    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020, country,capitals});
+    res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020,paysProteger2017, paysNeutre2017,paysCrime2017, country,capitals});
 })
 
 
@@ -151,12 +148,9 @@ function FindAll(uri, collection, callback) {
 
 }
 
-function getKeyByValue(object, value) {
-    return Object.keys(object).find(key => object[key] === value);
-}
 
 
-function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
+function PaysProtege(annee,callback) {
 
     let dataPays;
     let dataReturned = [];
@@ -173,7 +167,7 @@ function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
     for (pays of dataPays) {
         for (let [paysName, paysValue] of Object.entries(pays)) {
 
-            if(paysValue[attribute] == match){
+            if(paysValue.type == "1" ||paysValue.type == "2" || paysValue.type == "3" || paysValue.type == "4"   ){
 
                 dataReturned[0][paysName] = paysValue;
 
@@ -184,6 +178,69 @@ function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
     }
     callback(dataReturned)
 }
+
+
+
+function PaysNeutre(annee,callback) {
+
+    let dataPays;
+    let dataReturned = [];
+    dataReturned[0] = {};
+
+    if (annee.includes("2020")) {
+        dataPays = db_pays2020;
+    } else if (annee.includes("2017")) {
+        dataPays = db_pays2017;
+    } else {
+        callback(dataReturned);
+    }
+
+    for (pays of dataPays) {
+        for (let [paysName, paysValue] of Object.entries(pays)) {
+
+            if(paysValue.type == "5" ||paysValue.type == "6" ){
+
+                dataReturned[0][paysName] = paysValue;
+
+            }
+
+        }
+
+    }
+    callback(dataReturned)
+}
+
+
+function PaysCrime(annee,callback) {
+
+    let dataPays;
+    let dataReturned = [];
+    dataReturned[0] = {};
+
+    if (annee.includes("2020")) {
+        dataPays = db_pays2020;
+    } else if (annee.includes("2017")) {
+        dataPays = db_pays2017;
+    } else {
+        callback(dataReturned);
+    }
+
+    for (pays of dataPays) {
+        for (let [paysName, paysValue] of Object.entries(pays)) {
+
+            if(paysValue.type == "7" ||paysValue.type == "8" ||paysValue.type == "9" ){
+
+                dataReturned[0][paysName] = paysValue;
+
+            }
+
+        }
+
+    }
+    callback(dataReturned)
+}
+
+
 
 
 //----Port d'ecoute
