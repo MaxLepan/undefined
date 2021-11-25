@@ -19,6 +19,10 @@ let db_pays2017;
 let paysProteger2020;
 let paysNeutre2020;
 let paysCrime2020;
+let protectedCountries2017;
+let neutralCountries2017;
+let criminalizedCountries2017;
+
 
 let country;
 
@@ -82,6 +86,19 @@ function bindPaysIndice(){
     GetPaysWhere("2020","categorie","3",(res3)=>{
         paysCrime2020 = res3;
         
+    })
+
+    GetPaysWhere("2017", "categorie", "1", (res4) => {
+        protectedCountries2017 = res4
+        console.log(protectedCountry2017)
+    })
+
+    GetPaysWhere("2017", "categorie", "2", (res5) => {
+        neutralCountries2017 = res5
+    })
+
+    GetPaysWhere("2017", "categorie", "3", (res6) => {
+        criminalizedCountries2017 = res6
     })
     
     console.log("Tous les pays on été binds")
@@ -171,5 +188,5 @@ function GetPaysWhere(annee, attribute = "type",match = "9",callback) {
 
 //----Port d'ecoute
 server.listen(8002, function () {
-    console.log("listning at : 8002")
+    console.log("listning at : localhost:8002")
 })

@@ -11,40 +11,39 @@
 
     </head>
     <body>
-        <button onclick="proteger()">Protéger</button>
-        <button onclick="neutre()">Neutre</button>
-        <button onclick="crim()">Criminaliser</button>
+        <button id='protected_filter' class='filter'>Protégés</button>
+        <button id='neutral_filter' class='filter'>Neutre</button>
+        <button id='criminalized_filter' class='filter'>Criminalisé</button>
+        <input class="input" id="toggle" type="checkbox" id='year_switch' checked>
+        <label class="label" for="toggle">
+            <div class="left">
+            2017
+            </div>
+
+            <div class="switch">
+            <span class="slider round"></span>
+            </div>
+
+            <div class="right">
+            2020
+            </div>
+        </label>
         <div class="mapContainer">
             <div id="map"></div>    
         </div>
 
         <script>
-            var paysCrime2020 = JSON.parse('<%- JSON.stringify(paysCrime2020) %>');
-            //console.log(paysCrime2020)
+            const paysCrime2020 = JSON.parse('<%- JSON.stringify(paysCrime2020) %>');
 
-             var tabCrime2020=[];
-            for(paysCrime2020 of Object.keys(paysCrime2020[0]) ){
-                //console.log(paysCrime2020)
-                tabCrime2020.push(paysCrime2020);
-            }
-
-            var paysProteger2020 = JSON.parse('<%- JSON.stringify(paysProteger2020) %>');
-            var paysNeutre2020 = JSON.parse('<%- JSON.stringify(paysNeutre2020) %>');
+            const paysProteger2020 = JSON.parse('<%- JSON.stringify(paysProteger2020) %>');
+            const paysNeutre2020 = JSON.parse('<%- JSON.stringify(paysNeutre2020) %>');
 
 
-            var country = JSON.parse('<%- JSON.stringify(country) %>');
-            var capitals = JSON.parse('<%- JSON.stringify(capitals) %>');
-           
-
-        
-
-            
+            const country = JSON.parse('<%- JSON.stringify(country) %>');
+            const capitals = JSON.parse('<%- JSON.stringify(capitals) %>');
             
         </script>
 
-        <script src="../js/map.js" type="module">
-            
-            
-        </script>
+        <script src="../js/map.js" type="module"></script>
     </body>
 </html>
