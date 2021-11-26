@@ -9,13 +9,13 @@ window.addEventListener("DOMContentLoaded", () => {
     const neutralCountries2017 = paysNeutre2017
     const criminalizedCountries2017 = paysCrime2017
 
-    console.log(protectedCountries2020)
-    console.log(neutralCountries2020)
-    console.log(criminalizedCountries2020)
+    console.log("Protected 2020", protectedCountries2020)
+    console.log("Neutral 2020", neutralCountries2020)
+    console.log("Crim 2020", criminalizedCountries2020)
 
-    console.log(protectedCountries2017)
-    console.log(neutralCountries2017)
-    console.log(criminalizedCountries2017)
+    console.log("Protected 2017", protectedCountries2017)
+    console.log("Neutral 2017", neutralCountries2017)
+    console.log("Crim 2017", criminalizedCountries2017)
 
 
     // define access token
@@ -40,6 +40,9 @@ window.addEventListener("DOMContentLoaded", () => {
         const protectedFilter = document.querySelector('#protected_filter')
         const neutralFilter = document.querySelector('#neutral_filter')
         const criminalizedFilter = document.querySelector('#criminalized_filter')
+
+        const gai_slider = document.querySelector('#gai_slider')
+        let gai_slider_value = 1;
 
         let protectedFilterVerification = false
         let neutralFilterVerification = false
@@ -66,10 +69,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 protectedCountriesToIterate = protectedCountries2020[0]
                 neutralCountriesToIterate = neutralCountries2020[0];
                 criminalizedCountriesToIterate = criminalizedCountries2020[0];
+                gai_slider.disabled = true;
             } else {
                 protectedCountriesToIterate = protectedCountries2017[0]
                 neutralCountriesToIterate = neutralCountries2017[0];
                 criminalizedCountriesToIterate = criminalizedCountries2017[0];
+                gai_slider.disabled = false;
+                gaiCountries(gai_slider_value, null).then()
             }
 
             protectedFilterVerification = true
@@ -82,8 +88,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
         }
 
+        gai_slider.addEventListener("change", e => {
+            //console.log("slider value", gai_slider.value)
+            //console.log("old slider value", gai_slider_value)
+
+            gaiCountries(gai_slider_value, null).then()
+
+            gai_slider_value = parseInt(gai_slider.value)
+
+            gaiCountries(gai_slider_value, 1).then()
+
+        })
+
         const states = map.getSource('states')._data.features;
-        const capitals = map.getSource('capitals');
+        const capitals = map.getSource('capitals')._data.features;
 
         protectedFilter.onclick = () => {
             protectedCountries(protectedCountriesToIterate).then()
@@ -165,8 +183,14 @@ window.addEventListener("DOMContentLoaded", () => {
                         [22, 180]
                     ]
                 },
-                'circle-color': 'red'
-            }
+                'circle-color': "red",
+                'circle-opacity': [
+                    "case",
+                    ["==", ["feature-state", "gaiCountries"], 1], 1,
+                    0
+                ]
+            },
+
         });
 
         //----------------------Mouse---------------------
@@ -299,6 +323,42 @@ window.addEventListener("DOMContentLoaded", () => {
             protectedCountries().then()
             neutralCountries().then()
             criminalizedlCountries().then()
+        }
+
+        async function gaiCountries (gai_slider_value, gaiCountryValue) {
+            let fileToIterate;
+
+            if (gai_slider_value >= 1 && gai_slider_value <= 4){
+                fileToIterate = protectedCountries2017
+            } else if (gai_slider_value === 5 || gai_slider_value === 6) {
+                fileToIterate = neutralCountries2017
+            } else if (gai_slider_value >= 7 && gai_slider_value <= 9) {
+                fileToIterate = criminalizedCountries2017
+            }
+
+            let gaiCountry;
+
+            for (let country in fileToIterate[0]){
+
+                let countryType = fileToIterate[0][country]['type']
+                if (parseInt(countryType) === gai_slider_value){
+                    //console.log(country)
+                    let indexOfFeature = capitals.map(function (e) {
+                        return e.properties.COUNTRY;
+                    }).indexOf(country)
+
+                    gaiCountry = gaiCountryValue
+
+                    map.setFeatureState ({
+                            source: 'capitals',
+                            id: indexOfFeature
+                        },
+                        { gaiCountries: gaiCountry }
+                    )
+
+                    //console.log(indexOfFeature)
+                }
+            }
         }
 
     });
