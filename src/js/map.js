@@ -222,6 +222,207 @@ window.addEventListener("DOMContentLoaded", () => {
             hoveredStateId = null;
         });
 
+        let clickedCountry;
+        let clickedCountryBool = false;
+
+        map.on('click', 'state-fills', (e) => {
+
+            let sidebar = document.querySelector('.sidebar-content')
+
+
+
+            let foundCountryBool = false
+
+            //-----------------------------PROTECTED COUNTRIES------------------------------------
+            for (let country in protectedCountriesToIterate){
+                if (country === e.features[0].properties.ADMIN){
+                    foundCountryBool = true
+                    console.log(protectedCountriesToIterate[country])
+
+                    sidebar.innerHTML = `
+                        <div class="slider_wrapper">
+                            <h3>${country}</h3>
+                            <input type="range" min="1" max="9" value="${ 10 - protectedCountriesToIterate[country]['type'] }" step="1" disabled>
+                            <div class="protection_level_wrapper">
+                                <div class="protection_level" id="9">Protection constitutionnelle</div>
+                                <div class="protection_level" id="8">Protection large</div>
+                                <div class="protection_level" id="7">Protection dans le monde du travail</div>
+                                <div class="protection_level" id="6">Protection limitée/inégale</div>
+                                <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
+                                <div class="protection_level" id="4">Criminalisatoin de facto</div>
+                                <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
+                                <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
+                                <div class="protection_level" id="1">Peine de mort</div>
+                            </div>
+                            <div class="additional_rights_wrapper">
+                                <div class="additional_right" id="legal_union"></div>
+                                <div class="additional_right" id="adoption"></div>
+                            </div>
+                        </div>
+                    `
+
+                    let legal_union = document.querySelector('#legal_union')
+                    let adoption = document.querySelector('#adoption')
+                    if (protectedCountriesToIterate[country]['same_sex_marriage'] === 'YES'){
+
+                        legal_union.innerHTML = `
+                            <div class="right_accepted">
+                                <div class="right_image"></div>
+                                <div class="right_description">Union légale pour les personnes de même sexe</div>
+                            </div>
+                        `
+
+                    } else {
+                        legal_union.innerHTML = `
+                            <div class="right_not_accepted"></div>
+                        `
+                    }
+
+                    if (protectedCountriesToIterate[country]['second_parent_adoption'] === 'YES'){
+
+                        adoption.innerHTML = `
+                            <div class="right_accepted">
+                                <div class="right_image"></div>
+                                <div class="right_description">Adoption ouverte aux couples de même sexe</div>
+                            </div>
+                        `
+
+                    } else {
+                        adoption.innerHTML = `
+                            <div class="right_not_accepted"></div>
+                        `
+                    }
+                }
+            }
+            //-------------------------NEUTRAL COUNTRIES-----------------------
+            if (!foundCountryBool){
+                for (let country in neutralCountriesToIterate){
+                    if (country === e.features[0].properties.ADMIN){
+                        foundCountryBool = true
+                        console.log(neutralCountriesToIterate[country])
+
+                        sidebar.innerHTML = `
+                            <div class="slider_wrapper">
+                                <h3>${country}</h3>
+                                <input type="range" min="1" max="9" value="${ 10 - neutralCountriesToIterate[country]['type'] }" step="1" disabled>
+                                <div class="protection_level_wrapper">
+                                    <div class="protection_level" id="9">Protection constitutionnelle</div>
+                                    <div class="protection_level" id="8">Protection large</div>
+                                    <div class="protection_level" id="7">Protection dans le monde du travail</div>
+                                    <div class="protection_level" id="6">Protection limitée/inégale</div>
+                                    <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
+                                    <div class="protection_level" id="4">Criminalisatoin de facto</div>
+                                    <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
+                                    <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
+                                    <div class="protection_level" id="1">Peine de mort</div>
+                                </div>
+                                <div class="additional_rights_wrapper">
+                                    <div class="additional_right" id="non_governmental_organisations"></div>
+                                    <div class="additional_right" id="expression_freedom"></div>
+                                </div>
+                            </div>
+                        `
+
+                        let nonGovOrganisations = document.querySelector('#non_governmental_organisations')
+                        let expressionFreedom = document.querySelector('#expression_freedom')
+
+                        if (neutralCountriesToIterate[country]['ong'] === 'NO'){
+                            nonGovOrganisations.innerHTML = `
+                                <div class="right_accepted">
+                                    <div class="wrong_right_image"></div>
+                                    <div class="right_description">Obstacles juridiques à l'exercice des ONG sur les sujets LGBTQIA+</div>
+                                </div>
+                            `
+                        } else {
+                            nonGovOrganisations.innerHTML = `<div class="right_not_accepted"></div>`
+                        }
+
+                        if (neutralCountriesToIterate[country]['expression'] === 'NO'){
+                            expressionFreedom.innerHTML = `
+                                <div class="right_accepted">
+                                    <div class="wrong_right_image"></div>
+                                    <div class="right_description">Obstacles juridiques à la liberté d'expression sur les LGBTQIA+</div>
+                                </div>
+                            `
+                        } else {
+                            expressionFreedom.innerHTML = `<div class="right_not_accepted"></div>`
+                        }
+
+                    }
+                }
+            }
+            //--------------------------------------CRIMINALIZED COUNTRIES---------------------------------
+            if (!foundCountryBool){
+                for (let country in criminalizedCountriesToIterate){
+                    if (country === e.features[0].properties.ADMIN){
+                        foundCountryBool = true
+                        console.log(criminalizedCountriesToIterate[country])
+
+                        sidebar.innerHTML = `
+                            <div class="slider_wrapper">
+                                <h3>${country}</h3>
+                                <input type="range" min="1" max="9" value="${ 10 - criminalizedCountriesToIterate[country]['type'] }" step="1" disabled>
+                                <div class="protection_level_wrapper">
+                                    <div class="protection_level" id="9">Protection constitutionnelle</div>
+                                    <div class="protection_level" id="8">Protection large</div>
+                                    <div class="protection_level" id="7">Protection dans le monde du travail</div>
+                                    <div class="protection_level" id="6">Protection limitée/inégale</div>
+                                    <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
+                                    <div class="protection_level" id="4">Criminalisatoin de facto</div>
+                                    <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
+                                    <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
+                                    <div class="protection_level" id="1">Peine de mort</div>
+                                </div>
+                                <div class="additional_rights_wrapper">
+                                    <div class="additional_right" id="non_governmental_organisations"></div>
+                                    <div class="additional_right" id="expression_freedom"></div>
+                                </div>
+                            </div>
+                        `
+
+                        let nonGovOrganisations = document.querySelector('#non_governmental_organisations')
+                        let expressionFreedom = document.querySelector('#expression_freedom')
+
+                        if (criminalizedCountriesToIterate[country]['ong'] === 'NO'){
+                            nonGovOrganisations.innerHTML = `
+                                <div class="right_accepted">
+                                    <div class="wrong_right_image"></div>
+                                    <div class="right_description">Obstacles juridiques à l'exercice des ONG sur les sujets LGBTQIA+</div>
+                                </div>
+                            `
+                        } else {
+                            nonGovOrganisations.innerHTML = `<div class="right_not_accepted"></div>`
+                        }
+
+                        if (criminalizedCountriesToIterate[country]['expression'] === 'NO'){
+                            expressionFreedom.innerHTML = `
+                                <div class="right_accepted">
+                                    <div class="wrong_right_image"></div>
+                                    <div class="right_description">Obstacles juridiques à la liberté d'expression sur les LGBTQIA+</div>
+                                </div>
+                            `
+                        } else {
+                            expressionFreedom.innerHTML = `<div class="right_not_accepted"></div>`
+                        }
+
+                    }
+                }
+            }
+
+            if (!clickedCountryBool){
+                clickedCountryBool = true
+                toggleSidebar('left', e.features[0].properties.ADMIN)
+            }
+
+            if (clickedCountry === e.features[0].properties.ADMIN){
+                clickedCountryBool = false
+                toggleSidebar('left', e.features[0].properties.ADMIN)
+            }
+
+            clickedCountry = e.features[0].properties.ADMIN
+
+        })
+
 
         //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
         map.scrollZoom.enable({ around: 'center' });
@@ -359,6 +560,20 @@ window.addEventListener("DOMContentLoaded", () => {
                     //console.log(indexOfFeature)
                 }
             }
+        }
+
+        function toggleSidebar(id) {
+            const elem = document.getElementById(id);
+
+            const collapsed = elem.classList.toggle('collapsed');
+            const padding = {};
+
+            padding[id] = collapsed ? 0 : 300;
+
+            map.easeTo({
+                padding: padding,
+                duration: 1000
+            });
         }
 
     });

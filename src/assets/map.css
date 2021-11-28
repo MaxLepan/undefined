@@ -157,9 +157,119 @@ input:checked + .label .slider:before {
 
 /* styling to make it look like your screenshot */
 
-.left, .right {
+.left {
   margin: 0 .5em;
   font-weight: bold;
   text-transform: uppercase;
   font-family: sans-serif;
+}
+
+.rounded-rect {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 50px -25px black;
+}
+
+.flex-center {
+  position: absolute;
+  display: flex;
+
+}
+
+.flex-center.left {
+  left: 0px;
+}
+
+.sidebar-content {
+  position: absolute;
+  width: 95%;
+  height: 95%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: gray;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  width: 1.3em;
+  height: 1.3em;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-toggle.left {
+  right: -1.5em;
+}
+
+.sidebar-toggle:hover {
+  color: #0aa1cf;
+  cursor: pointer;
+}
+
+.sidebar {
+  transition: transform 1s;
+  z-index: 1;
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*
+The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
+The toggleSidebar() function removes this class from the element in order to expand it.
+*/
+.left.collapsed {
+  transform: translateX(-400px);
+}
+
+.slider_wrapper input {
+  margin-top: 460px;
+  width: 600px;
+  height: 20px;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
+}
+
+.slider_wrapper {
+
+}
+
+.protection_level_wrapper {
+  position: absolute;
+  vertical-align: center;
+  margin-top: 53px;
+  margin-left: 30px;
+  top: 0;
+}
+
+.protection_level {
+  margin-bottom: 52px;
+}
+
+.right_image {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #2196f3;
+}
+
+.wrong_right_image {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #c22e2e;
+}
+
+.right_not_accepted {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #999999;
+}
+
+.additional_rights_wrapper {
+  position: absolute;
+  bottom: 0;
 }
