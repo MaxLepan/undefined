@@ -8,145 +8,359 @@
 </head>
 
 <body>
-    <!--LOGO-->
-    <div class=logoIntro style="display:none;">
-        <img src="../assets/images/logo.svg">
-    </div>
-    <!--ELEMENTS FIXES-->
-    <div class="header">
-        <img src="../assets/images/logo.svg">
+    <header>
         <div class="menu">
-            <p>Contexte</p>
-            <p>Solutions</p>
-            <p>Carte</p>
-            <p>Contact</p>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <img src="../assets/images/logo.svg"/>
+        <div class="partager">Partager</div>
+    </header>
+    <div class=RS>
+        <p>Suis-nous</p>
+    </div>
+    <div class="introCT">
+        <div class="textIntro">
+            <p class="introTitle">La communauté LGBTQIA+</p>
+            <p class="introSub">où en sommes-nous aujourd’hui ?</p>
+            <p class="introP">Les questions de genres et d’orientations sexuelles sont dans nos têtes depuis quelques années. Dans de nombreux pays, la communauté LGBTQIA+ est discriminée, et parfois même criminalisée. <br><br>
+
+                Undefined est un projet dénonçant ces violences via des données numériques, des témoignages et un planisphère interactif afin de vous donner un aperçu de l’état actuel de l’acceptation et de la protection de la communauté LGBTQIA+ dans le monde.
+                </p>
+        </div>
+        <div class="introButton">
+            <div class="carteButton">Découvrir la carte</div>
+            <div class="agirButton">Agir</div>
         </div>
     </div>
-    <div class="partage">
-        <img src="../assets/images/partager.svg">
+    <div class="invitScroll">
+        <p>Scroll pour voir la suite</p>
+        <img src="../assets/images/invitScroll.svg" >
     </div>
-    <!--CHIFFRES-->
-    <div class="ctChiffre">
-        <div class="splide" id="splide1">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide numbers_slide">
-                        <div class="number">
-                            <h2>53%</h2>
-                        </div>
-                        <div class="legendeChiffre">de la communauté <strong> LGBTQIA+</strong> témoignaient avoir déjà
-                            été confronté·e à au moins un <strong> acte homophobe </strong>en France en 2018 .</div>
-                    </li>
-                    <li class="splide__slide numbers_slide">
-                        <div class="number">
-                            <h2>1/4</h2>
-                        </div>
-                        <div class="legendeChiffre"> des LGBTQIA+ témoignait avoir déjà été <strong> agressé.e </strong>
-                            sexuellement
-                            en 2019.
-                        </div>
-                    </li>
-                </ul>
+    <div class="ctTemoignage">
+        <div class="title">
+            <h2>TEMOIGNAGES</h2>
+            <h3>Temoignages</h3>
+        </div>
+        <p class="intoTemoignage">De nos jours, même en France la communauté subit encore des violences et des discriminations. <br> En voici des témoignages :</p>
+        
+        <div class="ctDefinition" id="ctDefinition">
+            <div class="defCT outing" id="outing">
+                <p class="defTitle">OUTING / OUTER</p>
+                <span></span>
+                <p class="definition" id="defouting">Révéler qu’une personne est LGBTQIA+.  L’outing ne doit JAMAIS se faire sans le consentement de la personne concernée. Et cela peut être considéré, dans le code pénal, comme une atteinte à la vie privée.</p>
             </div>
+            <div class="defCT megenre" id="megenre">
+                <p class="defTitle">MÉGENRER</p>
+                <span></span>
+                <p class="definition" id="defmegenre">Cela signifie ne pas utiliser le bon genre (pronom) pour parler d’une personne.</p>
+            </div>
+            <div class="defCT therapie" id="therapie">
+                <p class="defTitle">THÉRAPIE DE CONVERSION</p>
+                <span></span>
+                <p class="definition" id="deftherapie">Les thérapies de conversion (également appelées "thérapies de guérison") sont des pratiques visant à modifier ou réprimer l’orientation sexuelle ou l’identité de genre des personnes.</p>
+            </div>
+            <div class="defCT cis" id="cis">
+                <p class="defTitle">CISGENRE </p>
+                <span></span>
+                <p class="definition" id="defcis">Une personne cisgenre est une personne en adéquation avec le genre qui lui a été assigné à la naissance.</p>
+            </div>
+            <div class="defCT trans" id="trans">
+                <p class="defTitle">TRANSGENRE </p>
+                <span></span>
+                <p class="definition" id="deftrans">Une personne transgenre est une personne qui n’est pas du genre qui lui a été assigné à la naissance.</p>
+            </div>
+            <div class="defCT constitutionnel" id="constitutionnel">
+                <p class="defTitle">CONSTITUTIONNEL</p>
+                <span></span>
+                <p class="definition" id="defconstitutionnel">Qui relève de la Constitution d’un pays, un ensemble de lois fondamentales.</p>
+            </div>
+            <div class="defCT pride" id="pride">
+                <p class="defTitle">(GAY)PRIDE</p>
+                <span></span>
+                <p class="definition" id="defpride">Manifestation en faveur des LGBTQIA+.</p>
+            </div>
+            <div class="defCT comingout" id="comingout">
+                <p class="defTitle">COMING OUT</p>
+                <span></span>
+                <p class="definition" id="defcomingout">Action de dévoiler son orientation sexuelle ou son identité de genre.</p>
+            </div>
+            <div class="defCT transition" id="transition">
+                <p class="defTitle">TRANSITION</p>
+                <span></span>
+                <p class="definition" id="deftransition">Dans le cadre d’un parcours trans, il s’agit de la période durant laquelle la personne va commencer à vivre en accord avec son identité de genre et non plus avec celui qui lui était assigné à la naissance.</p>
+            </div>
+        </div>
+        <p class="indication">Clique sur un mot pour découvrir sa définition</p>
+        <div class="sliderTemoignage">
+            <div class="Slider">
+                <div class="Slides">
+                    <input type="radio" name="radio_btn" id="radio1">
+                    <input type="radio" name="radio_btn" id="radio2">
+                    <input type="radio" name="radio_btn" id="radio3">
+                    <input type="radio" name="radio_btn" id="radio4">
+                    <input type="radio" name="radio_btn" id="radio5">
+                    <input type="radio" name="radio_btn" id="radio6">
+                    <div class="Slide first">
+                        <p>Je suis amie avec deux mecs qui sont ensemble la plupart du temps. Quand je suis en ville avec eux, il se prennent des remarques types “sales gays allez mourrir”, bref, dans ce genre. Pour ma part, je prends aussi quand je suis avec eux, type “si tu traînes avec eux, tu dois être comme eux, une tarlouze”, des trucs dans ce genre. Après moi, j’ai arrêté d’y porter attention ou alors je réponds.</p>
+                        <p class="nomTem">Anonyme, 16 ans</p>
+                    </div>
+                    <div class="Slide">
+                        <p>Je me suis faite harceler verbalement par tout mon collège pendant deux ans. Quand je dis "par tout", c'est que je compte également les profs et les surveillants. La seule personne qui m’a soutenu dans cet établissement est la CPE et je lui dirai jamais assez merci. Je me suis faite également harcelée sexuellement pendant ces deux ans, cela a été très long et j'ai mis beaucoup de temps à m'en remettre. Je pense que cela sera toujours gravé en moi mais si c'était à refaire, je dirais que je ferais tout pareil car cela m’a permis d'être qui je suis aujourd'hui et je suis fière du chemin que j’ai accompli. La vie nous fait vivre une multitude d'expériences pour savoir qui on est et qui nous voulons être ainsi que ce que nous n'avons pas envie d'être. </p>
+                        <p class="nomTem">Anonyme, 18 ans</p>
+                    </div>
+                    <div class="Slide">
+                        <p>Au collège, je me faisais insulter dans les couloirs, regarder de travers, ca m’atteignait au début puis ensuite, en grandissant, j’ai su me trouver, su prendre confiance et m’assumer, maintenant rien ne me blesse et je suis fier de qui je suis.</p>
+                        <p class="nomTem">Erwan, 18 ans</p>
+                    </div>
+                    <div class="Slide">
+                        <p>Beaucoup de violences verbales (insultes, menaces de morts ou demandes à me suicider) ainsi que des gens qui sexualisaient mon corps et ma sexualité (surtout que je suis out en dehors de ma famille depuis environ mes 13-14 ans donc c'était vraiment glauque) de paire avec la sexualisation un non-respect de l'espace personnel pour être forcé de les écouter donner leur opinions. Maintenant je suis à la fac et dans un climat bien plus ouvert et sécuritaire mais ça ne me protège pas quand je suis seul dehors.</p>
+                        <p class="nomTem">Anonyme, 18 ans</p>
+                    </div>
+                    <div class="Slide">
+                        <p>Moi et ma copine: - on s’est fait filmer par deux hommes en voiture (âgés!!!) dans la rue alors qu’on s’embrassait; - je me suis fait cracher dessus, je venais de la déposer à la gare; - On s’est fait insulter et menacer de mort/viol sur les réseaux sociaux; … Heureusement que tout mon entourage est 100% supportif et se fiche de qui j’aime… ce monde est fou… merci !</p>
+                        <p class="nomTem">Tiffen, 18 ans</p>
+                    </div>
+                    <div class="Slide">
+                        <p>C'est une agression verbale et écrite dans un groupe avec des anciens camarades de classe de collège (snap). Disant que les personnes LGBTQIA+ sont des personnes qui ne devraient pas exister selons eux, en citant que dieu ne nous a pas faits comme ça et des insultes peu imaginatives en concernant mon orientation sexuelle (Lesbienne mais à ce moment là je me sentais asexuelle) et en insultant mon ami qui est une personne transgenre.</p>
+                        <p class="nomTem">Emilie, 18ans</p>
+                    </div>
+                </div>  
+                <div class="Navigation-manual">
+                    <label for="radio1" class="Manual-btn"></label>
+                    <label for="radio2" class="Manual-btn"></label>
+                    <label for="radio3" class="Manual-btn"></label>
+                    <label for="radio4" class="Manual-btn"></label>
+                    <label for="radio5" class="Manual-btn"></label>
+                    <label for="radio6" class="Manual-btn"></label>
+                </div>
+                    
+            </div>
+        </div>
+    </div>
+    <div class="ctVisualisation">
+        <div class="title">
+            <div class="title">
+                <h2>VISUALISATION</h2>
+                <h3>Visualisation</h3>
+            </div>
+            <div class="introVis">
+                <p>Les lois législatives envers la communauté LGBTQIA+ varient beaucoup selon les pays, tout comme l’acceptation de la communauté par la population. 
 
-            <div class="splide__progress">
-                <div class="splide__progress__bar">
+                    <br>  Tout se retrouve sur la carte : Des lois, un indice d’acceptation sociale, des pays et des divergences... </p>
+            </div>
+            <a href="map">
+                <div class="accesMap">
+                    <img src="../assets/images/mapAccess.svg">
+                </div>
+            </a>
+        </div>
+    </div>
+    <div class="ctChiffre">
+        <div class="title">
+            <h2>CHIFFRES CLE</h2>
+            <h3>Chiffres clé</h3>
+        </div>
+        <div class="introChiffre">
+            <p>Twitter est l’une des plateformes qui expose le plus la communauté LGBTQIA+ à l’heure actuelle. <br> Elle peut le faire de manière très positive comme très négative. 
+               <br> Ci-dessous, vous pouvez voir en direct les changements de l’avis public envers la communauté grâce au #LGBT.</p>
+        </div>
+        <div class="autreChiffres">
+            <p>D’autres chiffres parlant...</p>
+            <div class="ctAutre">
+                <div class="pourcent">
+                    <p class="titleChiffre">53%</p>
+                    <img src="../assets/images/ligneChiffre.svg" >
+                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignaient avoir déjà été confronté·e à au moins un acte homophobe en France en 2018.</p>
+                </div>
+                <div class="pourcent">
+                    <p class="titleChiffre">25%</p>
+                    <img src="../assets/images/ligneChiffre.svg" >
+                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignait avoir déjà été agressé.e sexuellement.</p>
+                </div>
+                <div class="pourcent">
+                    <p class="titleChiffre">1590</p>
+                    <img src="../assets/images/ligneChiffre.svg" >
+                    <p class="chiffreContent">crimes et délits commis à l’encontre des membres de la communauté LGBTQIA+  en France en 2020</p>
                 </div>
             </div>
         </div>
-        <div class="title chiffreTitle">CHIFFRES</div>
     </div>
-    <!--HISTOIRE-->
-    <div class="ctHistoire">
-        <div class="splide" id="splide2">
-            <div class="splide__track">
-                <ul class="splide__list">
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/theWhiteSwan.svg"></img>
-                        <h2 class="date">1810</h2>
-                        <h3 class="story-title">THE WHITE SWAN</h3>
-                        <div class="explanation_text">Dès 1800, les premiers bars LGBT ont été enregistrés et ouverts, et ce principalement en Angleterre au départ. Pour l’un d’eux, et un des plus emblématiques, nous pouvons citer “The White Swan” qui a subi une descente de la police londonniene en 1810. 24 hommes ont été arrêtés mais relâcher quelques temps après, mais 8 ont été condamnés et 2 pendus, dont un adole...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/dragQueens.svg"></img>
-                        <h2 class="date">1880</h2>
-                        <h3 class="story-title">DRAG QUEENS</h3>
-                        <div class="explanation_text">La première Drag Queen de l’histoire de la communauté LGBTQIA+ est William Dorsey Swann né esclave Cette personnalité a marqué le commencement de la lutte pour le mouvement. La culture drag prend son essor dans les années 1990, aux Etats-Unis, en Angleterre mais aussi en France, à Paris, particulièrement dans le quartier de Pigalle, dans le ...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/theGayBrothers.svg"></img>
-                        <h2 class="date">1894</h2>
-                        <h3 class="story-title">THE GAY BROTHERS</h3>
-                        <div class="explanation_text">“The gay brothers” est le premier film homosexuel paru en 1894. Il a fait parlé de lui assez rapidement car nous pouvons y retrouver une scène dans laquelle deux hommes dansent ensemble et celle-ci a heurté la vision du monde à cette époque. Tyler Parker, un critique cinématographe reconnu, a noté que la danse a “choqué l’audiance avec cette subversi...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/liliElbe.svg"></img>
-                        <h2 class="date">1930</h2>
-                        <h3 class="story-title">LILI ELBE</h3>
-                        <div class="explanation_text">Lili Ilse Elvenes, plus connue sous le nom Lili Elbe, est la première femme transgenre a avoir subit une chirurgie de réattribution sexuelle, c’est-à-dire de modifier les caractéristiques sexuelles initiales afin d'obtenir l’apparence du sexe opposé. Mais elle a aussi connue ce qu’on appel de nos jours la dysphorie de genre, ce qui correspond au fait qu’une ... </div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/triangleRose.svg"></img>
-                        <h2 class="date">1937</h2>
-                        <h3 class="story-title">TRIANGLES ROSES</h3>
-                        <div class="explanation_text">Durant la Seconde Guerre Mondiale, de nombreuses personnes ont été déportées dans plusieurs camps de concentration, et parmis elles se trouvaient des personnes faisant partie de la communauté LGBTQIA+. Pour reconnaître les raisons de leur déportation, les nazis avaient instauré des triangles d’identification, et ceux pour les personnes homosexuels ...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/gayPride.svg"></img>
-                        <h2 class="date">1969</h2>
-                        <h3 class="story-title">GAY PRIDE</h3>
-                        <div class="explanation_text">La lutte pour les droits pour la communauté LGBTQIA+ a commencé, pour la toute première fois, vers Juin 1969 à Stonewall riots à New-York City aux États-Unis. Ce fut la première marches des fiertés qui s’est déroulé et qui a été déclencheur de la suite. Cette “gay pride” a été un signe de lutte suite à une descente de police dans un bar clandestin ...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/homosexualMarriage.svg"></img>
-                        <h2 class="date">1971</h2>
-                        <h3 class="story-title">MARIAGE HOMOSEXUEL</h3>
-                        <div class="explanation_text">En 1971,  Jack Baker et Michael McConnell ont célébré le premier mariage homosexuel officiel et légal et son aussi le plus ancien mariage homosexuel jamais enregistré dans les archives publiques de tout gouvernement civil. Cependant, avant que cela ne soit officiel, ils ont vécus beaucoup d’embûches pour cela. En 1970, ils ont essayé de faire les demandes pour se ma...  </div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/lgbtFlag.svg"></img>
-                        <h2 class="date">1978</h2>
-                        <h3 class="story-title">DRAPEAU LGBT</h3>
-                        <div class="explanation_text">Gilbert Baker en 1978 car il était un homme homosexuel complètement ouvert sur sa sexualité et a crée le premier drapeau arc-en-ciel pour soutenir la cause à sa manière.  Il l’a modifié un an plus tard car le graphisme de l’ancien était complexe pour l’impression. Depuis, ce drapeau est l’emblême de plusieurs générations dans la communauté LGBTQIA+, ma...</div>
-                    </li>
-                    <li class="splide__slide story_slide">
-                        <img class="history_img" src="../assets/images/unitedNations.svg"></img>
-                        <h2 class="date">2011</h2>
-                        <h3 class="story-title">NATIONS UNIES</h3>
-                        <div class="explanation_text">En 2011, le Conseil des droits de l'homme des Nations unies a, pour la première fois, adopté une résolution sur les droits des personnes LGBTQIA+. Ainsi, une déclaration demandant la fin des violences relatives à l'orientation sexuelle ou l'identité de genre est signée par 85 États. Ils ont mis en avant le fait que certains droits institutionnels ne sont pas respecté envers le...</div>
-                    </li>
-                </ul>
-            </div>
+    <div class="ctSolution">
+        <div class="title">
+            <h2>SOLUTIONS</h2>
+            <h3>Solutions</h3>
         </div>
-
+        <p>Si tu souhaites agir pour aider la communauté LGBTQIA+, voici les solutions que l’on te propose :</p>
+        <div class="ctBlocSolution">
+            <div class="blocSolution soutient">
+                <img class="pictoBloc" src="../assets/images/picto Soutenir.svg" >
+                <p class="blocTitle">Nous soutenir</p>
+                <p class="blocDescri">Soutiens la cause et parles-en. <br> Partages le site !
+                </p>
+                <div class="sol">
+                    <img src="../assets/images/soutenir1.svg" >
+                    <div class="solink">
+                        <a href="~/">@lgbt</a>
+                        <p>Compte Instagram</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/soutenir2.svg" >
+                    <div class="solink">
+                        <a href="~/">@soshomophobie</a>
+                        <p>Compte Instagram</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/soutenir3.svg" >
+                    <div class="solink">
+                        <a href="~/">@lecoindeslgbt</a>
+                        <p>Compte Instagram</p>
+                    </div>
+                </div>
+            </div>
+            <div class="blocSolution info">
+                <img class="pictoBloc" src="../assets/images/pictoInfo.svg" >
+                <p class="blocTitle">T'informer</p>
+                <p class="blocDescri">Tu veux en savoir plus ? <br> On t’a  sélectionné des liens utiles.
+                </p>
+                <div class="sol">
+                    <img src="../assets/images/informer1.svg" >
+                    <div class="solink">
+                        <a href="~/">120 battements par minute</a>
+                        <p>Film</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/informer2.svg" >
+                    <div class="solink">
+                        <a href="~/">C'est comme ça</a>
+                        <p>Site internet</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/informer3.svg" >
+                    <div class="solink">
+                        <a href="~/">ça va mieux en le disant</a>
+                        <p>Podcast</p>
+                    </div>
+                </div>
+            </div>
+            <div class="blocSolution engager">
+                <img class="pictoBloc" src="../assets/images/pictoEngagement.svg" >
+                <p class="blocTitle">T'engager</p>
+                <p class="blocDescri">Deviens acteur du changement ! <br> Toute aide est la bienvenue.</p>
+                <div class="sol">
+                    <img src="../assets/images/engager1.svg" >
+                    <div class="solink">
+                        <a href="pride.fr">pride.fr</a>
+                        <p>Soutiens la cause</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/engager2.svg" >
+                    <div class="solink">
+                        <a href="~/">Amnesty International</a>
+                        <p>Soutiens la cause</p>
+                    </div>
+                </div>
+                <div class="sol">
+                    <img src="../assets/images/informer3.svg" >
+                    <div class="solink">
+                        <a href="~/">Le refuge</a>
+                        <p>Soutiens la cause</p>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@3.5.8/dist/js/splide.min.js"></script>
     <script>
-        var splide = new Splide('#splide1', {
-            type: 'loop',
-            perMove: 1,
-            autoplay: true,
-            interval: 5000,
-            resetProgress: false
-        });
-    
-        splide.on('autoplay:playing', function (rate) {
-            //console.log(rate); // 0-1
-        });
-    
-        splide.mount();
-
-        splide = new Splide('#splide2', {
-            type: 'loop',
-            perMove: 1,
-            autoplay: true,
-            interval: 10000,
-            resetProgress: false
-        });
-
-        splide.mount();
-    </script>
+        let def1 = document.getElementById("outing");
+        let d1 = document.getElementById("defouting");
+            def1.addEventListener("click", () => {
+                if (getComputedStyle(d1).display != "none") {
+                    d1.style.display = "none";
+                } else {
+                    d1.style.display = "flex";
+                }
+            })
+            let def2 = document.getElementById("megenre");
+            let d2 = document.getElementById("defmegenre");
+            def2.addEventListener("click", () => {
+                if (getComputedStyle(d2).display != "none") {
+                    d2.style.display = "none";
+                } else {
+                    d2.style.display = "flex";
+                }
+            })
+            let def3 = document.getElementById("therapie");
+            let d3 = document.getElementById("deftherapie");
+            def3.addEventListener("click", () => {
+                if (getComputedStyle(d3).display != "none") {
+                    d3.style.display = "none";
+                } else {
+                    d3.style.display = "flex";
+                }
+            })
+            let def4 = document.getElementById("cis");
+            let d4 = document.getElementById("defcis");
+            def4.addEventListener("click", () => {
+                if (getComputedStyle(d4).display != "none") {
+                    d4.style.display = "none";
+                } else {
+                    d4.style.display = "flex";
+                }
+            })
+            let def5 = document.getElementById("constitutionnel");
+            let d5 = document.getElementById("defconstitutionnel");
+            def5.addEventListener("click", () => {
+                if (getComputedStyle(d5).display != "none") {
+                    d5.style.display = "none";
+                } else {
+                    d5.style.display = "flex";
+                }
+            })
+            let def6 = document.getElementById("pride");
+            let d6 = document.getElementById("defpride");
+            def6.addEventListener("click", () => {
+                if (getComputedStyle(d6).display != "none") {
+                    d6.style.display = "none";
+                } else {
+                    d6.style.display = "flex";
+                }
+            })
+            let def7 = document.getElementById("comingout");
+            let d7 = document.getElementById("defcomingout");
+            def7.addEventListener("click", () => {
+                if (getComputedStyle(d7).display != "none") {
+                    d7.style.display = "none";
+                } else {
+                    d7.style.display = "flex";
+                }
+            })
+            let def8 = document.getElementById("transition");
+            let d8 = document.getElementById("deftransition");
+            def8.addEventListener("click", () => {
+                if (getComputedStyle(d8).display != "none") {
+                    d8.style.display = "none";
+                } else {
+                    d8.style.display = "flex";
+                }
+            })
+            let def9 = document.getElementById("trans");
+            let d9 = document.getElementById("deftrans");
+            def9.addEventListener("click", () => {
+                if (getComputedStyle(d9).display != "none") {
+                    d9.style.display = "none";
+                } else {
+                    d9.style.display = "flex";
+                }
+            })
+        </script>
     <script src="../js/index.js"></script>
-</body>
-
-</html>
+    </body>
+    
+    </html>

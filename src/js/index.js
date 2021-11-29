@@ -32,5 +32,11 @@ window.addEventListener("DOMContentLoaded", () => {
     
 
     setInterval(here, 1000)
+    if (document.getElementById("btnDef").checked === true) {
+        document.getElementById("ctDefinition").style.display="block !important";
+    }
+    else{
+        document.getElementById("ctDefinition").style.display="none";
+    }
 
 })

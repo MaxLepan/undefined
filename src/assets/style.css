@@ -1,114 +1,412 @@
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,900&family=Taviraj:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap');
 @import url('splider.css');
 @import url('map.css');
 @import url('button.css');
 
 body{
-    background-color: #1C1C1C;
+    background-color: #262526;
     color: #FFF;
-    font-family:"Poppins";
-    padding-left: 75px;
-}
-
-/*-----------HEADER---------*/
-.header{
-    width: 100%;
-    height: 0px;
-    position: sticky;
-    top: 0;
-    display: flex;
-    flex-direction: column;
-    z-index: 1;
-}
-.header img{
-    width:250px ;
-    height: 23vh;
-    margin-top: 7vh;
-    margin-bottom: 4vh;
-}
-.menu{
-    display: flex;
-    flex-direction: row;
+    font-family:"Hind Siliguri";
     
 }
-.menu p{
-    margin-right: 3%;
-}
 
-.partage{
+header{
+    margin-top: 75px;
+    width: 100%;
     position: sticky;
-    top:120vh;
-
-}
-/*----------INTRO-----------*/
-.logoIntro{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.logoIntro img{
-    width: 80%;
-}
-
-/*-----------CHIFFRE----------*/
-.ctChiffre{
-    width: 100%;
-    height: 100vh;
-    position: relative;
-    display: flex;
-    flex-direction:row;
-    justify-content: center;
-    align-items: center;
-}
-
-.numbers_slide{
     display: flex;
     flex-direction: row;
+    justify-content: space-between;
+}
+header .menu{
+    display: flex;
+    flex-direction: column;
+    margin-left: 75px;
+}
+
+header .menu span{
+    width: 40px;
+    border: 1px solid #FFF;
+    margin-bottom: 12px;
+}
+.partager{
+    width: 144px;
+    background-color: #FFF;
+    color: #000;
+    border-radius: 50px;
+    display: flex;
     justify-content: center;
     align-items: center;
+    font-weight: 600;
+    font-size: 18px;
+    margin-right: 75px;
+}
+
+
+.textIntro{
+    width: 52%;
+    margin-left: 250px;
+    margin-top: 200px;
+}
+.introTitle{
+    font-family: 'Raleway';
+    font-size: 64px;
+    font-weight: 800;
+}
+.introSub{
+    font-family: 'Taviraj';
+    font-style: italic;
+    font-weight: 400;
+    font-size: 36px;
+    margin-bottom: 58px;
+}
+.introP{
+    font-weight: 500;
+    font-size: 400;
+}
+.introButton{
+    display: flex;
+    flex-direction: row;
+    margin-left: 250px;
+    margin-top: 66px;
+}
+.carteButton{
+    width: 283px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #FFF;
+    color: #000;
+    font-size: 20px;
+    font-weight: 600;
+    border-radius: 50px;
+}
+.agirButton{
+    width: 121px;
+    border-radius:50px;
+    border: 1px solid #FFF;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 75px;
+}
+.invitScroll{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    margin-top: 92px;
+}
+.invitScroll p{
+    font-size: 24px;
+    text-align: center;
+    margin-bottom: 34px;
+}
+.invitScroll img{
+    height: 126px;
+    
+}
+
+.title{
+    overflow: hidden;
+}
+h2{
+    font-size: 310px;
+    color: #1C1C1C;
+    font-family: 'Raleway';
+    text-align: center;
+    width: 110vw;
+}
+h3{
+    font-size: 64px;
+    color:#FFF;
+    font-family: 'Raleway';
+    margin-left: 150px;
+
+}
+
+h3{
+    margin-top: -232px;
+    margin-bottom: 232px;
+    
+}
+.ctTemoignage h2{
+    margin-left: -200px;
+}
+.intoTemoignage{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 90px;
+}
+.ctDefinition{
+    width: 90%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.defCT{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.defCT p{
     width: 80%;
+    margin-left: 0;
 }
-
-.storyActiveSlide {
-    background-color: cornflowerblue;
+.defTitle{
+    width: 100%;
 }
-
-.nextActiveSlide {
-    background-color: crimson;
+.definition{
+    
+    display: none;
 }
-
-.previousActiveSlide {
-    background-color: darkcyan;
+#btnDef{
+    margin-left: 245px;
 }
-
-.number {
-    background-image: url(images/bigPaintChiffre.svg);
-    width: 35%;
-    height: 43vh;
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-origin: content-box;
+.indication{
+    font-family: 'Taviraj';
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    margin-left: 13%;
+}
+.sliderTemoignage{
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.Slider{
+	width: 800px;
+	height: 500px;
+	border-radius: 10px;
+	overflow: hidden;
+	margin-top: 50px;
+    border:1px solid #FFF;
 
-.number h2{
-    font-size: 9rem;
-    margin-left: -84px;
-    margin-top: 164px;
 }
-.legendeChiffre{
+
+.Slides{
+	width: 480%;
+	height: 500px;
+	display: flex;
+	
+}
+.Slides input{
+	display: none;
+}
+.Slide{
+	width: 20%;
+	transition: 2s;
+    color: #FFF;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 2%;
+    padding-right: 3%;
+}
+
+
+.Slide p{
+	width: 100%;
+    padding: 0 3% 0 4%;
+}
+
+.Navigation-manual{
+	position: absolute;
+	width: 800px;
+	margin-top: -40px;
+	display: flex;
+	justify-content: center;
+}
+
+.Manual-btn{
+	border: solid 2px #FFF;
+	padding: 5px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 1s;
+}
+.Manuel-btn:not(:last-child){
+	margin-right: 40px;
+}
+.Manual-btn:hover{
+	background-color:#FFF;
+}
+#radio1:checked~.first{
+	margin-left: 0;
+}
+#radio2:checked~.first{
+	margin-left: -25%;
+}
+#radio3:checked~.first{
+	margin-left: -50%;
+}
+#radio4:checked~.first{
+	margin-left: -75%;
+}
+#radio5:checked~.first{
+	margin-left: -100%;
+}
+#radio6:checked~.first{
+	margin-left: -125%;
+}
+
+
+/*----------visualisation----------*/
+
+.introVis{
+    text-align: center;
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.introVis p{
     width: 60%;
-    font-size:1.80rem;
+    font-size: 20px;
 }
-.title{
-    font-size: 6.5rem;
-    writing-mode: vertical-rl;
-    font-weight: 800;
+.accesMap{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 50px;;
+}
+.accesMap img{
+    width: 1632px;
+    height: 931px;
+}
+
+/*----------chiffre clé---------*/
+.ctChiffre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ctChiffre h2{
+    margin-left: -200px;
+}
+.introChiffre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.introChiffre p{
+    text-align: center;
+    width: 60%;
+    font-size: 20px;
+}
+.autreChiffres p{
+    text-align: center;
+    font-size: 20px;
+}
+
+.ctAutre{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+.pourcent{
+    width: 30%;
+}
+.titleChiffre{
+    font-size: 48px !important;
+    font-weight: 400;
+    text-align: left !important;
+}
+.pourcent img{
+    width: 292px;
+}
+.chiffreContent{
+    text-align: left !important;
+    width: 70%;
+}
+
+/*---------Solution----------*/
+.ctSolution{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.ctSolution p{
+    text-align: center;
+    font-size: 20px;
+}
+.ctBlocSolution{
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+    justify-content: space-between;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 90px;
+}
+.blocSolution{
+    width: 25%;
+    border:1px solid #FFF;
+    background-color: #1C1C1C;
+    border-radius: 30px;
+}
+.pictoBloc{
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    justify-content: center;
+}
+.blocTitle{
+    margin-top: 30px;
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+}
+.blocDescri{
+    text-align: center;
+    font-weight: 500;
+    font-size: 18px;
+    margin-bottom: 30px;
+}
+.sol{
+    margin-left: 31px;
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 25px;
+}
+.sol img{
+    width: 68px;
+    height: 68px;
+    
+}
+.solink{
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+}
+.solink p{
+    font-size: 14px;
+    text-align: left;
+    padding:0;
+    margin: 0;
+}
+.solink a{
+    font-size: 18px;
+    color: #FFF;
+}
+.soutient .pictoBloc{
+    margin-top: -42px;
+}
+.engager .pictoBloc{
+    margin-top: -68px;
 }
