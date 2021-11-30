@@ -278,6 +278,12 @@
         </div>
     </div>
     <script>
+        const positiveTweets = JSON.parse('<%- JSON.stringify(positiveTweets) %>')
+        const negativeTweets = JSON.parse('<%- JSON.stringify(negativeTweets) %>')
+
+        console.log(positiveTweets, negativeTweets)
+    </script>
+    <script>
         let def1 = document.getElementById("outing");
         let d1 = document.getElementById("defouting");
             def1.addEventListener("click", () => {

@@ -2,7 +2,9 @@ const { MongoClient } = require("mongodb");
 const Twitter=require('twitter');
 const  OpenAI  = require('openai-api');
 
-module.exports = function (uri, app) {
+const uri = "mongodb://" + process.env.USER + ":" + process.env.PASS + "@" + process.env.BDD_HOST + ":" + process.env.BDD_PORTS + "/?maxPoolSize=20&w=majority";
+
+//module.exports = function (uri, app) {
 
 
    const openai = new OpenAI(process.env.OPENAI_API_KEY);
@@ -15,6 +17,7 @@ module.exports = function (uri, app) {
    });
    let positiveTweets
    let negativeTweets
+   let tweets = []
 
    MongoClient.connect(uri, function (err, db) {
       if (err) throw err;
@@ -27,7 +30,9 @@ module.exports = function (uri, app) {
          positiveTweets = result[0]['positive_tweets'];
          negativeTweets = result[1]['negative_tweets'];
 
-         //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+         tweets = [positiveTweets, negativeTweets]
+
+         console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
          db.close();
       });
@@ -37,7 +42,7 @@ module.exports = function (uri, app) {
    async function classification(tweet) {
       try {
 
-         const classificatedTweet = await openai.classify({
+         const classificatedTweet = await openai.classification({
             examples: [
                ['A happy moment', 'Positive'],
                ['I am sad.', 'Negative'],
@@ -49,10 +54,11 @@ module.exports = function (uri, app) {
             model: 'curie'
          });
 
+         console.log(classificatedTweet['data']['label'])
 
-         if (classificatedTweet['label'] === "Positive") {
+         if (classificatedTweet['data']['label'] === "Positive") {
             positiveTweets++
-         } else if (classificatedTweet['label'] === "Negative") {
+         } else if (classificatedTweet['data']['label'] === "Negative") {
             negativeTweets++
          }
 
@@ -75,6 +81,7 @@ module.exports = function (uri, app) {
          });
 
          console.log('==================================================================================================================================================')
+
       }
 
       catch (e) {
@@ -82,37 +89,28 @@ module.exports = function (uri, app) {
       }
    }
 
-  client.get('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' },(error,tweets,response)=>{
 
-      console.log(tweets);
-      // if (!data.retweeted_status) {
-      //          const tweetos = data.user.screen_name;
-      //          const tweetText = data?.extended_tweet?.full_text || data.text;
-      //          const tweetFrom = data?.place?.country_code || data.user?.location;
-      //          const tweetLanguage = data?.lang || data.user?.lang;
-      //          //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
-      //          console.log("Tweet : " + tweetText)
-      //          classification(tweetText)
-      //       }
+
+  const stream = client.stream('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' })
+
+   stream.on('data', (data) => {
+      //console.log(data);
+      if (!data.retweeted_status) {
+         const tweetos = data.user.screen_name;
+         const tweetText = data?.extended_tweet?.full_text || data.text;
+         const tweetFrom = data?.place?.country_code || data.user?.location;
+         const tweetLanguage = data?.lang || data.user?.lang;
+         //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
+         console.log("Tweet : " + tweetText)
+         classification(tweetText)
+      }
    });
 
-   // stream.on('data', (data) => {
-   //    console.log(data);
-   //    if (!data.retweeted_status) {
-   //       const tweetos = data.user.screen_name;
-   //       const tweetText = data?.extended_tweet?.full_text || data.text;
-   //       const tweetFrom = data?.place?.country_code || data.user?.location;
-   //       const tweetLanguage = data?.lang || data.user?.lang;
-   //       //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
-   //       console.log("Tweet : " + tweetText)
-   //       classification(tweetText)
-   //    }
-   // });
+   stream.on('error', (error) => {
+      console.log(error);
+      throw error;
+   });
 
-   // stream.on('error', (error) => {
-   //    console.log(error);
-   //    throw error;
-   // });
-   return  "les tweets a envoyer sous forme de tableau ou autre"
+//   return  "les tweets a envoyer sous forme de tableau ou autre"
 
-}
+//}
