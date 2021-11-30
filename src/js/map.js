@@ -37,6 +37,18 @@ window.addEventListener("DOMContentLoaded", () => {
 
     mapLoad().then(()=>{
 
+        // disable map rotation using right click + drag
+        map.dragRotate.disable();
+        
+        // disable map rotation using touch rotation gesture
+        map.touchZoomRotate.disableRotation();
+
+        // disable double click zoom
+        map.doubleClickZoom.disable()
+
+        
+        //map.scrollZoom.enable({ around: 'center' });
+
         const protectedFilter = document.querySelector('#protected_filter')
         const neutralFilter = document.querySelector('#neutral_filter')
         const criminalizedFilter = document.querySelector('#criminalized_filter')
@@ -55,15 +67,20 @@ window.addEventListener("DOMContentLoaded", () => {
         let criminalizedCountriesToIterate = criminalizedCountries2020[0];
 
         yearSwitch.onclick = () => {
-            protectedFilter.classList.remove('active')
-            neutralFilter.classList.remove('active')
-            criminalizedFilter.classList.remove('active')
-
-            protectedCountries(protectedCountriesToIterate).then()
-            neutralCountries(neutralCountriesToIterate).then()
-            criminalizedlCountries(criminalizedCountriesToIterate).then()
-
+        
             yearBool = yearSwitch.checked
+
+            if (protectedFilter.classList.contains('active')){
+                protectedCountries(protectedCountriesToIterate).then()
+            }
+
+            if (neutralFilter.classList.contains('active')){
+                neutralCountries(neutralCountriesToIterate).then()
+            }
+
+            if (criminalizedFilter.classList.contains('active')){
+                criminalizedlCountries(criminalizedCountriesToIterate).then()
+            }
 
             if (yearBool){
                 protectedCountriesToIterate = protectedCountries2020[0]
@@ -77,6 +94,10 @@ window.addEventListener("DOMContentLoaded", () => {
                 gai_slider.disabled = false;
                 gaiCountries(gai_slider_value, null).then()
             }
+
+            protectedFilter.classList.add('active')
+            neutralFilter.classList.add('active')
+            criminalizedFilter.classList.add('active')  
 
             protectedFilterVerification = true
             neutralFilterVerification = true
@@ -228,6 +249,8 @@ window.addEventListener("DOMContentLoaded", () => {
         map.on('click', 'state-fills', (e) => {
 
             let sidebar = document.querySelector('.sidebar-content')
+            
+            //console.log(e.features[0].properties)
 
 
 
@@ -235,9 +258,11 @@ window.addEventListener("DOMContentLoaded", () => {
 
             //-----------------------------PROTECTED COUNTRIES------------------------------------
             for (let country in protectedCountriesToIterate){
+                //console.log(country)
                 if (country === e.features[0].properties.ADMIN){
                     foundCountryBool = true
-                    console.log(protectedCountriesToIterate[country])
+                    
+                    //console.log(protectedCountriesToIterate[country])
 
                     sidebar.innerHTML = `
                         <div class="slider_wrapper">
@@ -297,9 +322,10 @@ window.addEventListener("DOMContentLoaded", () => {
             //-------------------------NEUTRAL COUNTRIES-----------------------
             if (!foundCountryBool){
                 for (let country in neutralCountriesToIterate){
+                    //console.log(country)
                     if (country === e.features[0].properties.ADMIN){
                         foundCountryBool = true
-                        console.log(neutralCountriesToIterate[country])
+                        //console.log(neutralCountriesToIterate[country])
 
                         sidebar.innerHTML = `
                             <div class="slider_wrapper">
@@ -354,9 +380,10 @@ window.addEventListener("DOMContentLoaded", () => {
             //--------------------------------------CRIMINALIZED COUNTRIES---------------------------------
             if (!foundCountryBool){
                 for (let country in criminalizedCountriesToIterate){
+                    //console.log(country)
                     if (country === e.features[0].properties.ADMIN){
                         foundCountryBool = true
-                        console.log(criminalizedCountriesToIterate[country])
+                        //console.log(criminalizedCountriesToIterate[country])
 
                         sidebar.innerHTML = `
                             <div class="slider_wrapper">
@@ -407,7 +434,24 @@ window.addEventListener("DOMContentLoaded", () => {
 
                     }
                 }
+
             }
+            
+            if (!foundCountryBool) {
+            sidebar.innerHTML = `
+                <div class="country_not_found">
+                    <h2>${e.features[0].properties.ADMIN}</h2>
+                    <h2>Nous n'avons aucune information sur ce pays.</h2>
+                </div>
+            `
+            }
+
+            //console.log(clickedCountryBool)
+
+            if (sidebar.classList.contains('collapsed')){
+                clickedCountryBool = true
+            }
+        
 
             if (!clickedCountryBool){
                 clickedCountryBool = true
@@ -415,17 +459,18 @@ window.addEventListener("DOMContentLoaded", () => {
             }
 
             if (clickedCountry === e.features[0].properties.ADMIN){
+
                 clickedCountryBool = false
                 toggleSidebar('left', e.features[0].properties.ADMIN)
+                clickedCountryBool = true
             }
+
+            
 
             clickedCountry = e.features[0].properties.ADMIN
 
         })
 
-
-        //const m = new mapboxgl.Marker().setLngLat([1, 45]).addTo(map);
-        map.scrollZoom.enable({ around: 'center' });
 
         //---------------------Filters---------------------------
 
@@ -434,7 +479,7 @@ window.addEventListener("DOMContentLoaded", () => {
             let color;
 
             for (let protectedCountry in arrayToIterate) {
-                //console.log("Protected Country : ", protectedCountry)
+                //console.log("Protected Country : ", protectedCountry, arrayToIterate[protectedCountry])
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
                 }).indexOf(protectedCountry);
@@ -455,8 +500,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 color = null;
 
-                //console.log('================================================================')
+                
             }
+            //console.log('================================================================')
 
         }
 
@@ -520,18 +566,12 @@ window.addEventListener("DOMContentLoaded", () => {
             }
         }
 
-        if (protectedFilterVerification || neutralFilterVerification || criminalizedFilterVerification){
-            protectedCountries().then()
-            neutralCountries().then()
-            criminalizedlCountries().then()
-        }
-
         async function gaiCountries (gai_slider_value, gaiCountryValue) {
             let fileToIterate;
 
             if (gai_slider_value >= 1 && gai_slider_value <= 4){
                 fileToIterate = protectedCountries2017
-            } else if (gai_slider_value === 5 || gai_slider_value === 6) {
+            } else if (gai_slider_value >= 5 || gai_slider_value <= 6) {
                 fileToIterate = neutralCountries2017
             } else if (gai_slider_value >= 7 && gai_slider_value <= 9) {
                 fileToIterate = criminalizedCountries2017
