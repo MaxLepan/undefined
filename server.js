@@ -12,6 +12,8 @@ const uri = "mongodb://" + process.env.USER + ":" + process.env.PASS + "@" + pro
 var __dirname = path.resolve();
 app.use(express.static(__dirname + "/src"));
 const fs = require('fs');
+const Twitter=require('twitter');
+const  OpenAI  = require('openai-api');
 
 let db_pays2020;
 let db_pays2017;
@@ -24,7 +26,6 @@ let paysCrime2020;
 let paysProteger2017;
 let paysNeutre2017;
 let paysCrime2017;
-
 
 let country;
 
@@ -98,14 +99,17 @@ function bindPaysIndice(){
     })
 
     
-    console.log("Tous les pays on été binds")
+    console.log("Tous les pays on été bind")
 }
 
 
+(async () =>  {
 
+    const tweets = require(__dirname + "/modules/get_tweets.js")(uri, app);
+    console.log("server side", tweets)
+    
+})()
 
-//Vient chercher le module getTweet;
-require(__dirname + "/modules/get_tweets.js")(uri, app);
 
 
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index
@@ -245,5 +249,5 @@ function PaysCrime(annee,callback) {
 
 //----Port d'ecoute
 server.listen(8002, function () {
-    console.log("listning at : http://localhost:8002")
+    console.log("listening at : http://localhost:8002")
 })

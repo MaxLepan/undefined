@@ -11,33 +11,37 @@
 
     </head>
     <body>
-        <button id='protected_filter' class='filter'>Protégés</button>
-        <button id='neutral_filter' class='filter'>Neutre</button>
-        <button id='criminalized_filter' class='filter'>Criminalisé</button>
-        <input class="input" id="toggle" type="checkbox" id='year_switch' checked>
-        <label class="label" for="toggle">
-            <div class="left">
-            2017
-            </div>
-
-            <div class="switch">
-            <span class="slider round"></span>
-            </div>
-
-            <div class="right">
-            2020
-            </div>
-        </label>
-        <input type='range' id='gai_slider' name='gai_slider' min="1" max="9" step="1" value="0" disabled></input>
-        <label for='gai_slider'>GAI</label>
+        
         <div class="mapContainer">
             <div id="map">
-                <div id="left" class="sidebar flex-center left collapsed">
-                    <div class="sidebar-content rounded-rect flex-center">
-                        Left Sidebar
+                
+            </div>
+            <div class="filter_wrapper">
+                <input class="input" id="toggle" type="checkbox" id='year_switch' checked>
+                <label class="label" for="toggle">
+                    <div class="left">
+                    2017
                     </div>
-                </div>
 
+                    <div class="switch">
+                    <span class="slider round"></span>
+                    </div>
+
+                    <div class="right">
+                    2020
+                    </div>
+                </label>
+                <button id='protected_filter' class='filter'>Protégés</button>
+                <button id='neutral_filter' class='filter'>Neutre</button>
+                <button id='criminalized_filter' class='filter'>Criminalisé</button>
+                
+                <input type='range' id='gai_slider' name='gai_slider' min="1" max="9" step="1" value="0" disabled></input>
+                <label for='gai_slider'>GAI</label>
+            </div>    
+            <div id="left" class="sidebar flex-center left collapsed">
+                <div class="sidebar-content rounded-rect flex-center">
+                    Left Sidebar
+                </div>
             </div>
         </div>
 

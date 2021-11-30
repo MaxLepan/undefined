@@ -30,7 +30,7 @@ window.addEventListener("DOMContentLoaded", () => {
         container: 'map', // container id
         style: 'mapbox://styles/lsmnt/ckuxryts03ma218o6g4fz54v0', // map style URL from Mapbox Studio
         center: [10, 40],
-        zoom: 1.5
+        zoom: 2.5
     });
 
     let hoveredStateId = null;
@@ -45,6 +45,9 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // disable double click zoom
         map.doubleClickZoom.disable()
+
+        // disable keyboard controls
+        map.keyboard.disable()
 
         
         //map.scrollZoom.enable({ around: 'center' });
@@ -168,10 +171,10 @@ window.addEventListener("DOMContentLoaded", () => {
             'paint': {
                 'fill-color': [
                     "case",
-                    ["==", ["feature-state", "colorCountries"], 0], "#313131",
-                    ["==", ["feature-state", "colorCountries"], 1], "#54DDEF",
-                    ["==", ["feature-state", "colorCountries"], 2], "#FFA722",
-                    ["==", ["feature-state", "colorCountries"], 3], "#FF5780",
+                    ["==", ["feature-state", "colorCountries"], 0], "#808080",
+                    ["==", ["feature-state", "colorCountries"], 1], "#0a8a06",
+                    ["==", ["feature-state", "colorCountries"], 2], "#de7605",
+                    ["==", ["feature-state", "colorCountries"], 3], "#c22e2e",
                     "#313131"
                 ],
                 'fill-opacity': 1
@@ -249,9 +252,10 @@ window.addEventListener("DOMContentLoaded", () => {
         map.on('click', 'state-fills', (e) => {
 
             let sidebar = document.querySelector('.sidebar-content')
-            let sidebarWrapper = document.querySelector('.sidebar')
             
             //console.log(e.features[0].properties)
+
+
 
             let foundCountryBool = false
 
@@ -445,17 +449,26 @@ window.addEventListener("DOMContentLoaded", () => {
             `
             }
 
-            console.log("clicked country", clickedCountryBool)
-            console.log("sidebar", sidebar.classList.contains('collapsed'))
+            //console.log(clickedCountryBool)
 
-            if (sidebarWrapper.classList.contains('collapsed')){
-                console.log(clickedCountryBool)
+            if (sidebar.classList.contains('collapsed')){
+                clickedCountryBool = true
+            }
+        
+
+            if (!clickedCountryBool){
                 clickedCountryBool = true
                 toggleSidebar('left', e.features[0].properties.ADMIN)
-            } else if (clickedCountry === e.features[0].properties.ADMIN) {
+            }
+
+            if (clickedCountry === e.features[0].properties.ADMIN){
+
                 clickedCountryBool = false
                 toggleSidebar('left', e.features[0].properties.ADMIN)
+                clickedCountryBool = true
             }
+
+            
 
             clickedCountry = e.features[0].properties.ADMIN
 

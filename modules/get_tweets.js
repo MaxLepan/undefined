@@ -4,7 +4,6 @@ const  OpenAI  = require('openai-api');
 
 module.exports = function (uri, app) {
 
-
    const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
    const client = new Twitter({
@@ -13,8 +12,10 @@ module.exports = function (uri, app) {
       access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
       access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
    });
+
    let positiveTweets
    let negativeTweets
+   let tweets
 
    MongoClient.connect(uri, function (err, db) {
       if (err) throw err;
@@ -27,7 +28,7 @@ module.exports = function (uri, app) {
          positiveTweets = result[0]['positive_tweets'];
          negativeTweets = result[1]['negative_tweets'];
 
-         //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+         console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
          db.close();
       });
@@ -37,7 +38,7 @@ module.exports = function (uri, app) {
    async function classification(tweet) {
       try {
 
-         const classificatedTweet = await openai.classify({
+         const classificatedTweet = await openai.classification({
             examples: [
                ['A happy moment', 'Positive'],
                ['I am sad.', 'Negative'],
@@ -49,14 +50,15 @@ module.exports = function (uri, app) {
             model: 'curie'
          });
 
+         console.log(classificatedTweet['data']['label'])
 
-         if (classificatedTweet['label'] === "Positive") {
+         if (classificatedTweet['data']['label'] === "Positive") {
             positiveTweets++
-         } else if (classificatedTweet['label'] === "Negative") {
+         } else if (classificatedTweet['data']['label'] === "Negative") {
             negativeTweets++
          }
 
-         console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
+         //console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
 
          MongoClient.connect(uri, function (err, db) {
             if (err) throw err;
@@ -67,14 +69,15 @@ module.exports = function (uri, app) {
                { $set: { positive_tweets: positiveTweets, negative_tweets: negativeTweets } },
                function (err, res) {
                   if (err) throw err;
-                  console.log(res.matchedCount + " document(s) updated")
+                 // console.log(res.matchedCount + " document(s) updated")
                   db.close();
                }
             )
 
          });
 
-         console.log('==================================================================================================================================================')
+         //console.log('==================================================================================================================================================')
+
       }
 
       catch (e) {
@@ -82,35 +85,27 @@ module.exports = function (uri, app) {
       }
    }
 
-  client.get('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' },(error,tweets,response)=>{
+  const stream = client.stream('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' })
 
-      console.log(tweets);
-      // if (!data.retweeted_status) {
-      //          const tweetos = data.user.screen_name;
-      //          const tweetText = data?.extended_tweet?.full_text || data.text;
-      //          const tweetFrom = data?.place?.country_code || data.user?.location;
-      //          const tweetLanguage = data?.lang || data.user?.lang;
-      //          //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
-      //          console.log("Tweet : " + tweetText)
-      //          classification(tweetText)
-      //       }
+   stream.on('data', (data) => {
+      if (!data.retweeted_status) {
+         const tweetText = data?.extended_tweet?.full_text || data.text;
+         console.log("Tweet : " + tweetText)
+         console.log(positiveTweets, negativeTweets)
+         classification(tweetText).then(()=>{
+            console.log(positiveTweets, negativeTweets)
+            tweets = [positiveTweets, negativeTweets]
+
+            exports.tweets = tweets
+         })
+         
+      }
    });
 
-   // stream.on('data', (data) => {
-   //    console.log(data);
-   //    if (!data.retweeted_status) {
-   //       const tweetos = data.user.screen_name;
-   //       const tweetText = data?.extended_tweet?.full_text || data.text;
-   //       const tweetFrom = data?.place?.country_code || data.user?.location;
-   //       const tweetLanguage = data?.lang || data.user?.lang;
-   //       //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
-   //       console.log("Tweet : " + tweetText)
-   //       classification(tweetText)
-   //    }
-   // });
+   stream.on('error', (error) => {
+      console.log(error);
+      throw error;
+   });
 
-   // stream.on('error', (error) => {
-   //    console.log(error);
-   //    throw error;
-   // });
+   
 }

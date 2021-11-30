@@ -1,84 +1,83 @@
 body {
-    margin: 0;
-    padding: 0;
-  }
+  margin: 0;
+  padding-left: 0;
+}
+
+h2,
+h3 {
+  margin: 10px;
+  font-size: 18px;
+}
+
+h3 {
+  font-size: 16px;
+}
+
+p {
+  margin: 10px;
+}
+
+/*---------Map---------*/
+
+.mapContainer{
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  flex-direction: column;
+}
+
+.map-overlay {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  background: #fff;
   
-  h2,
-  h3 {
-    margin: 10px;
-    font-size: 18px;
-  }
+  font-family: Arial, sans-serif;
+  overflow: auto;
+  border-radius: 3px;
+}
+
+#map {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 100%;
   
-  h3 {
-    font-size: 16px;
-  }
-  
-  p {
-    margin: 10px;
-  }
-  
-  /*---------Map---------*/
-  
-  .mapContainer{
-    display: flex;
-    width: 100%;
-    height: 100vh;
-    flex-direction: column;
-  }
-  
-  .map-overlay {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    background: #fff;
-    margin-right: 20px;
-    font-family: Arial, sans-serif;
-    overflow: auto;
-    border-radius: 3px;
-  }
-  
-  #map {
-    position: relative;
-    top: 0;
-    bottom: 0;
-    width: 80%;
-    height: 800px;
-    margin-left: 7%;
-  }
-  
-  #features {
-    top: 0;
-    height: 100px;
-    margin-top: 20px;
-    width: 250px;
-  }
-  
-  #legend {
-    padding: 10px;
-    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
-    line-height: 18px;
-    height: 150px;
-    margin-bottom: 40px;
-    width: 100px;
-  }
-  
-  .legend-key {
-    display: inline-block;
-    border-radius: 20%;
-    width: 10px;
-    height: 10px;
-    margin-right: 5px;
-  }
-  
-  /*---------Zoom---------*/
-  
-  .zoomButton {
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    margin-left: 7%;
-    margin-top: 32px;
-  }
+}
+
+#features {
+  top: 0;
+  height: 100px;
+  margin-top: 20px;
+  width: 250px;
+}
+
+#legend {
+  padding: 10px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  line-height: 18px;
+  height: 150px;
+  margin-bottom: 40px;
+  width: 100px;
+}
+
+.legend-key {
+  display: inline-block;
+  border-radius: 20%;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+/*---------Zoom---------*/
+
+.zoomButton {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  margin-left: 7%;
+  margin-top: 32px;
+}
 
 /* the interesting bit */
 
@@ -158,7 +157,7 @@ input:checked + .label .slider:before {
 /* styling to make it look like your screenshot */
 
 .left {
-  margin: 0 .5em;
+  margin: 0;
   font-weight: bold;
   text-transform: uppercase;
   font-family: sans-serif;
@@ -273,3 +272,8 @@ The toggleSidebar() function removes this class from the element in order to exp
   position: absolute;
   bottom: 0;
 }
+
+.filter_wrapper {
+  position: absolute;
+}
+
