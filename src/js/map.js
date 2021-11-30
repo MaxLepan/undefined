@@ -168,10 +168,10 @@ window.addEventListener("DOMContentLoaded", () => {
             'paint': {
                 'fill-color': [
                     "case",
-                    ["==", ["feature-state", "colorCountries"], 0], "#808080",
-                    ["==", ["feature-state", "colorCountries"], 1], "#0a8a06",
-                    ["==", ["feature-state", "colorCountries"], 2], "#de7605",
-                    ["==", ["feature-state", "colorCountries"], 3], "#c22e2e",
+                    ["==", ["feature-state", "colorCountries"], 0], "#313131",
+                    ["==", ["feature-state", "colorCountries"], 1], "#54DDEF",
+                    ["==", ["feature-state", "colorCountries"], 2], "#FFA722",
+                    ["==", ["feature-state", "colorCountries"], 3], "#FF5780",
                     "#313131"
                 ],
                 'fill-opacity': 1
@@ -249,10 +249,9 @@ window.addEventListener("DOMContentLoaded", () => {
         map.on('click', 'state-fills', (e) => {
 
             let sidebar = document.querySelector('.sidebar-content')
+            let sidebarWrapper = document.querySelector('.sidebar')
             
             //console.log(e.features[0].properties)
-
-
 
             let foundCountryBool = false
 
@@ -446,26 +445,17 @@ window.addEventListener("DOMContentLoaded", () => {
             `
             }
 
-            //console.log(clickedCountryBool)
+            console.log("clicked country", clickedCountryBool)
+            console.log("sidebar", sidebar.classList.contains('collapsed'))
 
-            if (sidebar.classList.contains('collapsed')){
-                clickedCountryBool = true
-            }
-        
-
-            if (!clickedCountryBool){
+            if (sidebarWrapper.classList.contains('collapsed')){
+                console.log(clickedCountryBool)
                 clickedCountryBool = true
                 toggleSidebar('left', e.features[0].properties.ADMIN)
-            }
-
-            if (clickedCountry === e.features[0].properties.ADMIN){
-
+            } else if (clickedCountry === e.features[0].properties.ADMIN) {
                 clickedCountryBool = false
                 toggleSidebar('left', e.features[0].properties.ADMIN)
-                clickedCountryBool = true
             }
-
-            
 
             clickedCountry = e.features[0].properties.ADMIN
 
