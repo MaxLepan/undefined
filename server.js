@@ -105,7 +105,10 @@ function bindPaysIndice(){
 
 
 //Vient chercher le module getTweet;
-require(__dirname + "/modules/get_tweets.js")(uri, app);
+let leResultatDesTweets = require(__dirname + "/modules/get_tweets.js")(uri, app);
+console.log(leResultatDesTweets)
+
+
 
 
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index

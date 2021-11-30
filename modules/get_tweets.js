@@ -113,4 +113,6 @@ module.exports = function (uri, app) {
    //    console.log(error);
    //    throw error;
    // });
+   return  "les tweets a envoyer sous forme de tableau ou autre"
+
 }
