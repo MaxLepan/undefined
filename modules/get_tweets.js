@@ -4,113 +4,103 @@ const  OpenAI  = require('openai-api');
 
 const uri = "mongodb://" + process.env.USER + ":" + process.env.PASS + "@" + process.env.BDD_HOST + ":" + process.env.BDD_PORTS + "/?maxPoolSize=20&w=majority";
 
-//module.exports = function (uri, app) {
+const openai = new OpenAI(process.env.OPENAI_API_KEY);
 
+const client = new Twitter({
+   consumer_key: process.env.TWITTER_CONSUMER_KEY,
+   consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
+   access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
+   access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
+});
 
-   const openai = new OpenAI(process.env.OPENAI_API_KEY);
+let positiveTweets
+let negativeTweets
+let tweets = []
 
-   const client = new Twitter({
-      consumer_key: process.env.TWITTER_CONSUMER_KEY,
-      consumer_secret: process.env.TWITTER_CONSUMER_SECRET,
-      access_token_key: process.env.TWITTER_ACCESS_TOKEN_KEY,
-      access_token_secret: process.env.TWITTER_ACCESS_TOKEN_SECRET
-   });
-   let positiveTweets
-   let negativeTweets
-   let tweets = []
+MongoClient.connect(uri, function (err, db) {
+   if (err) throw err;
 
-   MongoClient.connect(uri, function (err, db) {
+   var dbo = db.db("undefined");
+
+   dbo.collection("tweets").find({}).toArray(function (err, result) {
       if (err) throw err;
 
-      var dbo = db.db("undefined");
+      positiveTweets = result[0]['positive_tweets'];
+      negativeTweets = result[1]['negative_tweets'];
 
-      dbo.collection("tweets").find({}).toArray(function (err, result) {
-         if (err) throw err;
+      tweets = [positiveTweets, negativeTweets]
 
-         positiveTweets = result[0]['positive_tweets'];
-         negativeTweets = result[1]['negative_tweets'];
+      console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
-         tweets = [positiveTweets, negativeTweets]
+      db.close();
+   });
 
-         console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+})
 
-         db.close();
+async function classification(tweet) {
+   try {
+
+      const classificatedTweet = await openai.classification({
+         examples: [
+            ['A happy moment', 'Positive'],
+            ['I am sad.', 'Negative'],
+            ['I am feeling awesome', 'Positive']
+         ],
+         labels: ['Positive', 'Negative', 'Neutral'],
+         query: tweet,
+         search_model: 'curie',
+         model: 'curie'
       });
 
-   })
+      console.log(classificatedTweet['data']['label'])
 
-   async function classification(tweet) {
-      try {
-
-         const classificatedTweet = await openai.classification({
-            examples: [
-               ['A happy moment', 'Positive'],
-               ['I am sad.', 'Negative'],
-               ['I am feeling awesome', 'Positive']
-            ],
-            labels: ['Positive', 'Negative', 'Neutral'],
-            query: tweet,
-            search_model: 'curie',
-            model: 'curie'
-         });
-
-         console.log(classificatedTweet['data']['label'])
-
-         if (classificatedTweet['data']['label'] === "Positive") {
-            positiveTweets++
-         } else if (classificatedTweet['data']['label'] === "Negative") {
-            negativeTweets++
-         }
-
-         console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
-
-         MongoClient.connect(uri, function (err, db) {
-            if (err) throw err;
-
-            var dbo = db.db("undefined");
-
-            dbo.collection("tweets").updateMany({},
-               { $set: { positive_tweets: positiveTweets, negative_tweets: negativeTweets } },
-               function (err, res) {
-                  if (err) throw err;
-                  console.log(res.matchedCount + " document(s) updated")
-                  db.close();
-               }
-            )
-
-         });
-
-         console.log('==================================================================================================================================================')
-
+      if (classificatedTweet['data']['label'] === "Positive") {
+         positiveTweets++
+      } else if (classificatedTweet['data']['label'] === "Negative") {
+         negativeTweets++
       }
 
-      catch (e) {
-         console.error(e)
-      }
+      console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
+
+      MongoClient.connect(uri, function (err, db) {
+         if (err) throw err;
+
+         var dbo = db.db("undefined");
+
+         dbo.collection("tweets").updateMany({},
+            { $set: { positive_tweets: positiveTweets, negative_tweets: negativeTweets } },
+            function (err, res) {
+               if (err) throw err;
+               console.log(res.matchedCount + " document(s) updated")
+               db.close();
+            }
+         )
+
+      });
+
+      console.log('==================================================================================================================================================')
+
    }
 
+   catch (e) {
+      console.error(e)
+   }
+}
 
 
-  const stream = client.stream('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' })
 
-   stream.on('data', (data) => {
-      //console.log(data);
-      if (!data.retweeted_status) {
-         const tweetos = data.user.screen_name;
-         const tweetText = data?.extended_tweet?.full_text || data.text;
-         const tweetFrom = data?.place?.country_code || data.user?.location;
-         const tweetLanguage = data?.lang || data.user?.lang;
-         //console.log("@", tweetos, '\na tweeté "', tweetText, '"\nà', tweetFrom, '\nen', tweetLanguage, '\n==============================================================================================================================================' );
-         console.log("Tweet : " + tweetText)
-         classification(tweetText)
-      }
-   });
+const stream = client.stream('statuses/filter', {screen_name:'nodejs', track: '#lgbt', tweet_mode: 'extended' })
 
-   stream.on('error', (error) => {
-      console.log(error);
-      throw error;
-   });
+stream.on('data', (data) => {
+   //console.log(data);
+   if (!data.retweeted_status) {
+      const tweetText = data?.extended_tweet?.full_text || data.text;
+      console.log("Tweet : " + tweetText)
+      classification(tweetText)
+   }
+});
 
-//   return  "les tweets a envoyer sous forme de tableau ou autre"
-
-//}
+stream.on('error', (error) => {
+   console.log(error);
+   throw error;
+});
