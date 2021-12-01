@@ -1,31 +1,3 @@
-let slides;
-
-function getActiveSlides () {
-
-    slides = document.querySelectorAll('.splide__slide')
-    //console.log(slides)
-
-    slides.forEach(function(slide) {
-        console.log(slide)
-        if (slide.classList.contains('.is-active')){
-            
-            slide.classList.add('.storyActiveSlide')
-
-            activateClass = false
-            
-        }
-    })
-
-}
-
-function timeoutBeforeGetActiveSlides () {
-    setInterval(getActiveSlides, 10000);
-}
-
-function here () {
-    console.log('here')
-}
-
 // set the dimensions and margins of the graph
 const width = 210,
     height = 210,
@@ -113,17 +85,13 @@ svg
 
 window.addEventListener("DOMContentLoaded", () => {
 
-    setTimeout(timeoutBeforeGetActiveSlides, 10)
-    
+    //Share button
+    let share_button = document.querySelector(".partager")
+    let share_link = share_button.getAttribute('value')
 
-    //setInterval(here, 1000)
-    if (document.getElementById("btnDef").checked === true) {
-        document.getElementById("ctDefinition").style.display="block !important";
-    }
-    else{
-        document.getElementById("ctDefinition").style.display="none";
-    }
-
+    share_button.addEventListener('click', function () {
+        console.log(share_link)
+    })
 
 
 })
