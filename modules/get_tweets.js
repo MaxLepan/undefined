@@ -30,7 +30,7 @@ MongoClient.connect(uri, function (err, db) {
 
       tweets = [positiveTweets, negativeTweets]
 
-      console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+      //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
       db.close();
    });
@@ -60,7 +60,7 @@ async function classification(tweet) {
          negativeTweets++
       }
 
-      //console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
+      console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
 
       MongoClient.connect(uri, function (err, db) {
          if (err) throw err;
