@@ -83,6 +83,20 @@ svg
         return (midangle < Math.PI ? 'start' : 'end')
     })
 
+let timeoutPopup;
+
+function toggleShareModal() {
+    const copiedPopup = document.querySelector('.copied_popup')
+
+    copiedPopup.classList.toggle("popup_active");
+
+}
+
+function timeoutModal () {
+    timeoutPopup = setTimeout(toggleShareModal, 5000)
+}
+
+
 window.addEventListener("DOMContentLoaded", () => {
 
     //Share button
@@ -90,7 +104,15 @@ window.addEventListener("DOMContentLoaded", () => {
     let share_link = share_button.getAttribute('value')
 
     share_button.addEventListener('click', function () {
-        console.log(share_link)
+
+
+        navigator.clipboard.writeText(share_link).then(function() {
+            console.log(share_link)
+            toggleShareModal()
+            timeoutModal()
+        }, function(err) {
+            console.error('Async: Could not copy text: ', err);
+        });
     })
 
 
