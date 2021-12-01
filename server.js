@@ -25,8 +25,10 @@ let paysProteger2017;
 let paysNeutre2017;
 let paysCrime2017;
 
-
 let country;
+
+let positiveTweets;
+let negativeTweets;
 
 fs.readFile('./src/ressources/country.json', 'utf8', (err, data) => {
 
@@ -101,17 +103,20 @@ function bindPaysIndice(){
     console.log("Tous les pays on été binds")
 }
 
+FindAll(uri, "tweets", (resTweets) => {
 
+    positiveTweets = resTweets[0]['positive_tweets'];
+    negativeTweets = resTweets[1]['negative_tweets'];
 
+    console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
-//Vient chercher le module getTweet;
-require(__dirname + "/modules/get_tweets.js")(uri, app);
+})
 
 
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index
 app.get("/", (req, res) => {
 
-    res.render(__dirname + "/src/html/index.ejs", { test: "hello" });
+    res.render(__dirname + "/src/html/index.ejs", { positiveTweets, negativeTweets });
 
 })
 
@@ -125,9 +130,6 @@ app.get("/map", (req, res) => {
 
 //Find all collection
 function FindAll(uri, collection, callback) {
-
-
-
 
     MongoClient.connect(uri, function (err, db) {
         if (err) throw err;

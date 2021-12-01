@@ -5,9 +5,11 @@
     <title></title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
+    
 </head>
 
 <body>
+    
     <header>
         <div class="menu">
             <span></span>
@@ -166,6 +168,10 @@
             <p>Twitter est l’une des plateformes qui expose le plus la communauté LGBTQIA+ à l’heure actuelle. <br> Elle peut le faire de manière très positive comme très négative. 
                <br> Ci-dessous, vous pouvez voir en direct les changements de l’avis public envers la communauté grâce au #LGBT.</p>
         </div>
+        <div class="tweets_container">
+            <div>En 2021 sur Twitter :</div>
+            <div id="tweets_dataviz"></div>
+        </div>
         <div class="autreChiffres">
             <p>D’autres chiffres parlant...</p>
             <div class="ctAutre">
@@ -277,6 +283,7 @@
             
         </div>
     </div>
+
     <div class="ctRessentis">
         <div class="title">
             <h2>RESSENTIS</h2>
@@ -314,6 +321,17 @@
             </textarea>
         </div>
     </div>
+
+    <script src="https://d3js.org/d3.v6.js"></script>
+    
+    <script>
+        const positiveTweets = JSON.parse('<%- JSON.stringify(positiveTweets) %>')
+        const negativeTweets = JSON.parse('<%- JSON.stringify(negativeTweets) %>')
+        console.log(d3.version)
+        console.log(positiveTweets, negativeTweets)
+    </script>
+    <script src="../js/index.js"></script>
+
     <script>
         let def1 = document.getElementById("outing");
         let d1 = document.getElementById("defouting");
@@ -397,7 +415,7 @@
                 }
             })
         </script>
-    <script src="../js/index.js"></script>
+        
     </body>
     
     </html>
