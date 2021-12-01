@@ -70,15 +70,15 @@ window.addEventListener("DOMContentLoaded", () => {
         
             yearBool = yearSwitch.checked
 
-            if (protectedFilter.classList.contains('active')){
+            if (protectedFilter.classList.contains('activeProtectedFilter')){
                 protectedCountries(protectedCountriesToIterate).then()
             }
 
-            if (neutralFilter.classList.contains('active')){
+            if (neutralFilter.classList.contains('activeNeutralFilter')){
                 neutralCountries(neutralCountriesToIterate).then()
             }
 
-            if (criminalizedFilter.classList.contains('active')){
+            if (criminalizedFilter.classList.contains('activeCriminalizedFilter')){
                 criminalizedlCountries(criminalizedCountriesToIterate).then()
             }
 
@@ -87,17 +87,19 @@ window.addEventListener("DOMContentLoaded", () => {
                 neutralCountriesToIterate = neutralCountries2020[0];
                 criminalizedCountriesToIterate = criminalizedCountries2020[0];
                 gai_slider.disabled = true;
+                
             } else {
                 protectedCountriesToIterate = protectedCountries2017[0]
                 neutralCountriesToIterate = neutralCountries2017[0];
                 criminalizedCountriesToIterate = criminalizedCountries2017[0];
                 gai_slider.disabled = false;
                 gaiCountries(gai_slider_value, null).then()
+                document.getElementById("gaiFilter").style.display= "flex";
             }
 
-            protectedFilter.classList.add('active')
-            neutralFilter.classList.add('active')
-            criminalizedFilter.classList.add('active')  
+            protectedFilter.classList.add('activeProtectedFilter')
+            neutralFilter.classList.add('activeNeutralFilter')
+            criminalizedFilter.classList.add('activeCriminalizedFilter')  
 
             protectedFilterVerification = true
             neutralFilterVerification = true
@@ -116,6 +118,7 @@ window.addEventListener("DOMContentLoaded", () => {
             gaiCountries(gai_slider_value, null).then()
 
             gai_slider_value = parseInt(gai_slider.value)
+            console.log(gai_slider_value);
 
             gaiCountries(gai_slider_value, 1).then()
 
@@ -126,20 +129,20 @@ window.addEventListener("DOMContentLoaded", () => {
 
         protectedFilter.onclick = () => {
             protectedCountries(protectedCountriesToIterate).then()
-            protectedFilter.classList.toggle('active')
-            protectedFilterVerification = protectedFilter.classList.contains('active')
+            protectedFilter.classList.toggle('activeProtectedFilter')
+            protectedFilterVerification = protectedFilter.classList.contains('activeProtectedFilter')
         }
 
         neutralFilter.onclick = () => {
             neutralCountries(neutralCountriesToIterate).then()
-            neutralFilter.classList.toggle('active')
-            neutralFilterVerification = neutralFilter.classList.contains('active')
+            neutralFilter.classList.toggle('activeNeutralFilter')
+            neutralFilterVerification = neutralFilter.classList.contains('activeNeutralFilter')
         }
 
         criminalizedFilter.onclick = () => {
             criminalizedlCountries(criminalizedCountriesToIterate).then()
-            criminalizedFilter.classList.toggle('active')
-            criminalizedFilterVerification = criminalizedFilter.classList.contains('active')
+            criminalizedFilter.classList.toggle('activeCriminalizedFilter')
+            criminalizedFilterVerification = criminalizedFilter.classList.contains('activeCriminalizedFilter')
         }
 
 
@@ -184,8 +187,8 @@ window.addEventListener("DOMContentLoaded", () => {
             'source': 'states',
             'layout': {},
             'paint': {
-                'line-color': '#627BC1',
-                'line-width': 2
+                'line-color': '#1C1C1C',
+                'line-width': 1
             }
         });
 
