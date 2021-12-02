@@ -67,7 +67,7 @@ window.addEventListener("DOMContentLoaded", () => {
         let criminalizedCountriesToIterate = criminalizedCountries2020[0];
 
         yearSwitch.onclick = () => {
-        
+            debugger
             yearBool = yearSwitch.checked
 
             if (protectedFilter.classList.contains('activeProtectedFilter')){
@@ -87,6 +87,7 @@ window.addEventListener("DOMContentLoaded", () => {
                 neutralCountriesToIterate = neutralCountries2020[0];
                 criminalizedCountriesToIterate = criminalizedCountries2020[0];
                 gai_slider.disabled = true;
+                document.querySelector("#gaiFilter").style.display= "none";
                 
             } else {
                 protectedCountriesToIterate = protectedCountries2017[0]
@@ -94,12 +95,13 @@ window.addEventListener("DOMContentLoaded", () => {
                 criminalizedCountriesToIterate = criminalizedCountries2017[0];
                 gai_slider.disabled = false;
                 gaiCountries(gai_slider_value, null).then()
-                document.getElementById("gaiFilter").style.display= "flex";
+                document.querySelector("#gaiFilter").style.display= "flex";
+                
             }
 
             protectedFilter.classList.add('activeProtectedFilter')
             neutralFilter.classList.add('activeNeutralFilter')
-            criminalizedFilter.classList.add('activeCriminalizedFilter')  
+            criminalizedFilter.classList.add('activeCriminalizedFilter')
 
             protectedFilterVerification = true
             neutralFilterVerification = true

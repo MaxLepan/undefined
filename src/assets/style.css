@@ -7,7 +7,7 @@ body{
     background-color: #262526;
     color: #FFF;
     font-family:"Hind Siliguri";
-    
+    overflow-x: hidden;
 }
 
 header{
@@ -22,6 +22,8 @@ header .menu{
     display: flex;
     flex-direction: column;
     margin-left: 75px;
+    position: fixed;
+    top: 30px;
 }
 
 header .menu span{
@@ -31,6 +33,19 @@ header .menu span{
 }
 .menuSection{
     display: none;
+    writing-mode:vertical-rl;
+    transform: rotate(180deg);
+    position: fixed;
+}
+.menuSection a {
+        color: #FFF;
+        text-decoration: none;
+        font-size: 24px;
+        margin-bottom: 63px;
+        margin-right: -12px;
+}
+header img{
+    margin-left: 40%;
 }
 .partager{
     width: 144px;
@@ -43,6 +58,26 @@ header .menu span{
     font-weight: 600;
     font-size: 18px;
     margin-right: 75px;
+    max-height: 35px;
+}
+
+.RS{
+    display: flex;
+    flex-direction: column;
+    position: fixed;
+    margin-left: 70px;
+    align-items: center;
+    justify-content: center;
+    bottom: 30px;
+}
+.RS p{
+    writing-mode:vertical-rl;
+    transform: rotate(180deg);
+    font-size: 21px;
+}
+
+.RS .fbLink{
+    margin-left: 0;
 }
 
 .introCT{
@@ -156,8 +191,22 @@ h3{
     margin-bottom: 232px;
     
 }
+.ctTemoignage::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 146%;
+    width: 100%;
+    position: absolute;
+    margin-top: 29px;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+}
 .ctTemoignage h2{
     margin-left: -200px;
+    color: #262526;
+    margin-top: 52px;
 }
 .intoTemoignage{
     width: 100%;
@@ -217,17 +266,18 @@ h3{
 }
 .Slider{
 	width: 800px;
-	border-radius: 10px;
+	border-radius: 75px;
 	overflow: hidden;
 	margin-top: 50px;
     border:1px solid #FFF;
     height: auto;
+    background-color: #262626;
 }
 
 .Slides{
 	width: 4800px;
-	height: 500px;
-	display: flex;
+    height: 414px;
+    display: flex;
     z-index: 1;
 	
 }
@@ -236,15 +286,20 @@ h3{
 }
 .Slide{
 	width: 800px;
-	transition: 2s;
+    height: 88%;
+    transition: 2s;
     color: transparent;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-shadow: 0 0 8px #FFF;
+    color: #FFF;
+    background-color: #262626;
 }
-
+.blur{
+    text-shadow: 0 0 8px #FFF;
+    color: transparent ;
+}
 
 .Slide p{
 	width: 80%;
@@ -313,7 +368,9 @@ h3{
 
 
 /*----------visualisation----------*/
-
+.ctVisualisation{
+    margin-top: 100px;
+}
 .introVis{
     text-align: center;
     margin-top: 50px;
@@ -343,8 +400,25 @@ h3{
     justify-content: center;
     flex-direction: column;
 }
-.ctChiffre h2{
-    margin-left: -200px;
+.ctChiffre::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 278%;
+    width: 100%;
+    position: absolute;
+    margin-top: 29px;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+    margin-top: -200px;
+}
+
+.ctChiffre h2{  
+    margin-top: 100px;
+    margin-left: -400px;
+    width: 142%;
+    color: #262626;
 }
 .introChiffre{
     width: 100%;
@@ -425,6 +499,8 @@ h3{
     flex-direction: column;
     justify-content: center;
     width: 100%;
+    margin-top: 20%;
+    margin-bottom: 200px;
 }
 
 .ctSolution p{
@@ -508,6 +584,21 @@ h3{
     display: flex;
     justify-content: center;
     flex-direction: column;
+}
+.ctRessentis h2{
+    color: #262626;
+}
+.ctRessentis::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 183%;
+    width: 100%;
+    position: absolute;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+    margin-top: 347px;
 }
 .introRessentis{
     text-align: center;
