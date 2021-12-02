@@ -1,3 +1,6 @@
+const url = 'http://localhost:8002/'
+let xhr = new XMLHttpRequest();
+
 // set the dimensions and margins of the graph
 const width = 500,
     height = 210,
@@ -85,6 +88,18 @@ svg
     .style("fill","#FFF")
 
 let timeoutPopup;
+let feedbackPopup;
+
+function toggleFeedbackModal() {
+    const feedbackPopup = document.querySelector('.feedback_popup')
+
+    feedbackPopup.classList.toggle("popup_active");
+
+}
+
+function timeoutFeedbackModal () {
+    feedbackPopup = setTimeout(toggleFeedbackModal, 5000)
+}
 
 function toggleShareModal() {
     const copiedPopup = document.querySelector('.copied_popup')
@@ -97,6 +112,20 @@ function timeoutModal () {
     timeoutPopup = setTimeout(toggleShareModal, 5000)
 }
 
+function post (json) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", '/', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.setRequestHeader('jsonData', json);
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4){
+            console.log(xhr.response);
+        }
+    }
+}
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -104,8 +133,31 @@ window.addEventListener("DOMContentLoaded", () => {
     let share_button = document.querySelector(".partager")
     let share_link = share_button.getAttribute('value')
 
-    share_button.addEventListener('click', function () {
+    let feedbackButtons = document.querySelectorAll('.pictoR')
+    let writtenFeedback = document.querySelector('#story')
+    let sendFeedbackButton = document.querySelector('.submit_feedback')
+    let feedback = {}
 
+    feedbackButtons.forEach(button => {
+
+      button.addEventListener("click", function () {
+        feedback.feeling = button.children[1].classList[1]
+      })
+      
+    })
+  
+    sendFeedbackButton.addEventListener('click', function () {
+        feedback.feedback = writtenFeedback.value
+        feedback = JSON.stringify(feedback)
+
+        console.log(feedback)
+
+        post(feedback)
+        toggleFeedbackModal()
+        timeoutFeedbackModal()
+    })
+
+    share_button.addEventListener('click', function () {
 
         navigator.clipboard.writeText(share_link).then(function() {
             console.log(share_link)
@@ -115,6 +167,5 @@ window.addEventListener("DOMContentLoaded", () => {
             console.error('Async: Could not copy text: ', err);
         });
     })
-
 
 })

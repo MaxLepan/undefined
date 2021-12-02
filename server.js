@@ -57,7 +57,6 @@ fs.readFile('./src/ressources/capitals.json', 'utf8', (err, data) => {
 });
 
 
-
 //Vient chercher les pays dans la db au lancement du serveur
 FindAll(uri, "db_pays2020", (resPays2020) => {
     db_pays2020 = resPays2020;
@@ -66,10 +65,6 @@ FindAll(uri, "db_pays2020", (resPays2020) => {
         bindPaysIndice();
     })
 })
-
-
-
-
 
 
 //On assemble les pays protegés, Neutre et Non protegés ensemble.
@@ -112,9 +107,7 @@ FindAll(uri, "tweets", (resTweets) => {
 
 })
 
-
-//require(__dirname + "/modules/get_tweets.js");
-
+require(__dirname + "/modules/get_tweets.js");
 
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index
 app.get("/", (req, res) => {
@@ -130,6 +123,24 @@ app.get("/map", (req, res) => {
     res.render(__dirname + "/src/html/map.ejs", { db_pays2020, paysProteger2020, paysNeutre2020,paysCrime2020,paysProteger2017, paysNeutre2017,paysCrime2017, country,capitals});
 })
 
+app.post("/", function (req, res) {
+    let sentFeedback = JSON.parse(req.headers.jsondata);
+
+    MongoClient.connect(uri, function (err, db) {
+        if (err) throw err;
+
+        var dbo = db.db("undefined");
+
+        try {
+            dbo.collection("feedbacks").insertOne(sentFeedback)
+        } catch (e) {
+            console.log(e)
+        }
+
+
+    });
+
+})
 
 //Find all collection
 function FindAll(uri, collection, callback) {
@@ -152,7 +163,6 @@ function FindAll(uri, collection, callback) {
 
 
 }
-
 
 
 function PaysProtege(annee,callback) {
@@ -183,7 +193,6 @@ function PaysProtege(annee,callback) {
     }
     callback(dataReturned)
 }
-
 
 
 function PaysNeutre(annee,callback) {
@@ -244,8 +253,6 @@ function PaysCrime(annee,callback) {
     }
     callback(dataReturned)
 }
-
-
 
 
 //----Port d'ecoute

@@ -80,6 +80,9 @@ header img{
     margin-left: 0;
 }
 
+.partager:hover {
+    cursor: pointer;
+}
 .introCT{
     display: flex;
     flex-direction: row;
@@ -919,6 +922,15 @@ button::before{
     background-color: #2196f3;
     right: -250px;
     top: -50px;
+    width: 250px;
+    height: 50px;
+    transition: 1s;
+}
+
+.feedback_popup {
+    position: absolute;
+    background-color: #2196f3;
+    right: -250px;
     width: 250px;
     height: 50px;
     transition: 1s;
