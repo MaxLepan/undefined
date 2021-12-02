@@ -45,15 +45,12 @@ header .menu span{
     margin-right: 75px;
 }
 
-<<<<<<< HEAD
 .partager:hover {
     cursor: pointer;
 }
-=======
 .introCT{
     display: flex;
     flex-direction: row;
->>>>>>> d4a649267e26e79e98fc1b8c014e622d3dd56764
 
 }
 .textIntro{
