@@ -25,7 +25,26 @@ header .menu{
     position: fixed;
     top: 30px;
 }
-
+.submit_feedback{
+    background: none;
+    box-shadow: none;
+    border: none;
+    color: black;
+    font-size: 18px;
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: #FFF;
+    padding: 10px 20px;
+    border-radius: 20px;
+    margin-left: 71%;
+    margin-top: 20px;
+    z-index: 1000;
+}
+.submit_feedback::before{
+    display: none;
+}
 header .menu span{
     width: 40px;
     border: 1px solid #FFF;
@@ -661,7 +680,7 @@ textarea{
     border:1px solid #FFF;
     border-radius: 10px;
     background-color: #262526;
-    margin-top: 280px;
+    margin-top: 160px;
     font-size: 16px;
     font-family: 'Taviraj';
     font-style: italic;
