@@ -113,7 +113,7 @@ FindAll(uri, "tweets", (resTweets) => {
 })
 
 
-require(__dirname + "/modules/get_tweets.js");
+//require(__dirname + "/modules/get_tweets.js");
 
 
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index

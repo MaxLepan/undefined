@@ -5,78 +5,102 @@
     <title></title>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="../assets/style.css">
-    
+
 </head>
 
 <body>
-    
+
     <header>
-        <div class="menu">
+        <div id="menu" class="menu">
             <span></span>
             <span></span>
             <span></span>
+            <div class="menuSection">
+                <a href="#introCT">Conetexte</a>
+                <a href="/map">Carte</a>
+                <a href="#ctSolution">Solutions</a>
+            </div>
         </div>
-        <img src="../assets/images/logo.svg"/>
+        
+        <img src="../assets/images/logo.svg" />
         <div class="partager">Partager</div>
     </header>
     <div class=RS>
         <p>Suis-nous</p>
     </div>
-    <div class="introCT">
-        <div class="textIntro">
-            <p class="introTitle">La communauté LGBTQIA+</p>
-            <p class="introSub">où en sommes-nous aujourd’hui ?</p>
-            <p class="introP">Les questions de genres et d’orientations sexuelles sont dans nos têtes depuis quelques années. Dans de nombreux pays, la communauté LGBTQIA+ est discriminée, et parfois même criminalisée. <br><br>
+    <div id="introCT" class="introCT">
+        <div class="rightCtIntro">
+            <div class="textIntro">
+                <p class="introTitle">La communauté <span class="rayure">LGBTQIA+</span></p>
+                <p class="introSub">où en sommes-nous aujourd’hui ?</p>
+                <p class="introP">Les questions de genres et d’orientations sexuelles sont dans nos têtes depuis
+                    quelques années. Dans de nombreux pays, la communauté LGBTQIA+ est discriminée, et parfois même
+                    criminalisée. <br><br>
 
-                Undefined est un projet dénonçant ces violences via des données numériques, des témoignages et un planisphère interactif afin de vous donner un aperçu de l’état actuel de l’acceptation et de la protection de la communauté LGBTQIA+ dans le monde.
+                    Undefined est un projet dénonçant ces violences via des données numériques, des témoignages et un
+                    planisphère interactif afin de vous donner un aperçu de l’état actuel de l’acceptation et de la
+                    protection de la communauté LGBTQIA+ dans le monde.
                 </p>
+            </div>
+            <div class="introButton">
+                <a href="/map" class="carteButton">Découvrir la carte</a>
+                <a href="#ctSolution" class="agirButton">Agir</a>
+            </div>
         </div>
-        <div class="introButton">
-            <div class="carteButton">Découvrir la carte</div>
-            <div class="agirButton">Agir</div>
+        <div class="leftCtIntro">
+            <img src="../assets/images/mapIntro.svg">
         </div>
     </div>
     <div class="invitScroll">
         <p>Scroll pour voir la suite</p>
-        <img src="../assets/images/invitScroll.svg" >
+        <img src="../assets/images/invitScroll.svg">
     </div>
-    <div class="ctTemoignage">
+    <div id="ctTemoignage" class="ctTemoignage">
         <div class="title">
             <h2>TEMOIGNAGES</h2>
             <h3>Temoignages</h3>
         </div>
-        <p class="intoTemoignage">De nos jours, même en France la communauté subit encore des violences et des discriminations. <br> En voici des témoignages :</p>
-        
+        <p class="intoTemoignage">De nos jours, même en France la communauté subit encore des violences et des
+            discriminations. <br> En voici des témoignages :</p>
+
         <div class="ctDefinition" id="ctDefinition">
             <div class="defCT outing" id="outing">
                 <p class="defTitle">OUTING / OUTER</p>
                 <span></span>
-                <p class="definition" id="defouting">Révéler qu’une personne est LGBTQIA+.  L’outing ne doit JAMAIS se faire sans le consentement de la personne concernée. Et cela peut être considéré, dans le code pénal, comme une atteinte à la vie privée.</p>
+                <p class="definition" id="defouting">Révéler qu’une personne est LGBTQIA+. L’outing ne doit JAMAIS se
+                    faire sans le consentement de la personne concernée. Et cela peut être considéré, dans le code
+                    pénal, comme une atteinte à la vie privée.</p>
             </div>
             <div class="defCT megenre" id="megenre">
                 <p class="defTitle">MÉGENRER</p>
                 <span></span>
-                <p class="definition" id="defmegenre">Cela signifie ne pas utiliser le bon genre (pronom) pour parler d’une personne.</p>
+                <p class="definition" id="defmegenre">Cela signifie ne pas utiliser le bon genre (pronom) pour parler
+                    d’une personne.</p>
             </div>
             <div class="defCT therapie" id="therapie">
                 <p class="defTitle">THÉRAPIE DE CONVERSION</p>
                 <span></span>
-                <p class="definition" id="deftherapie">Les thérapies de conversion (également appelées "thérapies de guérison") sont des pratiques visant à modifier ou réprimer l’orientation sexuelle ou l’identité de genre des personnes.</p>
+                <p class="definition" id="deftherapie">Les thérapies de conversion (également appelées "thérapies de
+                    guérison") sont des pratiques visant à modifier ou réprimer l’orientation sexuelle ou l’identité de
+                    genre des personnes.</p>
             </div>
             <div class="defCT cis" id="cis">
                 <p class="defTitle">CISGENRE </p>
                 <span></span>
-                <p class="definition" id="defcis">Une personne cisgenre est une personne en adéquation avec le genre qui lui a été assigné à la naissance.</p>
+                <p class="definition" id="defcis">Une personne cisgenre est une personne en adéquation avec le genre qui
+                    lui a été assigné à la naissance.</p>
             </div>
             <div class="defCT trans" id="trans">
                 <p class="defTitle">TRANSGENRE </p>
                 <span></span>
-                <p class="definition" id="deftrans">Une personne transgenre est une personne qui n’est pas du genre qui lui a été assigné à la naissance.</p>
+                <p class="definition" id="deftrans">Une personne transgenre est une personne qui n’est pas du genre qui
+                    lui a été assigné à la naissance.</p>
             </div>
             <div class="defCT constitutionnel" id="constitutionnel">
                 <p class="defTitle">CONSTITUTIONNEL</p>
                 <span></span>
-                <p class="definition" id="defconstitutionnel">Qui relève de la Constitution d’un pays, un ensemble de lois fondamentales.</p>
+                <p class="definition" id="defconstitutionnel">Qui relève de la Constitution d’un pays, un ensemble de
+                    lois fondamentales.</p>
             </div>
             <div class="defCT pride" id="pride">
                 <p class="defTitle">(GAY)PRIDE</p>
@@ -86,17 +110,22 @@
             <div class="defCT comingout" id="comingout">
                 <p class="defTitle">COMING OUT</p>
                 <span></span>
-                <p class="definition" id="defcomingout">Action de dévoiler son orientation sexuelle ou son identité de genre.</p>
+                <p class="definition" id="defcomingout">Action de dévoiler son orientation sexuelle ou son identité de
+                    genre.</p>
             </div>
             <div class="defCT transition" id="transition">
                 <p class="defTitle">TRANSITION</p>
                 <span></span>
-                <p class="definition" id="deftransition">Dans le cadre d’un parcours trans, il s’agit de la période durant laquelle la personne va commencer à vivre en accord avec son identité de genre et non plus avec celui qui lui était assigné à la naissance.</p>
+                <p class="definition" id="deftransition">Dans le cadre d’un parcours trans, il s’agit de la période
+                    durant laquelle la personne va commencer à vivre en accord avec son identité de genre et non plus
+                    avec celui qui lui était assigné à la naissance.</p>
             </div>
         </div>
         <p class="indication">Clique sur un mot pour découvrir sa définition</p>
+        <div class="stopButton" id="stopButton">STOP</div>
         <div class="sliderTemoignage">
             <div class="Slider">
+                
                 <div class="Slides">
                     <input type="radio" name="radio_btn" id="radio1">
                     <input type="radio" name="radio_btn" id="radio2">
@@ -105,30 +134,57 @@
                     <input type="radio" name="radio_btn" id="radio5">
                     <input type="radio" name="radio_btn" id="radio6">
                     <div class="Slide first">
-                        <p>Je suis amie avec deux mecs qui sont ensemble la plupart du temps. Quand je suis en ville avec eux, il se prennent des remarques types “sales gays allez mourrir”, bref, dans ce genre. Pour ma part, je prends aussi quand je suis avec eux, type “si tu traînes avec eux, tu dois être comme eux, une tarlouze”, des trucs dans ce genre. Après moi, j’ai arrêté d’y porter attention ou alors je réponds.</p>
+                        <p>Je suis amie avec deux mecs qui sont ensemble la plupart du temps. Quand je suis en ville
+                            avec eux, il se prennent des remarques types “sales gays allez mourrir”, bref, dans ce
+                            genre. Pour ma part, je prends aussi quand je suis avec eux, type “si tu traînes avec eux,
+                            tu dois être comme eux, une tarlouze”, des trucs dans ce genre. Après moi, j’ai arrêté d’y
+                            porter attention ou alors je réponds.</p>
                         <p class="nomTem">Anonyme, 16 ans</p>
                     </div>
                     <div class="Slide">
-                        <p>Je me suis faite harceler verbalement par tout mon collège pendant deux ans. Quand je dis "par tout", c'est que je compte également les profs et les surveillants. La seule personne qui m’a soutenu dans cet établissement est la CPE et je lui dirai jamais assez merci. Je me suis faite également harcelée sexuellement pendant ces deux ans, cela a été très long et j'ai mis beaucoup de temps à m'en remettre. Je pense que cela sera toujours gravé en moi mais si c'était à refaire, je dirais que je ferais tout pareil car cela m’a permis d'être qui je suis aujourd'hui et je suis fière du chemin que j’ai accompli. La vie nous fait vivre une multitude d'expériences pour savoir qui on est et qui nous voulons être ainsi que ce que nous n'avons pas envie d'être. </p>
+                        <p>Je me suis faite harceler verbalement par tout mon collège pendant deux ans. Quand je dis
+                            "par tout", c'est que je compte également les profs et les surveillants. La seule personne
+                            qui m’a soutenu dans cet établissement est la CPE et je lui dirai jamais assez merci. Je me
+                            suis faite également harcelée sexuellement pendant ces deux ans, cela a été très long et
+                            j'ai mis beaucoup de temps à m'en remettre. Je pense que cela sera toujours gravé en moi
+                            mais si c'était à refaire, je dirais que je ferais tout pareil car cela m’a permis d'être
+                            qui je suis aujourd'hui et je suis fière du chemin que j’ai accompli. La vie nous fait vivre
+                            une multitude d'expériences pour savoir qui on est et qui nous voulons être ainsi que ce que
+                            nous n'avons pas envie d'être. </p>
                         <p class="nomTem">Anonyme, 18 ans</p>
                     </div>
                     <div class="Slide">
-                        <p>Au collège, je me faisais insulter dans les couloirs, regarder de travers, ca m’atteignait au début puis ensuite, en grandissant, j’ai su me trouver, su prendre confiance et m’assumer, maintenant rien ne me blesse et je suis fier de qui je suis.</p>
+                        <p>Au collège, je me faisais insulter dans les couloirs, regarder de travers, ca m’atteignait au
+                            début puis ensuite, en grandissant, j’ai su me trouver, su prendre confiance et m’assumer,
+                            maintenant rien ne me blesse et je suis fier de qui je suis.</p>
                         <p class="nomTem">Erwan, 18 ans</p>
                     </div>
                     <div class="Slide">
-                        <p>Beaucoup de violences verbales (insultes, menaces de morts ou demandes à me suicider) ainsi que des gens qui sexualisaient mon corps et ma sexualité (surtout que je suis out en dehors de ma famille depuis environ mes 13-14 ans donc c'était vraiment glauque) de paire avec la sexualisation un non-respect de l'espace personnel pour être forcé de les écouter donner leur opinions. Maintenant je suis à la fac et dans un climat bien plus ouvert et sécuritaire mais ça ne me protège pas quand je suis seul dehors.</p>
+                        <p>Beaucoup de violences verbales (insultes, menaces de morts ou demandes à me suicider) ainsi
+                            que des gens qui sexualisaient mon corps et ma sexualité (surtout que je suis out en dehors
+                            de ma famille depuis environ mes 13-14 ans donc c'était vraiment glauque) de paire avec la
+                            sexualisation un non-respect de l'espace personnel pour être forcé de les écouter donner
+                            leur opinions. Maintenant je suis à la fac et dans un climat bien plus ouvert et sécuritaire
+                            mais ça ne me protège pas quand je suis seul dehors.</p>
                         <p class="nomTem">Anonyme, 18 ans</p>
                     </div>
                     <div class="Slide">
-                        <p>Moi et ma copine: - on s’est fait filmer par deux hommes en voiture (âgés!!!) dans la rue alors qu’on s’embrassait; - je me suis fait cracher dessus, je venais de la déposer à la gare; - On s’est fait insulter et menacer de mort/viol sur les réseaux sociaux; … Heureusement que tout mon entourage est 100% supportif et se fiche de qui j’aime… ce monde est fou… merci !</p>
+                        <p>Moi et ma copine: - on s’est fait filmer par deux hommes en voiture (âgés!!!) dans la rue
+                            alors qu’on s’embrassait; - je me suis fait cracher dessus, je venais de la déposer à la
+                            gare; - On s’est fait insulter et menacer de mort/viol sur les réseaux sociaux; …
+                            Heureusement que tout mon entourage est 100% supportif et se fiche de qui j’aime… ce monde
+                            est fou… merci !</p>
                         <p class="nomTem">Tiffen, 18 ans</p>
                     </div>
                     <div class="Slide">
-                        <p>C'est une agression verbale et écrite dans un groupe avec des anciens camarades de classe de collège (snap). Disant que les personnes LGBTQIA+ sont des personnes qui ne devraient pas exister selons eux, en citant que dieu ne nous a pas faits comme ça et des insultes peu imaginatives en concernant mon orientation sexuelle (Lesbienne mais à ce moment là je me sentais asexuelle) et en insultant mon ami qui est une personne transgenre.</p>
+                        <p>C'est une agression verbale et écrite dans un groupe avec des anciens camarades de classe de
+                            collège (snap). Disant que les personnes LGBTQIA+ sont des personnes qui ne devraient pas
+                            exister selons eux, en citant que dieu ne nous a pas faits comme ça et des insultes peu
+                            imaginatives en concernant mon orientation sexuelle (Lesbienne mais à ce moment là je me
+                            sentais asexuelle) et en insultant mon ami qui est une personne transgenre.</p>
                         <p class="nomTem">Emilie, 18ans</p>
                     </div>
-                </div>  
+                </div>
                 <div class="Navigation-manual">
                     <label for="radio1" class="Manual-btn"></label>
                     <label for="radio2" class="Manual-btn"></label>
@@ -137,20 +193,23 @@
                     <label for="radio5" class="Manual-btn"></label>
                     <label for="radio6" class="Manual-btn"></label>
                 </div>
-                    
+
             </div>
         </div>
     </div>
-    <div class="ctVisualisation">
+    <div id="ctVisualisation" class="ctVisualisation">
         <div class="title">
             <div class="title">
                 <h2>VISUALISATION</h2>
                 <h3>Visualisation</h3>
             </div>
             <div class="introVis">
-                <p>Les lois législatives envers la communauté LGBTQIA+ varient beaucoup selon les pays, tout comme l’acceptation de la communauté par la population. 
+                <p>Les lois législatives envers la communauté LGBTQIA+ varient beaucoup selon les pays, tout comme
+                    l’acceptation de la communauté par la population.
 
-                    <br>  Tout se retrouve sur la carte : Des lois, un indice d’acceptation sociale, des pays et des divergences... </p>
+                    <br> Tout se retrouve sur la carte : Des lois, un indice d’acceptation sociale, des pays et des
+                    divergences...
+                </p>
             </div>
             <a href="map">
                 <div class="accesMap">
@@ -159,41 +218,51 @@
             </a>
         </div>
     </div>
-    <div class="ctChiffre">
+    <div id="ctChiffre" class="ctChiffre">
         <div class="title">
             <h2>CHIFFRES CLE</h2>
             <h3>Chiffres clé</h3>
         </div>
         <div class="introChiffre">
-            <p>Twitter est l’une des plateformes qui expose le plus la communauté LGBTQIA+ à l’heure actuelle. <br> Elle peut le faire de manière très positive comme très négative. 
-               <br> Ci-dessous, vous pouvez voir en direct les changements de l’avis public envers la communauté grâce au #LGBT.</p>
+            <p>Twitter est l’une des plateformes qui expose le plus la communauté LGBTQIA+ à l’heure actuelle. <br> Elle
+                peut le faire de manière très positive comme très négative.
+                <br> Ci-dessous, vous pouvez voir en direct les changements de l’avis public envers la communauté grâce
+                au #LGBT.
+            </p>
         </div>
         <div class="tweets_container">
-            <div>En 2021 sur Twitter :</div>
+            
+            <div class="tweeterTitle">En 2021 sur Twitter :</div>
+            <img class="lgbtTitle" src="../assets/images/lgbtTweet.svg">
             <div id="tweets_dataviz"></div>
+            <img class="oiseauTweeter" src="../assets/images/oiseauTweeter.svg" > 
         </div>
+        
         <div class="autreChiffres">
             <p>D’autres chiffres parlant...</p>
             <div class="ctAutre">
                 <div class="pourcent">
                     <p class="titleChiffre">53%</p>
-                    <img src="../assets/images/ligneChiffre.svg" >
-                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignaient avoir déjà été confronté·e à au moins un acte homophobe en France en 2018.</p>
+                    <img src="../assets/images/ligneChiffre.svg">
+                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignaient avoir déjà été confronté·e à au
+                        moins un acte homophobe en France en 2018.</p>
                 </div>
                 <div class="pourcent">
                     <p class="titleChiffre">25%</p>
-                    <img src="../assets/images/ligneChiffre.svg" >
-                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignait avoir déjà été agressé.e sexuellement.</p>
+                    <img src="../assets/images/ligneChiffre.svg">
+                    <p class="chiffreContent">de la communauté LGBTQIA+ témoignait avoir déjà été agressé.e
+                        sexuellement.</p>
                 </div>
                 <div class="pourcent">
                     <p class="titleChiffre">1590</p>
-                    <img src="../assets/images/ligneChiffre.svg" >
-                    <p class="chiffreContent">crimes et délits commis à l’encontre des membres de la communauté LGBTQIA+  en France en 2020</p>
+                    <img src="../assets/images/ligneChiffre.svg">
+                    <p class="chiffreContent">crimes et délits commis à l’encontre des membres de la communauté LGBTQIA+
+                        en France en 2020</p>
                 </div>
             </div>
         </div>
     </div>
-    <div class="ctSolution">
+    <div id="ctSolution" class="ctSolution">
         <div class="title">
             <h2>SOLUTIONS</h2>
             <h3>Solutions</h3>
@@ -201,96 +270,97 @@
         <p>Si tu souhaites agir pour aider la communauté LGBTQIA+, voici les solutions que l’on te propose :</p>
         <div class="ctBlocSolution">
             <div class="blocSolution soutient">
-                <img class="pictoBloc" src="../assets/images/picto Soutenir.svg" >
+                <img class="pictoBloc" src="../assets/images/coeur.png">
                 <p class="blocTitle">Nous soutenir</p>
                 <p class="blocDescri">Soutiens la cause et parles-en. <br> Partages le site !
                 </p>
                 <div class="sol">
-                    <img src="../assets/images/soutenir1.svg" >
+                    <img src="../assets/images/soutenir1.svg">
                     <div class="solink">
-                        <a href="~/">@lgbt</a>
+                        <a target="_blank" href="https://www.instagram.com/lgbt/">@lgbt</a>
                         <p>Compte Instagram</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/soutenir2.svg" >
+                    <img src="../assets/images/soutenir2.svg">
                     <div class="solink">
-                        <a href="~/">@soshomophobie</a>
+                        <a target="_blank" href="https://www.instagram.com/soshomophobie/">@soshomophobie</a>
                         <p>Compte Instagram</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/soutenir3.svg" >
+                    <img src="../assets/images/soutenir3.svg">
                     <div class="solink">
-                        <a href="~/">@lecoindeslgbt</a>
+                        <a target="_blank" href="https://www.instagram.com/lecoindeslgbt/">@lecoindeslgbt</a>
                         <p>Compte Instagram</p>
                     </div>
                 </div>
             </div>
             <div class="blocSolution info">
-                <img class="pictoBloc" src="../assets/images/pictoInformer.svg" >
+                <img class="pictoBloc" src="../assets/images/information.png">
                 <p class="blocTitle">T'informer</p>
-                <p class="blocDescri">Tu veux en savoir plus ? <br> On t’a  sélectionné des liens utiles.
+                <p class="blocDescri">Tu veux en savoir plus ? <br> On t’a sélectionné des liens utiles.
                 </p>
                 <div class="sol">
-                    <img src="../assets/images/informer1.svg" >
+                    <img src="../assets/images/informer1.svg">
                     <div class="solink">
-                        <a href="~/">120 battements par minute</a>
+                        <a target="_blank" href="https://www.allocine.fr/film/fichefilm_gen_cfilm=245592.html">120 battements par minute</a>
                         <p>Film</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/informer2.svg" >
+                    <img src="../assets/images/informer2.svg">
                     <div class="solink">
-                        <a href="~/">C'est comme ça</a>
+                        <a target="_blank" href="https://cestcommeca.net/">C'est comme ça</a>
                         <p>Site internet</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/informer3.svg" >
+                    <img src="../assets/images/informer3.svg">
                     <div class="solink">
-                        <a href="~/">ça va mieux en le disant</a>
+                        <a target="_blank" href="https://soundcloud.com/user-62086066/sets/ca-va-mieux-en-le-disant?ref=clipboard&p=i&c=1&si=57C75F57BEEB4A35B86092349770FDDA&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing">ça va mieux en le disant</a>
                         <p>Podcast</p>
                     </div>
                 </div>
             </div>
             <div class="blocSolution engager">
-                <img class="pictoBloc" src="../assets/images/pictoEngagement.svg" >
+                <img class="pictoBloc" src="../assets/images/poing.png">
                 <p class="blocTitle">T'engager</p>
                 <p class="blocDescri">Deviens acteur du changement ! <br> Toute aide est la bienvenue.</p>
                 <div class="sol">
-                    <img src="../assets/images/engager1.svg" >
+                    <img src="../assets/images/engager1.svg">
                     <div class="solink">
-                        <a href="pride.fr">pride.fr</a>
+                        <a href="https://pride.fr/" target="_blank">pride.fr</a>
                         <p>Soutiens la cause</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/engager2.svg" >
+                    <img src="../assets/images/engager2.svg">
                     <div class="solink">
-                        <a href="~/">Amnesty International</a>
+                        <a href="https://www.amnesty.fr/" target="_blank">Amnesty International</a>
                         <p>Soutiens la cause</p>
                     </div>
                 </div>
                 <div class="sol">
-                    <img src="../assets/images/informer3.svg" >
+                    <img src="../assets/images/informer3.svg">
                     <div class="solink">
-                        <a href="~/">Le refuge</a>
+                        <a href="https://www.le-refuge.org/" target="_blank">Le refuge</a>
                         <p>Soutiens la cause</p>
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
 
-    <div class="ctRessentis">
+    <div id="ctRessentis" class="ctRessentis">
         <div class="title">
             <h2>RESSENTIS</h2>
             <h3>Ressentis</h3>
         </div>
         <p class="introRessentis">
-            Exprimes-nous tes ressentis, ce que le site a pu te faire ressentir. <br> Ils nous sont importants et nous permettent d’évaluer l’impact de notre site. 
+            Exprimes-nous tes ressentis, ce que le site a pu te faire ressentir. <br> Ils nous sont importants et nous
+            permettent d’évaluer l’impact de notre site.
             <br>Tes ressentis resteront en interne. Nous ne les diffuserons sous aucun prétexte.
         </p>
         <div class="blocPictoRessentis">
@@ -316,14 +386,65 @@
             </div>
         </div>
         <div class="commentaire">
-            <textarea id="story" name="story" >
+            <textarea id="story" name="story">
             Mots doux, critiques et conseils ? On souhaite t’entendre !  
             </textarea>
         </div>
     </div>
+    <div id="ctCitation" class="ctCitation">
+        <img class="guillemet1color" src="../assets/images/guillemet1color.png">
+        <p>Ensemble <span class="rayure">brisons</span> les codes et construisons un monde plus ouvert </p>
+        <img class="guillemet2color" src="../assets/images/guillemet2color.png" >
+    </div>
+    <div id="ctFooter" class="ctFooter">
+        <img src="../assets/images/lineFooter.svg">
+        <div class="contentFooter">
+            <div class="bloc aPropos">
+                <p class="titleBloc">
+                    À PROPOS
+                </p>
+                <span></span>
+                <p class="footerDescri">Undefined est un projet créé en 2021 par une des étudiants en design et développement web 
+                    et mobile.  
+                    
+                    L’objectif est de sensibiliser et de faire prendre conscience au plus grand nombre les inégalités  et violences vécues par la communauté LGBTQIA+ 
+                     dans le monde. </p>
+            </div>       
+            <div class="bloc sources">
+                <p class="titleBloc">
+                    SOURCES
+                </p>
+                <span></span>
+                <p class="footerDescri">ILGA world, cartes lois sur l’orientation sexuelle,enquête, 2017 et 2020 <br><br>
+                    Twitter, tweets avec le #LGBT, 2021 <br><br>
+                    UCLA, Social acceptance of LGBT people in 174 countries, rapport scientifique, 2019 <br><br>
+                    Ifop, Observatoire des LGBTphobies, sondages, 2019 <br><br>
+                </p>
+            </div>
+            <div class="bloc contact">
+                <p class="titleBloc">
+                    CONTACT
+                </p>
+                <span></span>
+                <p class="footerDescri">project.undefined.contact@gmail.com</p>
+                <div class="ctRs">
+                    <a href="https://instagram.com/project_undefined?utm_medium=copy_link">
+                        <img src="../assets/images/insta.svg">
+                    </a>
+                    <a class="fbLink" href="https://www.facebook.com/Undefined.Projet/">
+                        <img src="../assets/images/fb.svg">
+                    </a>
+                </div>
+                <div class="partager">Partager</div>
+            </div>
+            <a class="goToUp" href="#header">
+                <img src="../assets/images/flecheup.svg">
+            </a>
+      
+    </div>
 
     <script src="https://d3js.org/d3.v6.js"></script>
-    
+
     <script>
         const positiveTweets = JSON.parse('<%- JSON.stringify(positiveTweets) %>')
         const negativeTweets = JSON.parse('<%- JSON.stringify(negativeTweets) %>')
@@ -333,89 +454,108 @@
     <script src="../js/index.js"></script>
 
     <script>
+        let menuButton = document.getElementById("menu");
+        let menuItem = document.getElementById("menuSection");
+        menuButton.addEventListener("click", () => {
+            if (getComputedStyle(menuItem).display != "none") {
+                menuItem.style.display = "none";
+            } else {
+                menuItem.style.display = "flex";
+            }
+        })
         let def1 = document.getElementById("outing");
         let d1 = document.getElementById("defouting");
-            def1.addEventListener("click", () => {
-                if (getComputedStyle(d1).display != "none") {
-                    d1.style.display = "none";
-                } else {
-                    d1.style.display = "flex";
-                }
-            })
-            let def2 = document.getElementById("megenre");
-            let d2 = document.getElementById("defmegenre");
-            def2.addEventListener("click", () => {
-                if (getComputedStyle(d2).display != "none") {
-                    d2.style.display = "none";
-                } else {
-                    d2.style.display = "flex";
-                }
-            })
-            let def3 = document.getElementById("therapie");
-            let d3 = document.getElementById("deftherapie");
-            def3.addEventListener("click", () => {
-                if (getComputedStyle(d3).display != "none") {
-                    d3.style.display = "none";
-                } else {
-                    d3.style.display = "flex";
-                }
-            })
-            let def4 = document.getElementById("cis");
-            let d4 = document.getElementById("defcis");
-            def4.addEventListener("click", () => {
-                if (getComputedStyle(d4).display != "none") {
-                    d4.style.display = "none";
-                } else {
-                    d4.style.display = "flex";
-                }
-            })
-            let def5 = document.getElementById("constitutionnel");
-            let d5 = document.getElementById("defconstitutionnel");
-            def5.addEventListener("click", () => {
-                if (getComputedStyle(d5).display != "none") {
-                    d5.style.display = "none";
-                } else {
-                    d5.style.display = "flex";
-                }
-            })
-            let def6 = document.getElementById("pride");
-            let d6 = document.getElementById("defpride");
-            def6.addEventListener("click", () => {
-                if (getComputedStyle(d6).display != "none") {
-                    d6.style.display = "none";
-                } else {
-                    d6.style.display = "flex";
-                }
-            })
-            let def7 = document.getElementById("comingout");
-            let d7 = document.getElementById("defcomingout");
-            def7.addEventListener("click", () => {
-                if (getComputedStyle(d7).display != "none") {
-                    d7.style.display = "none";
-                } else {
-                    d7.style.display = "flex";
-                }
-            })
-            let def8 = document.getElementById("transition");
-            let d8 = document.getElementById("deftransition");
-            def8.addEventListener("click", () => {
-                if (getComputedStyle(d8).display != "none") {
-                    d8.style.display = "none";
-                } else {
-                    d8.style.display = "flex";
-                }
-            })
-            let def9 = document.getElementById("trans");
-            let d9 = document.getElementById("deftrans");
-            def9.addEventListener("click", () => {
-                if (getComputedStyle(d9).display != "none") {
-                    d9.style.display = "none";
-                } else {
-                    d9.style.display = "flex";
-                }
-            })
-        </script>
-        
-    </body>
-    
-    </html>
+        def1.addEventListener("click", () => {
+            if (getComputedStyle(d1).display != "none") {
+                d1.style.display = "none";
+            } else {
+                d1.style.display = "flex";
+            }
+        })
+        let def2 = document.getElementById("megenre");
+        let d2 = document.getElementById("defmegenre");
+        def2.addEventListener("click", () => {
+            if (getComputedStyle(d2).display != "none") {
+                d2.style.display = "none";
+            } else {
+                d2.style.display = "flex";
+            }
+        })
+        let def3 = document.getElementById("therapie");
+        let d3 = document.getElementById("deftherapie");
+        def3.addEventListener("click", () => {
+            if (getComputedStyle(d3).display != "none") {
+                d3.style.display = "none";
+            } else {
+                d3.style.display = "flex";
+            }
+        })
+        let def4 = document.getElementById("cis");
+        let d4 = document.getElementById("defcis");
+        def4.addEventListener("click", () => {
+            if (getComputedStyle(d4).display != "none") {
+                d4.style.display = "none";
+            } else {
+                d4.style.display = "flex";
+            }
+        })
+        let def5 = document.getElementById("constitutionnel");
+        let d5 = document.getElementById("defconstitutionnel");
+        def5.addEventListener("click", () => {
+            if (getComputedStyle(d5).display != "none") {
+                d5.style.display = "none";
+            } else {
+                d5.style.display = "flex";
+            }
+        })
+        let def6 = document.getElementById("pride");
+        let d6 = document.getElementById("defpride");
+        def6.addEventListener("click", () => {
+            if (getComputedStyle(d6).display != "none") {
+                d6.style.display = "none";
+            } else {
+                d6.style.display = "flex";
+            }
+        })
+        let def7 = document.getElementById("comingout");
+        let d7 = document.getElementById("defcomingout");
+        def7.addEventListener("click", () => {
+            if (getComputedStyle(d7).display != "none") {
+                d7.style.display = "none";
+            } else {
+                d7.style.display = "flex";
+            }
+        })
+        let def8 = document.getElementById("transition");
+        let d8 = document.getElementById("deftransition");
+        def8.addEventListener("click", () => {
+            if (getComputedStyle(d8).display != "none") {
+                d8.style.display = "none";
+            } else {
+                d8.style.display = "flex";
+            }
+        })
+        let def9 = document.getElementById("trans");
+        let d9 = document.getElementById("deftrans");
+        def9.addEventListener("click", () => {
+            if (getComputedStyle(d9).display != "none") {
+                d9.style.display = "none";
+            } else {
+                d9.style.display = "flex";
+            }
+        })
+        let stopButton=document.getElementById("stopButton");
+        let slide=document.getElementsByClassName("Slide");
+        stopButton.addEventListener("click",()=>{
+            console.log("hello")
+            if (getComputedStyle(slide).color != "transparent") {
+                slide.style.color = "transparent";
+            } else {
+                slide.style.color = "#FFF";
+            }
+        });
+    </script>
+
+</body>
+
+</html>
