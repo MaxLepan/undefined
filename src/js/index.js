@@ -88,6 +88,18 @@ svg
     .style("fill","#FFF")
 
 let timeoutPopup;
+let feedbackPopup;
+
+function toggleFeedbackModal() {
+    const feedbackPopup = document.querySelector('.feedback_popup')
+
+    feedbackPopup.classList.toggle("popup_active");
+
+}
+
+function timeoutFeedbackModal () {
+    feedbackPopup = setTimeout(toggleFeedbackModal, 5000)
+}
 
 function toggleShareModal() {
     const copiedPopup = document.querySelector('.copied_popup')
@@ -100,6 +112,20 @@ function timeoutModal () {
     timeoutPopup = setTimeout(toggleShareModal, 5000)
 }
 
+function post (json) {
+    let xhr = new XMLHttpRequest();
+    xhr.open("POST", '/', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+
+    xhr.setRequestHeader('jsonData', json);
+    xhr.send();
+
+    xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4){
+            console.log(xhr.response);
+        }
+    }
+}
 
 window.addEventListener("DOMContentLoaded", () => {
 
@@ -121,28 +147,14 @@ window.addEventListener("DOMContentLoaded", () => {
     })
   
     sendFeedbackButton.addEventListener('click', function () {
-      feedback.feedback = writtenFeedback.value
-      
-      
-      xhr.open("POST", url, true);
-      xhr.setRequestHeader("Content-Type", "application/json")
+        feedback.feedback = writtenFeedback.value
+        feedback = JSON.stringify(feedback)
 
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === 4 && xhr.status === 200) {
+        console.log(feedback)
 
-            // Print received data from server
-            result.innerHTML = this.responseText;
-
-            console.log(result)
-
-        }
-      };
-
-      feedback = JSON.stringify(feedback)
-
-      xhr.send(feedback);
-
-      console.log(feedback)
+        post(feedback)
+        toggleFeedbackModal()
+        timeoutFeedbackModal()
     })
 
     share_button.addEventListener('click', function () {
