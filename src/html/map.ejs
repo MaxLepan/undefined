@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="assets/style.css">
+
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.6.0/mapbox-gl.css' rel='stylesheet' />
+
+</head>
+
+<body class="mapBody">
+    <div class="glossaire" id="glossaire">
+        <div class="gaiDef">
+            <div></div>
+            <p>Le GAI  est un indice d’acceptation social de la communauté LGBTQIA+. <br> 
+                C’est un chiffre de 1 à 9 , de l’acceptation la plus basse à l’acceptation la plus haute.
+                <br> <br>
+                Il est calculé tous les 4 ans par l’Université de Californie à Los Angeles, à partir de sondages réalisés dans différents pays.</p>
+        </div>
+        <div class="defProteger">
+            <div></div>
+            <p>Protéger signifie qu’il y a des lois mises en place pour  assurer à la communauté les mêmes droits que le reste de la population.</p>
+        </div>
+        <div class="defCrim">
+            <div></div>
+            <p>Criminaliser signifie rendre illégal le fait de faire partie de la communauté. Cela peut aller du simple fait de dire que c’est illégal, à des peines de prison, voire de mort.</p>
+        </div>
+    </div>
+    <div class="filterCountry">
+        <div class="yearFilter">
+            <input class="input" id="toggle" type="checkbox" id='year_switch' checked>
+            <label class="label" for="toggle">
+                <div class="left">
+                    2017
+                </div>
+
+                <div class="switch">
+                    <span class="slider round"></span>
+                </div>
+
+                <div class="right">
+                    2020
+                </div>
+            </label>
+        </div>
+        <div id="gaiFilter" class="gaiFilter">
+            <div class="numberGai">
+                <span class="n1">1</span>
+                <span class="n2">2</span>
+                <span class="n3">3</span>
+                <span class="n4">4</span>
+                <span class="n5">5</span>
+                <span class="n6">6</span>
+                <span class="n7">7</span>
+                <span class="n8">8</span>
+                <span class="n9">9</span>
+            </div>
+            <div class="inputGai">
+                <input type='range' id='gai_slider' name='gai_slider' min="1" max="9" step="0.1" value="0" disabled></input>
+                <label id="gaiLabel" for='gai_slider'>GAI</label>
+            </div>
+        </div>
+        <div class="buttonType">
+            <p>Pays où la communauté LGBTQIA+ est :</p>
+            <div class="buttonCt">
+                <button id='protected_filter' class='filter protected_filter'>Protégés</button>
+                <button id='neutral_filter' class='filter'>Neutre</button>
+                <button id='criminalized_filter' class='filter'>Criminalisé</button>
+            </div>
+        </div>
+    </div>
+    <div class="helpButton">
+        <a href="../">
+            <div class="croix"></div>
+        </a>
+        <div class="glossaireButton" id="glossaireButton"></div>
+        <div class="partageButton"></div>
+    </div>
+    
+    <div class="mapContainer">
+        <div id="map">
+            <div id="left" class="sidebar flex-center left collapsed">
+                <div class="sidebar-content rounded-rect flex-center">
+                    Left Sidebar
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        const paysCrime2020 = JSON.parse('<%- JSON.stringify(paysCrime2020) %>');
+        const paysProteger2020 = JSON.parse('<%- JSON.stringify(paysProteger2020) %>');
+        const paysNeutre2020 = JSON.parse('<%- JSON.stringify(paysNeutre2020) %>');
+
+        const paysCrime2017 = JSON.parse('<%- JSON.stringify(paysCrime2017) %>');
+        const paysProteger2017 = JSON.parse('<%- JSON.stringify(paysProteger2017) %>');
+        const paysNeutre2017 = JSON.parse('<%- JSON.stringify(paysNeutre2017) %>');
+
+        const country = JSON.parse('<%- JSON.stringify(country) %>');
+        const capitals = JSON.parse('<%- JSON.stringify(capitals) %>');
+
+
+        let glossaireButton=document.getElementById("glossaireButton");
+        let glossaire=document.getElementById("glossaire");
+        glossaireButton.addEventListener("click",()=>{
+            if (getComputedStyle(glossaire).display != "none") {
+                glossaire.style.display = "none";
+            } else {
+                glossaire.style.display = "flex";
+            }
+        });
+
+        let def2 = document.getElementById("gaiLabel");
+        let d2 = document.getElementById("gai_slider");
+        let d3=document.getElementById("numberGai");
+        def2.addEventListener("click", () => {
+                if (getComputedStyle(d2).display != "none") {
+                    d2.style.display = "none";
+                } else {
+                    d2.style.display = "flex";
+                }
+                if (getComputedStyle(d3).display != "none") {
+                    d3.style.display = "none";
+                } else {
+                    d3.style.display = "flex";
+                }
+        })
+
+    </script>
+
+    <script src="../js/map.js" type="module"></script>
+</body>
+
+</html>

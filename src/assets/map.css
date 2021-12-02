@@ -1,0 +1,409 @@
+body {
+    margin: 0;
+    padding: 0;
+  }
+.mapBody{
+  background-color: #1C1C1C;
+}
+  
+  h2,
+  h3 {
+    margin: 10px;
+    font-size: 18px;
+  }
+  
+  h3 {
+    font-size: 16px;
+  }
+  
+  p {
+    margin: 10px;
+  }
+  
+  /*---------Map---------*/
+  
+  .mapContainer{
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    flex-direction: column;
+    z-index: 1;
+    position: relative;
+  }
+  
+  
+  .map-overlay {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    background: #fff;
+    margin-right: 20px;
+    font-family: Arial, sans-serif;
+    overflow: auto;
+    border-radius: 3px;
+  }
+  
+  #map {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+  }
+  
+  #features {
+    top: 0;
+    height: 100px;
+    margin-top: 20px;
+    width: 250px;
+  }
+  
+  #legend {
+    padding: 10px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    line-height: 18px;
+    height: 150px;
+    margin-bottom: 40px;
+    width: 100px;
+  }
+  
+  .legend-key {
+    display: inline-block;
+    border-radius: 20%;
+    width: 10px;
+    height: 10px;
+    margin-right: 5px;
+  }
+  
+  /*---------Zoom---------*/
+  
+  .zoomButton {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    margin-left: 7%;
+    margin-top: 32px;
+  }
+
+/* the interesting bit */
+
+.label {
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+}
+
+.switch,
+.input:checked + .label .left,
+.input:not(:checked) + .label .right {
+  pointer-events: all;
+  cursor: pointer;
+}
+
+/* most of the stuff below is the same as the W3Schools stuff,
+   but modified a bit to reflect changed HTML structure */
+
+.input {
+  display: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .label .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .label .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .label .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* styling to make it look like your screenshot */
+
+.left {
+  margin: 0 .5em;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-family: sans-serif;
+}
+
+.rounded-rect {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0 0 50px -25px black;
+}
+
+.flex-center {
+  position: absolute;
+  display: flex;
+
+}
+
+.flex-center.left {
+  left: 0px;
+}
+
+.sidebar-content {
+  position: absolute;
+  width: 95%;
+  height: 90%;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  color: #fff;
+  background-color: #4C4B50;
+  margin-top: 76px;
+}
+
+.sidebar-toggle {
+  position: absolute;
+  width: 1.3em;
+  height: 1.3em;
+  overflow: visible;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar-toggle.left {
+  right: -1.5em;
+}
+
+.sidebar-toggle:hover {
+  color: #0aa1cf;
+  cursor: pointer;
+}
+
+.sidebar {
+  transition: transform 1s;
+  z-index: 1;
+  width: 400px;
+  height: 100%;
+  overflow: hidden;
+}
+
+/*
+The sidebar styling has them "expanded" by default, we use CSS transforms to push them offscreen
+The toggleSidebar() function removes this class from the element in order to expand it.
+*/
+.left.collapsed {
+  transform: translateX(-400px);
+}
+
+.slider_wrapper input {
+  margin-top: 378px;
+  width: 481px;
+  height: 70px;
+  transform-origin: 75px 75px;
+  transform: rotate(-90deg);
+  background: rgb(255,55,120);
+  background: linear-gradient(90deg, rgba(255,55,120,1) 0%, rgba(255,246,55,1) 53%, rgba(0,212,255,1) 100%);
+}
+
+.slider_wrapper h3{
+  font-size: 37px;
+  font-weight: 600;
+  margin-top: 50px;
+  margin-bottom: 0;
+  margin-left: auto;
+  margin-right: 105px;
+  text-align: center;
+}
+
+.protection_level_wrapper {
+  position: absolute;
+  vertical-align: center;
+  margin-top: 114px;
+  margin-left: 64px;
+  top: 0;
+}
+
+.protection_level {
+  margin-bottom: 37px;
+}
+
+.right_image {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background:url("../assets/images/pictoUnion.png");
+}
+
+.wrong_right_image {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #c22e2e;
+}
+
+.right_not_accepted {
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  background-color: #999999;
+}
+
+.additional_rights_wrapper {
+  position: absolute;
+  bottom: 0;
+}
+#legal_union .right_image{
+  background-image:url("../assets/images/pictoUnion.png");
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;
+}
+#adoption .right_image{
+  background-image:url("../assets/images/pictoAdoption.png");
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;
+}
+#non_governmental_organisations .wrong_right_image{
+  background-image:url("../assets/images/pictoObstacle.png");
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;
+}
+#expression_freedom .wrong_right_image{
+  background-image:url("../assets/images/pictoExpression.png");
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;
+}
+.right_not_accepted{
+  background-color: #999999;
+  width: 50px;
+  height: 50px;
+  background-position: center center;
+  background-size: cover;display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+.right_accepted{
+  display: flex;
+  flex-direction: row;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+.right_description{
+  width: 60%;
+  margin-left: 20px;
+}
+.helpButton{
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  right:72px ;
+  top: 30px;
+  z-index: 10;
+}
+.croix {
+  width :50px;
+  height: 50px;
+  background-image: url("../assets/images/croix.png");
+  background-size: cover;
+  background-position: center center;
+}
+.glossaireButton{
+  margin-top: 24px;
+  width :50px;
+  height: 50px;
+  background-image: url("../assets/images/livre.png");
+  background-size: cover;
+  background-position: center center;
+  z-index: 15;
+}
+.glossaire{
+  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.1);
+  z-index: 10;
+  margin-top: -660px;
+  padding-top: 180px;
+}
+.gaiDef{
+  width: 600px;
+  margin-left:30%;
+}
+.gaiDef div{
+  margin-top: 8px;
+  width: 600px;
+  border:1px solid #FFF;
+}
+.gaiDef p{
+  margin-left: 0;
+}
+.defProteger{
+  
+  width: 160px;
+  margin-left: 5%;
+}
+.defProteger div{
+  margin-top: 8px;
+  width: 140px;
+  border:1px solid #FFF;
+}
+.defProteger p{
+  margin-left: 0;
+}
+.defCrim{
+  width: 150px;
+  margin-left: 5%;
+}
+.defCrim div{
+  margin-top: 8px;
+  width: 150px;
+  border:1px solid #FFF;
+}
+.defCrim p{
+  margin-left: 0;
+}
