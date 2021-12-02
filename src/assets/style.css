@@ -7,7 +7,7 @@ body{
     background-color: #262526;
     color: #FFF;
     font-family:"Hind Siliguri";
-    
+    overflow-x: hidden;
 }
 
 header{
@@ -42,6 +42,9 @@ header .menu span{
     margin-right: 75px;
 }
 
+.partager:hover {
+    cursor: pointer;
+}
 
 .textIntro{
     width: 52%;

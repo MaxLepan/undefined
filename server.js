@@ -115,9 +115,9 @@ FindAll(uri, "tweets", (resTweets) => {
 
 require(__dirname + "/modules/get_tweets.js");
 
-
 //Quand le client (navigateur) est l'adresse localhost:8002 , On lui renvoie la page index
 app.get("/", (req, res) => {
+    console.log("req :", req)
 
     res.render(__dirname + "/src/html/index.ejs", { positiveTweets, negativeTweets });
 

@@ -14,7 +14,9 @@
     "mongodb": "^4.1.4",
     "openai": "^1.0.0-next.1",
     "openai-api": "^1.2.6",
-    "twitter": "^1.7.1"
+    "twitter": "^1.7.1",
+    "cors": "^2.8.5",
+    "body-parser": "^1.19.0"
   },
   "devDependencies": {},
   "scripts": {

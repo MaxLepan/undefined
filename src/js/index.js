@@ -1,3 +1,6 @@
+const url = 'http://localhost:8002/'
+let xhr = new XMLHttpRequest();
+
 // set the dimensions and margins of the graph
 const width = 210,
     height = 210,
@@ -103,8 +106,45 @@ window.addEventListener("DOMContentLoaded", () => {
     let share_button = document.querySelector(".partager")
     let share_link = share_button.getAttribute('value')
 
-    share_button.addEventListener('click', function () {
+    let feedbackButtons = document.querySelectorAll('.pictoR')
+    let writtenFeedback = document.querySelector('#story')
+    let sendFeedbackButton = document.querySelector('.submit_feedback')
+    let feedback = {}
 
+    feedbackButtons.forEach(button => {
+
+      button.addEventListener("click", function () {
+        feedback.feeling = button.children[1].classList[1]
+      })
+      
+    })
+  
+    sendFeedbackButton.addEventListener('click', function () {
+      feedback.feedback = writtenFeedback.value
+      
+      
+      xhr.open("POST", url, true);
+      xhr.setRequestHeader("Content-Type", "application/json")
+
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+
+            // Print received data from server
+            result.innerHTML = this.responseText;
+
+            console.log(result)
+
+        }
+      };
+
+      feedback = JSON.stringify(feedback)
+
+      xhr.send(feedback);
+
+      console.log(feedback)
+    })
+
+    share_button.addEventListener('click', function () {
 
         navigator.clipboard.writeText(share_link).then(function() {
             console.log(share_link)
@@ -114,6 +154,5 @@ window.addEventListener("DOMContentLoaded", () => {
             console.error('Async: Could not copy text: ', err);
         });
     })
-
 
 })
