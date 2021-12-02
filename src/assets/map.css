@@ -23,7 +23,6 @@ body {
   /*---------Map---------*/
   
   .mapContainer{
-    margin-top: 50px;
     display: flex;
     width: 100%;
     height: 100vh;
@@ -48,9 +47,8 @@ body {
     position: relative;
     top: 0;
     bottom: 0;
-    width: 80%;
-    height: 800px;
-    margin-left: 7%;
+    width: 100%;
+    height: 100vh;
   }
   
   #features {
@@ -190,11 +188,12 @@ input:checked + .label .slider:before {
 .sidebar-content {
   position: absolute;
   width: 95%;
-  height: 95%;
+  height: 90%;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
   color: #fff;
   background-color: #4C4B50;
+  margin-top: 76px;
 }
 
 .sidebar-toggle {
@@ -342,7 +341,8 @@ The toggleSidebar() function removes this class from the element in order to exp
   flex-direction: column;
   position: absolute;
   right:72px ;
-  top: 80px;
+  top: 30px;
+  z-index: 10;
 }
 .croix {
   width :50px;
