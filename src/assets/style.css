@@ -823,5 +823,18 @@ button::before{
     border-color:#FFA722 ; 
 }
 
+.copied_popup {
+    position: absolute;
+    background-color: #2196f3;
+    right: -250px;
+    top: -50px;
+    width: 250px;
+    height: 50px;
+    transition: 1s;
+}
 
+.popup_active {
+    right: 0;
+    transition: 1s;
+}
 

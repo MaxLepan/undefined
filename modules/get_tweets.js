@@ -30,7 +30,7 @@ MongoClient.connect(uri, function (err, db) {
 
       tweets = [positiveTweets, negativeTweets]
 
-      console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
+      //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
 
       db.close();
    });
