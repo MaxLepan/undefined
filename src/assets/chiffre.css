@@ -1,0 +1,98 @@
+.ctChiffre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ctChiffre::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 278%;
+    width: 100%;
+    position: absolute;
+    margin-top: 29px;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+    margin-top: -200px;
+}
+
+.ctChiffre h2{  
+    margin-top: 100px;
+    margin-left: -400px;
+    width: 142%;
+    color: #262626;
+}
+.introChiffre{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.introChiffre p{
+    text-align: center;
+    width: 60%;
+    font-size: 20px;
+}
+.tweets_container{
+    border: 1px solid #FFF;
+    border-radius: 20px;
+    width: 1043px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 82px;
+    margin-bottom: 148px;
+}
+.tweeterTitle{
+    font-size: 24px;
+    font-weight: 500;
+    margin-top: 42px;
+    margin-left: 50px;
+}
+#tweets_dataviz{
+    display: flex;
+    justify-content: center;
+    width: auto;
+    margin-bottom: 48px;
+}
+.lgbtTitle{
+    position: absolute;
+    left: 47%;
+    margin-top: 91px;
+
+}
+.oiseauTweeter{
+    margin-bottom: -100px;
+    margin-left: -100px;
+}
+
+
+.autreChiffres p{
+    text-align: center;
+    font-size: 20px;
+}
+
+.ctAutre{
+    width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
+}
+.pourcent{
+    width: 30%;
+}
+.titleChiffre{
+    font-size: 48px !important;
+    font-weight: 400;
+    text-align: left !important;
+}
+.pourcent img{
+    width: 292px;
+}
+.chiffreContent{
+    text-align: left !important;
+    width: 70%;
+}

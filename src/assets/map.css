@@ -407,3 +407,193 @@ The toggleSidebar() function removes this class from the element in order to exp
 .defCrim p{
   margin-left: 0;
 }
+
+.filterCountry{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 30px;
+  position: absolute;
+  z-index: 10;
+}
+.gaiFilter{
+  display: none;
+  flex-direction: column;
+  align-items: center;
+}
+
+.numberGai{
+  display: flex;
+  flex-direction: row;
+  width: 370px;
+  margin-right: -152px;
+  position: relative;
+  font-size: 18px;
+  justify-content: space-between;
+}
+.inputGai label{
+  background-color: #FFF;
+  border-radius: 50px;
+  padding:4px 15px 4px 15px;
+  color:#000;
+  font-size: 24px;
+  font-weight: 500;
+  margin-right: 50px;
+}
+.n1{
+  color: #FE6888;
+}
+.n2{
+  color: #FE7D79;
+}
+.n3{
+  color: #FE946A;
+}
+.n4{
+  color: #FEA95B;
+}
+.n5{
+  color: #F5BA5A;
+}
+.n6{
+  color: #D6BD78;
+}
+.n7{
+  color: #B9C296;
+}
+.n8{
+  color: #9AC6B6;
+}
+.n9{
+  color: #7FCBD4;
+}
+
+.inputGai{
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+}
+#gai_slider{
+  width: 405px;
+}
+
+
+.buttonType{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  right: 256px;
+}
+.buttonType p{
+  font-size: 18px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.buttonCt{
+  display: flex;
+  flex-direction: row;
+}
+
+button{
+  background: none;
+  box-shadow: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  font-weight: 500;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+button::before{
+  content: '';
+  width: 26px;
+  height: 26px;
+  background-color: #686868;
+  border:2px solid #FFF;
+  border-radius: 50%;
+  display: flex;
+  margin-right: 10px;
+}
+#protected_filter:hover::before {
+  border-color: #54DDEF;
+}
+#neutral_filter:hover::before{
+  border-color: #FFA722;
+}
+#criminalized_filter:hover::before{
+  border-color: #FF5780;
+}
+
+
+.activeCriminalizedFilter::after{
+  background-color:#FF5780 ; 
+  content: '';
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 9px;
+}
+.activeCriminalizedFilter::before{
+  border-color:#FF5780 ; 
+}
+.activeProtectedFilter::after{
+  background-color:#54DDEF ; 
+  content: '';
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 9px;
+}
+.activeProtectedFilter::before{
+  border-color:#54DDEF ; 
+}
+.activeNeutralFilter::after{
+  background-color:#FFA722 ; 
+  content: '';
+  width: 12px;
+  height: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  position: absolute;
+  margin-left: 9px;
+}
+.activeNeutralFilter::before{
+  border-color:#FFA722 ; 
+}
+
+.copied_popup {
+  position: absolute;
+  background-color: #2196f3;
+  right: -250px;
+  top: -50px;
+  width: 250px;
+  height: 50px;
+  transition: 1s;
+}
+
+.feedback_popup {
+  position: absolute;
+  background-color: #2196f3;
+  right: -250px;
+  width: 250px;
+  height: 50px;
+  transition: 1s;
+}
+
+.popup_active {
+  right: 0;
+  transition: 1s;
+}
+

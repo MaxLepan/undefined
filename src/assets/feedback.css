@@ -1,0 +1,86 @@
+
+.ctRessentis{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+.ctRessentis h2{
+    color: #262626;
+}
+.ctRessentis::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 183%;
+    width: 100%;
+    position: absolute;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+    margin-top: 347px;
+}
+.introRessentis{
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 50px;
+}
+.blocPictoRessentis{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.pictoR {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.pictoR p{
+    text-align: center;
+    font-size: 18px;
+}
+.pictoCt{
+    width: 64px;
+    height: 64px;
+    border: 1px solid #FFF;
+    border-radius: 50%;
+    background-size: 50%;
+    background-repeat: no-repeat;
+    background-position: center center;
+    padding:15px;
+}
+.convaincu{
+    background-image: url("../assets/images/convaincu.svg");
+}
+.confus{
+    background-image: url("../assets/images/confuse.svg");
+}
+.intrigue{
+    background-image: url("../assets/images/intrigue.svg");
+}
+.empathie{
+    background-image: url("../assets/images/empathique.svg");
+}
+.revolte{
+    background-image: url("../assets/images/revolte.svg");
+}
+.commentaire{
+    display: flex;
+    justify-content: center;
+}
+textarea{
+    width: 60%;
+    height: 144px;
+    border:1px solid #FFF;
+    border-radius: 10px;
+    background-color: #262526;
+    margin-top: 160px;
+    font-size: 16px;
+    font-family: 'Taviraj';
+    font-style: italic;
+    color: #FFF;
+}
+

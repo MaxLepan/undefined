@@ -1,0 +1,176 @@
+.ctTemoignage::before{
+    content: '';
+    display: block;
+    background-color: #1C1C1C;
+    height: 146%;
+    width: 100%;
+    position: absolute;
+    margin-top: 29px;
+    transform: skewY(-2deg);
+    left: 0;
+    z-index: -1;
+}
+.ctTemoignage h2{
+    margin-left: -200px;
+    color: #262526;
+    margin-top: 52px;
+}
+.intoTemoignage{
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 90px;
+}
+.ctDefinition{
+    width: 90%;
+    margin-left: 10%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+.defCT{
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+}
+.defCT span{
+    width: 22%;
+    height: 3px;
+    background-image: url(../assets/images/rayure.svg);
+    background-size: contain;
+    background-position: left;
+    margin-left: -327px;
+    display: flex;
+    justify-content: flex-start;
+}
+.defCT p{
+    width: 80%;
+    margin-left: 0;
+}
+.defTitle{
+    width: 100%;
+}
+.definition{
+    
+    display: none;
+}
+#btnDef{
+    margin-left: 245px;
+}
+.indication{
+    font-family: 'Taviraj';
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 400;
+    margin-left: 13%;
+}
+.sliderTemoignage{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Slider{
+	width: 800px;
+	border-radius: 75px;
+	overflow: hidden;
+	margin-top: 50px;
+    border:1px solid #FFF;
+    height: auto;
+    background-color: #262626;
+}
+
+.Slides{
+	width: 4800px;
+    height: 414px;
+    display: flex;
+    z-index: 1;
+	
+}
+.Slides input{
+	display: none;
+}
+.Slide{
+	width: 800px;
+    height: 88%;
+    transition: 2s;
+    color: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+    background-color: #262626;
+}
+.blur{
+    text-shadow: 0 0 8px #FFF;
+    color: transparent ;
+}
+
+.Slide p{
+	width: 80%;
+    padding: 0 3% 0 4%;
+}
+.nomTem{
+    text-align: right;
+    font-family: 'Taviraj';
+    font-style: italic;
+}
+.stopButton{
+    z-index: 1000;
+    font-size: 20px;
+    font-weight: 500;
+    color: #000;
+    background-color: #FFF;
+    border-radius: 10px;
+    padding-top: 4px 8px 4px 8px;
+    width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 72px;
+    margin-left: 10%;
+}
+
+.Navigation-manual{
+	position: absolute;
+	width: 800px;
+	margin-top: -40px;
+	display: flex;
+	justify-content: center;
+}
+
+.Manual-btn{
+	border: solid 2px #FFF;
+	padding: 5px;
+	border-radius: 10px;
+	cursor: pointer;
+	transition: 1s;
+}
+.Manuel-btn:not(:last-child){
+	margin-right: 40px;
+}
+.Manual-btn:hover{
+	background-color:#FFF;
+}
+#radio1:checked~.first{
+	margin-left: 0;
+}
+#radio2:checked~.first{
+	margin-left: -800px;
+}
+#radio3:checked~.first{
+	margin-left: -1600px;
+}
+#radio4:checked~.first{
+	margin-left: -2400px;
+}
+#radio5:checked~.first{
+	margin-left: -3200px;
+}
+#radio6:checked~.first{
+	margin-left: -4000px;
+}
+
+
