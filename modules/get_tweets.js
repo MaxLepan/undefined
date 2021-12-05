@@ -30,8 +30,6 @@ MongoClient.connect(uri, function (err, db) {
 
       tweets = [positiveTweets, negativeTweets]
 
-      //console.log("Positive tweets in DB : " + positiveTweets + "\nNegative tweets in DB : " + negativeTweets)
-
       db.close();
    });
 
@@ -52,15 +50,11 @@ async function classification(tweet) {
          model: 'curie'
       });
 
-      console.log(classificatedTweet['data']['label'])
-
       if (classificatedTweet['data']['label'] === "Positive") {
          positiveTweets++
       } else if (classificatedTweet['data']['label'] === "Negative") {
          negativeTweets++
       }
-
-      console.log("Positive tweets : " + positiveTweets + "\nNegative tweets : " + negativeTweets)
 
       MongoClient.connect(uri, function (err, db) {
          if (err) throw err;
@@ -71,14 +65,11 @@ async function classification(tweet) {
             { $set: { positive_tweets: positiveTweets, negative_tweets: negativeTweets } },
             function (err, res) {
                if (err) throw err;
-               console.log(res.matchedCount + " document(s) updated")
                db.close();
             }
          )
 
       });
-
-      console.log('==================================================================================================================================================')
 
    }
 
@@ -95,7 +86,6 @@ stream.on('data', (data) => {
    //console.log(data);
    if (!data.retweeted_status) {
       const tweetText = data?.extended_tweet?.full_text || data.text;
-      console.log("Tweet : " + tweetText)
       classification(tweetText)
    }
 });

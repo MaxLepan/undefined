@@ -9,21 +9,8 @@ window.addEventListener("DOMContentLoaded", () => {
     const neutralCountries2017 = paysNeutre2017
     const criminalizedCountries2017 = paysCrime2017
 
-    console.log("Protected 2020", protectedCountries2020)
-    console.log("Neutral 2020", neutralCountries2020)
-    console.log("Crim 2020", criminalizedCountries2020)
-
-    console.log("Protected 2017", protectedCountries2017)
-    console.log("Neutral 2017", neutralCountries2017)
-    console.log("Crim 2017", criminalizedCountries2017)
-
-
     // define access token
     mapboxgl.accessToken = 'pk.eyJ1IjoibHNtbnQiLCJhIjoiY2t1eHNxN2E0MHgzeDJxcmZjMnlyaDU5ciJ9.IIvVsucH11Eo5bY1wkACtA';
-    var collection;
-    var querys;
-    var datas;
-
 
     // create map
     const map = new mapboxgl.Map({
@@ -45,9 +32,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
         // disable double click zoom
         map.doubleClickZoom.disable()
-
-        
-        //map.scrollZoom.enable({ around: 'center' });
 
         const protectedFilter = document.querySelector('#protected_filter')
         const neutralFilter = document.querySelector('#neutral_filter')
@@ -114,13 +98,9 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
         gai_slider.addEventListener("change", e => {
-            //console.log("slider value", gai_slider.value)
-            //console.log("old slider value", gai_slider_value)
-
             gaiCountries(gai_slider_value, null).then()
 
             gai_slider_value = parseInt(gai_slider.value)
-            console.log(gai_slider_value);
 
             gaiCountries(gai_slider_value, 1).then()
 
@@ -235,7 +215,6 @@ window.addEventListener("DOMContentLoaded", () => {
                     { source: 'states', id: hoveredStateId },
                     { hover: true }
                 );
-                //console.log(e.features[0].properties.ADMIN)
             }
         });
         map.on('mouseleave', 'state-fills', () => {
@@ -255,40 +234,15 @@ window.addEventListener("DOMContentLoaded", () => {
 
             let sidebar = document.querySelector('.sidebar-content')
             let sidebarWrapper = document.querySelector('.sidebar')
-            
-            //console.log(e.features[0].properties)
 
             let foundCountryBool = false
 
             //-----------------------------PROTECTED COUNTRIES------------------------------------
             for (let country in protectedCountriesToIterate){
-                //console.log(country)
                 if (country === e.features[0].properties.ADMIN){
                     foundCountryBool = true
-                    
-                    //console.log(protectedCountriesToIterate[country])
 
-                    sidebar.innerHTML = `
-                        <div class="slider_wrapper">
-                            <h3>${country}</h3>
-                            <input type="range" min="1" max="9" value="${ 10 - protectedCountriesToIterate[country]['type'] }" step="1" disabled>
-                            <div class="protection_level_wrapper">
-                                <div class="protection_level" id="9">Protection constitutionnelle</div>
-                                <div class="protection_level" id="8">Protection large</div>
-                                <div class="protection_level" id="7">Protection dans le monde du travail</div>
-                                <div class="protection_level" id="6">Protection limitée/inégale</div>
-                                <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
-                                <div class="protection_level" id="4">Criminalisatoin de facto</div>
-                                <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
-                                <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
-                                <div class="protection_level" id="1">Peine de mort</div>
-                            </div>
-                            <div class="additional_rights_wrapper">
-                                <div class="additional_right" id="legal_union"></div>
-                                <div class="additional_right" id="adoption"></div>
-                            </div>
-                        </div>
-                    `
+                    countrySliderInnerHtml(protectedCountriesToIterate)
 
                     let legal_union = document.querySelector('#legal_union')
                     let adoption = document.querySelector('#adoption')
@@ -326,32 +280,10 @@ window.addEventListener("DOMContentLoaded", () => {
             //-------------------------NEUTRAL COUNTRIES-----------------------
             if (!foundCountryBool){
                 for (let country in neutralCountriesToIterate){
-                    //console.log(country)
                     if (country === e.features[0].properties.ADMIN){
                         foundCountryBool = true
-                        //console.log(neutralCountriesToIterate[country])
 
-                        sidebar.innerHTML = `
-                            <div class="slider_wrapper">
-                                <h3>${country}</h3>
-                                <input type="range" min="1" max="9" value="${ 10 - neutralCountriesToIterate[country]['type'] }" step="1" disabled>
-                                <div class="protection_level_wrapper">
-                                    <div class="protection_level" id="9">Protection constitutionnelle</div>
-                                    <div class="protection_level" id="8">Protection large</div>
-                                    <div class="protection_level" id="7">Protection dans le monde du travail</div>
-                                    <div class="protection_level" id="6">Protection limitée/inégale</div>
-                                    <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
-                                    <div class="protection_level" id="4">Criminalisatoin de facto</div>
-                                    <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
-                                    <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
-                                    <div class="protection_level" id="1">Peine de mort</div>
-                                </div>
-                                <div class="additional_rights_wrapper">
-                                    <div class="additional_right" id="non_governmental_organisations"></div>
-                                    <div class="additional_right" id="expression_freedom"></div>
-                                </div>
-                            </div>
-                        `
+                        countrySliderInnerHtml(neutralCountriesToIterate)
 
                         let nonGovOrganisations = document.querySelector('#non_governmental_organisations')
                         let expressionFreedom = document.querySelector('#expression_freedom')
@@ -384,32 +316,10 @@ window.addEventListener("DOMContentLoaded", () => {
             //--------------------------------------CRIMINALIZED COUNTRIES---------------------------------
             if (!foundCountryBool){
                 for (let country in criminalizedCountriesToIterate){
-                    //console.log(country)
                     if (country === e.features[0].properties.ADMIN){
                         foundCountryBool = true
-                        //console.log(criminalizedCountriesToIterate[country])
 
-                        sidebar.innerHTML = `
-                            <div class="slider_wrapper">
-                                <h3>${country}</h3>
-                                <input type="range" min="1" max="9" value="${ 10 - criminalizedCountriesToIterate[country]['type'] }" step="1" disabled>
-                                <div class="protection_level_wrapper">
-                                    <div class="protection_level" id="9">Protection constitutionnelle</div>
-                                    <div class="protection_level" id="8">Protection large</div>
-                                    <div class="protection_level" id="7">Protection dans le monde du travail</div>
-                                    <div class="protection_level" id="6">Protection limitée/inégale</div>
-                                    <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
-                                    <div class="protection_level" id="4">Criminalisatoin de facto</div>
-                                    <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
-                                    <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
-                                    <div class="protection_level" id="1">Peine de mort</div>
-                                </div>
-                                <div class="additional_rights_wrapper">
-                                    <div class="additional_right" id="non_governmental_organisations"></div>
-                                    <div class="additional_right" id="expression_freedom"></div>
-                                </div>
-                            </div>
-                        `
+                        countrySliderInnerHtml(criminalizedCountriesToIterate)
 
                         let nonGovOrganisations = document.querySelector('#non_governmental_organisations')
                         let expressionFreedom = document.querySelector('#expression_freedom')
@@ -450,11 +360,7 @@ window.addEventListener("DOMContentLoaded", () => {
             `
             }
 
-            console.log("clicked country", clickedCountryBool)
-            console.log("sidebar", sidebar.classList.contains('collapsed'))
-
             if (sidebarWrapper.classList.contains('collapsed')){
-                console.log(clickedCountryBool)
                 clickedCountryBool = true
                 toggleSidebar('left', e.features[0].properties.ADMIN)
             } else if (clickedCountry === e.features[0].properties.ADMIN) {
@@ -474,12 +380,9 @@ window.addEventListener("DOMContentLoaded", () => {
             let color;
 
             for (let protectedCountry in arrayToIterate) {
-                //console.log("Protected Country : ", protectedCountry, arrayToIterate[protectedCountry])
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
                 }).indexOf(protectedCountry);
-
-                //console.log('index of feature : ', indexOfFeatures)
 
                 if (!protectedFilterVerification) {
                     color = 1
@@ -497,8 +400,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 
             }
-            //console.log('================================================================')
-
         }
 
         async function neutralCountries(arrayToIterate) {
@@ -506,12 +407,9 @@ window.addEventListener("DOMContentLoaded", () => {
             let color;
 
             for (let neutralCountry in arrayToIterate) {
-                //console.log("Neutral Country : ", neutralCountry)
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
                 }).indexOf(neutralCountry);
-
-                //console.log('index of feature : ', indexOfFeatures)
 
                 if (!neutralFilterVerification) {
                     color = 2
@@ -527,7 +425,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 color = null;
 
-                //console.log('===================================================================')
             }
         }
 
@@ -536,12 +433,9 @@ window.addEventListener("DOMContentLoaded", () => {
             let color;
 
             for (let criminalizedCountry in arrayToIterate) {
-                //console.log("Protected Country : ", criminalizedCountry)
                 let indexOfFeatures = states.map(function (e) {
                     return e.properties.ADMIN;
                 }).indexOf(criminalizedCountry);
-
-                //console.log('index of feature : ', indexOfFeatures)
 
                 if (!criminalizedFilterVerification) {
                     color = 3
@@ -557,7 +451,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 color = null;
 
-                //console.log('===================================================================')
             }
         }
 
@@ -578,7 +471,6 @@ window.addEventListener("DOMContentLoaded", () => {
 
                 let countryType = fileToIterate[0][country]['type']
                 if (parseInt(countryType) === gai_slider_value){
-                    //console.log(country)
                     let indexOfFeature = capitals.map(function (e) {
                         return e.properties.COUNTRY;
                     }).indexOf(country)
@@ -592,7 +484,6 @@ window.addEventListener("DOMContentLoaded", () => {
                         { gaiCountries: gaiCountry }
                     )
 
-                    //console.log(indexOfFeature)
                 }
             }
         }
@@ -612,6 +503,30 @@ window.addEventListener("DOMContentLoaded", () => {
         }
 
     });
+
+    function countrySliderInnerHtml (array) {
+        return sidebar.innerHTML = `
+            <div class="slider_wrapper">
+                <h3>${country}</h3>
+                <input type="range" min="1" max="9" value="${ 10 - array[country]['type'] }" step="1" disabled>
+                <div class="protection_level_wrapper">
+                    <div class="protection_level" id="9">Protection constitutionnelle</div>
+                    <div class="protection_level" id="8">Protection large</div>
+                    <div class="protection_level" id="7">Protection dans le monde du travail</div>
+                    <div class="protection_level" id="6">Protection limitée/inégale</div>
+                    <div class="protection_level" id="5">Ni protection, ni criminalisation</div>
+                    <div class="protection_level" id="4">Criminalisatoin de facto</div>
+                    <div class="protection_level" id="3">Jusqu'à 8 ans d'emprisonnement</div>
+                    <div class="protection_level" id="2">De 10 ans à la prison à vie</div>
+                    <div class="protection_level" id="1">Peine de mort</div>
+                </div>
+                <div class="additional_rights_wrapper">
+                    <div class="additional_right" id="non_governmental_organisations"></div>
+                    <div class="additional_right" id="expression_freedom"></div>
+                </div>
+            </div>
+        `
+    }
 
     function mapLoad() {
         return new Promise((resolve, reject) => {
