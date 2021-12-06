@@ -18,7 +18,7 @@ Undefined est un site internet ayant pour but d'éveiller les consciences face a
 
 ## Architecture
 
-![Architecture](https://cdn.discordapp.com/attachments/896329209482448917/917469818305790063/Fichier_12x.png =1000x)
+![Architecture](https://cdn.discordapp.com/attachments/896329209482448917/917469818305790063/Fichier_12x.png)
 
 ## Flux de données
 
