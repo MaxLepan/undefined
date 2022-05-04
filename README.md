@@ -2,7 +2,7 @@
 
 ## Contexte
 
-Undefined est un site internet ayant pour but d'éveiller les consciences face aux violences et discriminations subient par la communauté LGBTQIA+
+Undefined est un site internet ayant pour but d'éveiller les consciences face aux violences et discriminations subies par la communauté LGBTQIA+
 
 ## Installation
 
